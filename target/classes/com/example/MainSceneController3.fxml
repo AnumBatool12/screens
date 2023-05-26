@@ -28,13 +28,12 @@
             <Font name="Californian FB" size="14.0" />
          </font>
       </Button>
-      <TextField id="firstName" fx:id="FirstName" layoutX="42.0" layoutY="124.0" prefHeight="27.0" prefWidth="149.0" promptText="*First Name">
+      <TextField id="firstName" fx:id="FullName" layoutX="42.0" layoutY="124.0" prefHeight="27.0" prefWidth="303.0" promptText="*Full Name">
          <font>
             <Font name="Californian FB" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="LastName" layoutX="200.0" layoutY="124.0" prefHeight="27.0" prefWidth="149.0" promptText="*Last Name" />
       <TextField id="Email" fx:id="email" layoutX="42.0" layoutY="166.0" prefHeight="27.0" prefWidth="149.0" promptText="*Email" />
-      <TextField fx:id="PhoneNo" layoutX="200.0" layoutY="166.0" prefHeight="27.0" prefWidth="149.0" promptText="*PhoneNo" />
+      <TextField fx:id="PhoneNo" layoutX="194.0" layoutY="166.0" prefHeight="27.0" prefWidth="149.0" promptText="*PhoneNo" />
    </children>
 </AnchorPane>

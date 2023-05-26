@@ -40,4 +40,7 @@ public class MainSceneController9 {
     @FXML
     private Button update;
 
+    @FXML
+    private Button eventreqs;
+
 }

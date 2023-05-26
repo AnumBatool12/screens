@@ -7,7 +7,16 @@ import javafx.scene.control.TextField;
 public class MainSceneController3 {
 
     @FXML
+    private TextField FullName;
+
+    @FXML
+    private TextField PhoneNo;
+
+    @FXML
     private TextField confirmPassClient;
+
+    @FXML
+    private TextField email;
 
     @FXML
     private TextField passwordClient;

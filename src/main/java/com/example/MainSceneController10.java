@@ -7,10 +7,7 @@ import javafx.scene.control.TextField;
 public class MainSceneController10 {
 
     @FXML
-    private TextField FirstName;
-
-    @FXML
-    private TextField LastName;
+    private TextField FullName;
 
     @FXML
     private TextField PhoneNo;

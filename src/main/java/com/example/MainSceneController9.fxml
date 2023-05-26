@@ -17,17 +17,17 @@
             <Font name="Californian FB" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="makeAttendeeList" layoutY="57.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="170.0" style="-fx-background-color: #E9C7C6;" text="Make Attendee List">
+      <Button fx:id="makeAttendeeList" layoutX="1.0" layoutY="57.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="127.0" style="-fx-background-color: #E9C7C6;" text="Make Attendee List">
          <font>
             <Font name="Californian FB" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="budgetbutton" layoutX="340.0" layoutY="57.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="178.0" style="-fx-background-color: #E9C7C6;" text="Create Budget">
+      <Button fx:id="budgetbutton" layoutX="261.0" layoutY="57.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="127.0" style="-fx-background-color: #E9C7C6;" text="Create Budget">
          <font>
             <Font name="Californian FB" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="todolist" layoutX="170.0" layoutY="57.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="170.0" style="-fx-background-color: #E9C7C6;" text="Update To-Do List">
+      <Button fx:id="todolist" layoutX="131.0" layoutY="57.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="127.0" style="-fx-background-color: #E9C7C6;" text="Update To-Do List">
          <font>
             <Font name="Californian FB" size="12.0" />
          </font>
@@ -84,5 +84,10 @@
       <ListView fx:id="ephired" layoutX="281.0" layoutY="310.0" prefHeight="200.0" prefWidth="200.0" />
       <Button fx:id="hirels" layoutX="104.0" layoutY="519.0" mnemonicParsing="false" style="-fx-background-color: #E9C7C6;" text="Hire Logistics" />
       <Button fx:id="hireep" layoutX="331.0" layoutY="519.0" mnemonicParsing="false" style="-fx-background-color: #E9C7C6;" text="Hire Event Planner" />
+      <Button fx:id="eventreqs" layoutX="390.0" layoutY="57.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="127.0" style="-fx-background-color: #E9C7C6;" text="Set Event Requirements">
+         <font>
+            <Font name="Californian FB" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
