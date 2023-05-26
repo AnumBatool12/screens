@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /*
- * JavaFX App Creating Event 
+ * JavaFX App Event Dashboard  Logistics
  */
-public class App8 extends Application {
+public class App17 extends Application {
 
     //private static Scene
 
@@ -20,7 +20,7 @@ public class App8 extends Application {
         
         Parent root;
         try{
-            root=FXMLLoader.load(getClass().getResource("MainSceneController8.fxml"));
+            root=FXMLLoader.load(getClass().getResource("MainSceneController17.fxml"));
 
             Scene scene=new Scene(root);
             stage.setScene(scene);
