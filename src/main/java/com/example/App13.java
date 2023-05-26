@@ -9,18 +9,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /*
- * JavaFX App Page to Change Personal Information-Client
+ * JavaFX App For Event Planner Dashboard
  */
-public class App10 extends Application {
+public class App13 extends Application {
 
     //private static Scene scene;
 
-    @Override 
+    @Override
     public void start(Stage stage) throws IOException {
         
         Parent root;
         try{
-            root=FXMLLoader.load(getClass().getResource("MainSceneController10.fxml"));
+            root=FXMLLoader.load(getClass().getResource("MainSceneController13.fxml"));
 
             Scene scene=new Scene(root);
             stage.setScene(scene);

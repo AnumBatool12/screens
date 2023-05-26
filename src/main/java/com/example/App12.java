@@ -20,7 +20,7 @@ public class App12 extends Application {
         
         Parent root;
         try{
-            root=FXMLLoader.load(getClass().getResource("MainSceneController11.fxml"));
+            root=FXMLLoader.load(getClass().getResource("MainSceneController12.fxml"));
 
             Scene scene=new Scene(root);
             stage.setScene(scene);

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController12">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f4eb" height="66.0" stroke="#f7f4eb" strokeType="INSIDE" width="400.0" />
+      <Label layoutX="154.0" layoutY="14.0" text="HappenHub">
+         <font>
+            <Font name="Californian FB" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="168.0" layoutY="42.0" text="To-Do List">
+         <font>
+            <Font name="Californian FB" size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="taskList" layoutX="-1.0" layoutY="203.0" prefHeight="297.0" prefWidth="400.0">
+        <columns>
+          <TableColumn prefWidth="55.333311676979065" text="Task No." />
+          <TableColumn prefWidth="77.99999618530273" text="Date" />
+            <TableColumn prefWidth="222.6667022705078" text="Task Description" />
+            <TableColumn prefWidth="42.66668701171875" text="Done" />
+        </columns>
+      </TableView>
+      <TextField fx:id="task" layoutX="20.0" layoutY="82.0" prefHeight="45.0" prefWidth="275.0" promptText="*Enter Task Description" />
+      <DatePicker fx:id="taskdate" layoutX="20.0" layoutY="133.0" prefHeight="25.0" prefWidth="275.0" promptText="*Choose Date" />
+      <Button fx:id="addTaskBtn" layoutX="302.0" layoutY="82.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="84.0" style="-fx-background-color: #E9C7C6;" text="Add Task">
+         <font>
+            <Font name="Californian FB" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="returnBtn" layoutX="324.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" style="-fx-background-color: #E9C7C6;" text="Return">
+         <font>
+            <Font name="Californian FB" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="removeBtn" layoutX="303.0" layoutY="165.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="84.0" style="-fx-background-color: #B13344;" text="Remove Task" textFill="WHITE">
+         <font>
+            <Font name="Californian FB" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

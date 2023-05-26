@@ -9,9 +9,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /*
- * JavaFX App Page to Change Personal Information-Client
+ * JavaFX App Page to Change Personal Information-Event Planner
+
  */
-public class App10 extends Application {
+public class App14 extends Application {
 
     //private static Scene scene;
 
@@ -20,7 +21,7 @@ public class App10 extends Application {
         
         Parent root;
         try{
-            root=FXMLLoader.load(getClass().getResource("MainSceneController10.fxml"));
+            root=FXMLLoader.load(getClass().getResource("MainSceneController14.fxml"));
 
             Scene scene=new Scene(root);
             stage.setScene(scene);
