@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /*
- * JavaFX App For Event Planner and Logistic Service Dashboard
+ * JavaFX App For Logistic Service Profile Change
  */
-public class App13 extends Application {
+public class App20 extends Application {
 
     //private static Scene scene;
 
@@ -20,7 +20,7 @@ public class App13 extends Application {
         
         Parent root;
         try{
-            root=FXMLLoader.load(getClass().getResource("MainSceneController13.fxml"));
+            root=FXMLLoader.load(getClass().getResource("MainSceneController20.fxml"));
 
             Scene scene=new Scene(root);
             stage.setScene(scene);
