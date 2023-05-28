@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController20">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f4eb" height="66.0" stroke="#f7f4eb" strokeType="INSIDE" width="400.0" />
       <Label layoutX="154.0" layoutY="14.0" text="HappenHub">
@@ -23,7 +23,7 @@
       <TextField id="usernameClient" fx:id="usernameClient" layoutX="49.0" layoutY="202.0" prefHeight="35.0" prefWidth="303.0" text="*Username" />
       <TextField id="passwordClient" fx:id="passwordClient" layoutX="49.0" layoutY="245.0" prefHeight="35.0" prefWidth="303.0" text="*Password" />
       <TextField id="confirmPassClient" fx:id="confirmPassClient" layoutX="49.0" layoutY="291.0" prefHeight="35.0" prefWidth="303.0" text="*Confirm Password" />
-      <Button fx:id="confirmChanges" layoutX="51.0" layoutY="342.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Confirm Changes">
+      <Button fx:id="confirmChanges" layoutX="51.0" layoutY="342.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Confirm Changes">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>
@@ -35,13 +35,13 @@
       </TextField>
       <TextField id="Email" fx:id="Cemail" layoutX="48.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="*Email" />
       <TextField fx:id="ServiceType" layoutX="202.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="*Service Type" />
-      <Button fx:id="Return" layoutX="51.0" layoutY="437.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Return">
+      <Button fx:id="Return" layoutX="51.0" layoutY="437.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Return">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>
       </Button>
       <TextField fx:id="companyURL" layoutX="48.0" layoutY="165.0" prefHeight="25.0" prefWidth="303.0" text="*Website URL" />
-      <Button fx:id="updateServicePage" layoutX="51.0" layoutY="391.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Update Services Page">
+      <Button fx:id="updateServicePage" layoutX="51.0" layoutY="391.0" mnemonicParsing="false" onAction="#openServicePage_LS" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Update Services Page">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController2">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController1">
    <children>
       <Label id="Title" layoutX="113.0" layoutY="44.0" text="HappenHub" textAlignment="CENTER">
          <font>
@@ -17,17 +17,17 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="ClientRegister" layoutX="90.0" layoutY="154.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #E9C7C6;" text="Client">
+      <Button fx:id="ClientRegister" layoutX="90.0" layoutY="154.0" mnemonicParsing="false" onAction="#openSignUpForm_Client" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #E9C7C6;" text="Client">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="PlannerRegister" layoutX="90.0" layoutY="203.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #E9C7C6;" text="Event Planner">
+      <Button fx:id="PlannerRegister" layoutX="90.0" layoutY="203.0" mnemonicParsing="false" onAction="#openSignUpForm1_EventPlanner" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #E9C7C6;" text="Event Planner">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="ServiceRegister2" layoutX="90.0" layoutY="251.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #E9C7C6;" text="Logistic Service">
+      <Button fx:id="ServiceRegister2" layoutX="90.0" layoutY="251.0" mnemonicParsing="false" onAction="#openSignUpFormLogisticService" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #E9C7C6;" text="Logistic Service">
          <font>
             <Font size="18.0" />
          </font>

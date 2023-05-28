@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController24">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f4eb" height="66.0" stroke="#f7f4eb" strokeType="INSIDE" width="400.0" />
       <Label layoutX="154.0" layoutY="14.0" text="HappenHub">
@@ -20,7 +20,7 @@
             <Font name="Californian FB" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="sendRequest" layoutX="48.0" layoutY="315.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Send Request">
+      <Button fx:id="sendRequest" layoutX="48.0" layoutY="315.0" mnemonicParsing="false" onAction="#openEventRequestForm" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Send Request">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>
@@ -32,7 +32,7 @@
       </TextField>
       <TextField id="Email" fx:id="email" layoutX="48.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="*Email" />
       <TextField fx:id="PhoneNo" layoutX="202.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="*PhoneNo" />
-      <Button fx:id="Return" layoutX="202.0" layoutY="315.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Return">
+      <Button fx:id="Return" layoutX="202.0" layoutY="315.0" mnemonicParsing="false" onAction="#openSearch" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Return">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>
