@@ -3,24 +3,6 @@ package com.example;
 
 import java.time.LocalDate;
 
-//	eventID int primary key,
-//	eventName varchar(255) not null,
-//	eventType varchar(255) not null,
-//	location varchar(255) not null,
-//	dateofevent date not null,
-//	clientid int not null,
-//	eventplannerID int,
-//	eventreqsID int not null,
-//	budgetID int not null,
-//	inviteID int not null,
-//	foreign key (clientid) references Client_(clientid),
-//	foreign key (eventplannerID) references EventPlanner(eventplannerID),
-//	foreign key(eventreqsID) references EventRequirements(eventreqsID),
-//	foreign key (budgetID) references Budget(budgetID),
-//	foreign key (inviteID) references Invitations(inviteID)
-//
-
-
 public class Event {
 	private String eventTitle;
 	private LocalDate eventDate;
@@ -59,12 +41,6 @@ public class Event {
 
 		// end-user-code
 	}
-	public void getEventDate() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
 
 	public void updateRequirements(Object reqs) {
 		// begin-user-code
@@ -72,6 +48,7 @@ public class Event {
 
 		// end-user-code
 	}
+	
 	public void createEvent(Object location, Object date, Object time, Object size) {
 		// begin-user-code
 		// TODO Auto-generated method stub
