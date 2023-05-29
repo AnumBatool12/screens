@@ -23,7 +23,7 @@
       <TextField id="usernameClient" fx:id="usernameClient" layoutX="42.0" layoutY="208.0" prefHeight="35.0" prefWidth="303.0" promptText="*Username" />
       <TextField id="passwordClient" fx:id="passwordClient" layoutX="42.0" layoutY="251.0" prefHeight="35.0" prefWidth="303.0" promptText="*Password" />
       <TextField id="confirmPassClient" fx:id="confirmPassClient" layoutX="42.0" layoutY="297.0" prefHeight="35.0" prefWidth="303.0" promptText="*Confirm Password" />
-      <Button fx:id="signUpClient" layoutX="44.0" layoutY="348.0" mnemonicParsing="false" onAction="#openClientDashboard" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Create New Account">
+      <Button fx:id="signUpClient" layoutX="44.0" layoutY="348.0" mnemonicParsing="false" onAction="#createClient" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Create New Account">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>

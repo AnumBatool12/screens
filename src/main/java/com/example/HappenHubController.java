@@ -30,8 +30,9 @@ public class HappenHubController {
 
 	}
 	
-	
-	
+	public void createClient(String name, String mail, String phone, String usn, String pw){
+		client=new Client(name, mail, phone, usn, pw);
+	}
 	
 	public void createLogisticAccount(Object Username, Object Password, Object LogisticType) {
 		// begin-user-code

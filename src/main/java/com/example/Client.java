@@ -18,6 +18,18 @@ public class Client implements User{
 		events=new ArrayList<Event>();
 	}
 
+	Client(String name, String mail, String phone, String usn, String pw){//parametrised constructor
+		fullname=name;
+		email=mail;
+		phoneNo=phone;
+		username=usn;
+		password=pw;
+
+		//initialize the array of clients
+		events=new ArrayList<Event>();
+		System.out.println("I made the client");
+	}
+
 	public void setFullname(String name) {fullname = name;}
 	public void setEmail(String mail) {email=mail;}
 	public void setPhoneNo(String phone) {phoneNo = phone;}
@@ -31,6 +43,7 @@ public class Client implements User{
 
 	public void getUserSummary() {}
 
+	//creating new Event
 	public void createEvent(String title, LocalDate date, String time, String size) {
 		Event newEvent=new Event(title, date, time, size);
 		events.add(newEvent);

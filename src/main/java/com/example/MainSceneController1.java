@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
@@ -28,19 +29,40 @@ public class MainSceneController1 {//Facade Controller
     private Button LoginBtn;
 
     @FXML
-    private TextField title;
+    private TextField title;//
 
     @FXML
-    private TextField Etime;
+    private TextField Etime;//
 
     @FXML
-    private TextField ESize;
+    private TextField ESize;//
 
     @FXML
-    private DatePicker Edate;
+    private DatePicker Edate;//
 
     @FXML
-    private Button createEvent;
+    private Button createEvent;//
+
+    @FXML
+    private TextField FullName;//
+
+    @FXML
+    private TextField PhoneNo;//
+
+    @FXML
+    private TextField confirmPassClient;
+
+    @FXML
+    private TextField email;//
+
+    @FXML
+    private TextField passwordClient;
+
+    @FXML
+    private Button signUpClient;
+
+    @FXML
+    private TextField usernameClient;
 
     //Variables for Screen Display
     private Stage stage;
@@ -79,6 +101,18 @@ public class MainSceneController1 {//Facade Controller
         LoadPage(root, event);
     }
 
+    public void createClient(ActionEvent event) throws IOException{
+        if (!(passwordClient.getText().equals(confirmPassClient.getText()))){
+            Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            alert.setContentText("Password and Confirm Password are not the same");
+        }
+        else{
+            HappenHubController.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
+            System.out.println("This is working");
+        }
+        openClientDashboard(event);
+    }
+
     //Open Sign up Form for Event Planner
     public void openSignUpForm1_EventPlanner(ActionEvent event) throws IOException{
         root=FXMLLoader.load(getClass().getResource("MainSceneController4.fxml"));
@@ -103,13 +137,14 @@ public class MainSceneController1 {//Facade Controller
         LoadPage(root, event);
     }
 
-    public void createEventbyClient(ActionEvent event) throws IOException{//create event and open client dashboard
+    //create event and open client dashboard
+    public void createEventbyClient(ActionEvent event) throws IOException{
         String Title=title.getText();
         LocalDate date=Edate.getValue();
         String time=Etime.getText();
         String size=ESize.getText();
 
-        HappenHubController.getInstance().createEvent(Title, date, time, size, userID);
+        HappenHubController.getInstance().createEvent(Title, date, time, size, userID);//creating event
         openEventDashboard(event);
     }
 
