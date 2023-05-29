@@ -1,4 +1,6 @@
 package com.example;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 //Client Class
@@ -8,6 +10,13 @@ public class Client implements User{
 	private String phoneNo;
 	private String username;
 	private String password;
+
+	private ArrayList<Event> events;
+
+	Client(){
+		//initialize the array of clients
+		events=new ArrayList<Event>();
+	}
 
 	public void setFullname(String name) {fullname = name;}
 	public void setEmail(String mail) {email=mail;}
@@ -22,8 +31,9 @@ public class Client implements User{
 
 	public void getUserSummary() {}
 
-	public void createEvent(String location, Date date, String time,Integer size) {
-		
+	public void createEvent(String title, LocalDate date, String time, String size) {
+		Event newEvent=new Event(title, date, time, size);
+		events.add(newEvent);
 	}
 
 	public void createEventRequirements() {

@@ -24,10 +24,10 @@ public class HappenHubController {
 	}
 
 
-	//creating Event
+	//creating Event via the Client
 	public void createEvent(String title, LocalDate date, String time, String size, String userID) {
-		Clientevent=new Event(title, date, time, size);
-		System.out.println("Im here");
+		client.createEvent(title, date, time, size);
+
 	}
 	
 	

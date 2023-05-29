@@ -1,4 +1,5 @@
 package com.example;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -25,7 +26,7 @@ public class EventPlanner implements User {
 
 	public void getUserSummary() {}
 
-	public void createEvent(String location, Date date, String time, Integer size) {
+	public void createEvent(String title, LocalDate date, String time, String size) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 

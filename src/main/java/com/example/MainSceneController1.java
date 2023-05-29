@@ -103,7 +103,7 @@ public class MainSceneController1 {//Facade Controller
         LoadPage(root, event);
     }
 
-    public void createEventbyClient(ActionEvent event) throws IOException{
+    public void createEventbyClient(ActionEvent event) throws IOException{//create event and open client dashboard
         String Title=title.getText();
         LocalDate date=Edate.getValue();
         String time=Etime.getText();

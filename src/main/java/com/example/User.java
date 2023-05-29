@@ -1,4 +1,5 @@
 package com.example;
+import java.time.LocalDate;
 import java.util.Date;
 
 //User Class
@@ -14,7 +15,7 @@ public interface User {
 	public String getUsername();
 	public String getPassword();
 	public void getUserSummary();
-	public void createEvent(String location, Date date, String time, Integer size);
+	public void createEvent(String title, LocalDate date, String time, String sizee);
 	public void createEventRequirements();
 	public void createInvite();
 	public void createBudget(Integer budget);
