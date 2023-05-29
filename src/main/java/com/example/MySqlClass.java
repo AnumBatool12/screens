@@ -1,25 +1,41 @@
 package com.example;
-import java.sql. * ;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 
 public class MySqlClass {
-    private MySqlConnection cn;
-    private String ConnectionString;
+    private Connection cn;
     private static MySqlClass instance;
+    private String jdbcUrl = "jdbc:mysql://localhost:3306/finalproject";
+    private String username = "root";
+    private String password = "Saikobaka002";
 
     private MySqlClass(){
-        instance = NULL;
+        instance = null;
     }
     public void MyConnection()
     {
-        con = "server=localhost;uid=root;pwd=Saikobaka002;database=finalproject";
-        cn.ConnectionString = con;
-        cn.Open();
-        ConnectionString = con;
+        try {
+            cn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Use the cn object for database operations
+        } catch (SQLException e) {
+            // Handle any potential errors that might occur during connection
+            e.printStackTrace();
+        }
+        
+        // String con = "server=localhost;uid=root;pwd=Saikobaka002;database=finalproject";
+        // cn. = con;
+        // cn.Open();
+        //ConnectionString = con;
     }
     public static MySqlClass getInstance(){
-        if(instance.equals(NULL)){
-            instance = new MySql();
-            instance.MyConnection;
+        if(instance == null){
+            instance = new MySqlClass();
+            //instance.MyConnection();
             return instance;
         }
         else{
@@ -28,16 +44,41 @@ public class MySqlClass {
     }
 
     public void testing(){
-        Statement mystmt = cn.createStatement();
-        ResultSet myRs = mystmt.executeQuery("select from* user where userid =1");
-        while(myRs.next()){
-            System.out.println(myRs.getString("fullname"));
+        try {
+            Connection cn = DriverManager.getConnection(jdbcUrl, username, password);
+        
+            // Create a statement object
+            Statement statement = cn.createStatement();
+        
+            // Execute the query
+            String sqlQuery = "select * from User_ where userid =1";
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+        
+            // Process the query results
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("fullname"));  
+            }
+        
+            // Close the resources
+            resultSet.close();
+            statement.close();
+            cn.close();
+        } catch (SQLException e) {
+            // Handle any potential errors that might occur during connection or query execution
+            e.printStackTrace();
         }
     }
-    ~MySql(){
-        cn.close();
-    }
+    // Close the resources
 
+    // resultSet.close();
+    // statement.close();
+    // cn.close();
+    //     Statement mystmt = cn.createStatement();
+    //     ResultSet myRs = mystmt.executeQuery("select from* user where userid =1");
+    //     while(myRs.next()){
+    //         System.out.println(myRs.getString("fullname"));
+    //     }
+    // }
     // public static void main (String [] args) {
     //     Connection myconn = null;
     //     Statement mystmt = null;
