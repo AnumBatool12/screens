@@ -6,34 +6,41 @@ import java.util.ArrayList;
 
 public class Scheduler {
 	private ArrayList<Task> tasks;
-	private int totalTasks;
+	private Integer totalTasks;
 
 	Scheduler(){
 		tasks=new ArrayList<Task>();
 	}
 
 	//setter
-	public void setDate(Integer index, Date date) {
+	public void setDate(int index, Date date) {
 		tasks.get(index).setDate(date);
 	}
-	public void setTask(Integer index, String task) {
+	public void setTask(int index, String task) {
 		tasks.get(index).setDesc(task);
 	}
-	public void setAll(Integer index, String task, Date date){
+	public void setAll(int index, String task, Date date){
 		tasks.get(index).setDesc(task);
 		tasks.get(index).setDate(date);
 	}
-	public void setStatus(Integer index, String stat){
+	public void setStatus(int index, String stat){
 		tasks.get(index).setStatus(stat);
 	}
-	public void addTask(Task task){tasks.add(task);}
-
-	public int getTotalTaskNo(){return totalTasks;}
-
+	public void addTask(Task task){
+		tasks.add(task);
+		totalTasks++;
+	}
+	public void allNewTask(String task, Date date){
+		Task newTask=new Task(date, task);
+		tasks.add(newTask);
+		totalTasks++;
+	}
+	
 	//getter
-	public Task getTask(Integer index){return tasks.get(index);}
-	public Date getDate(Integer index) {return tasks.get(index).getDate();}
-	public String getTaskdesc(Integer index){return tasks.get(index).getDesc();}
-	public String getStat(Integer index) {return tasks.get(index).getStatus();}
+	public int getTotalTaskNo(){return totalTasks;}
+	public Task getTask(int index){return tasks.get(index);}
+	public Date getDate(int index) {return tasks.get(index).getDate();}
+	public String getTaskdesc(int index){return tasks.get(index).getDesc();}
+	public String getStat(int index) {return tasks.get(index).getStatus();}
 
 }
