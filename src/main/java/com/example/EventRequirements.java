@@ -1,37 +1,27 @@
 package com.example;
-/**
- * 
- */
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author Spectre
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
- */
+import java.util.ArrayList;
+
+//Event Requirement List
 public class EventRequirements {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param reqs
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void addRequirement(Object reqs) {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	private ArrayList<Requirement> eventRequirements;
+	Integer totalReqs;
 
-		// end-user-code
+	EventRequirements(){
+		eventRequirements=new ArrayList<Requirement>();
+		totalReqs=0;
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void creatRequirements() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	//getter
+	public Integer getTotalReqs(){return totalReqs;}
+	public String getReq(int index){return eventRequirements.get(index).getRequirement();}
 
-		// end-user-code
+	//setter
+	public void createRequirement(String reqs) {
+		Requirement newReq=new Requirement(reqs);
+		eventRequirements.add(newReq);
+		totalReqs++;
 	}
+	public void setReq(int index, String req) {eventRequirements.get(index).setRequirement(req);}
+
 }

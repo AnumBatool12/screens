@@ -8,6 +8,7 @@ public class ServicesList {
 
 	ServicesList(){//constructor
 		services=new ArrayList<Service>();
+		totalServices=0;
 	}
 
 	//getters

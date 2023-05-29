@@ -10,6 +10,7 @@ public class Scheduler {
 
 	Scheduler(){
 		tasks=new ArrayList<Task>();
+		totalTasks=0;
 	}
 
 	//setter
