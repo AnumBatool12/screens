@@ -15,7 +15,7 @@ import javafx.scene.Node;
 
 public class MainSceneController1 {//Facade Controller
 
-    MySqlClass s = MySqlClass.getInstance();
+    //MySqlClass s = MySqlClass.getInstance();
 
 
 

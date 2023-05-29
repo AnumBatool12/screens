@@ -1,5 +1,5 @@
 package com.example;
-import java.sql. * ;
+/*import java.sql. * ;
 
 public class MySqlClass {
     private MySqlConnection cn;
@@ -70,3 +70,4 @@ public class MySqlClass {
 
     // }
 }
+*/
