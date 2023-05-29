@@ -5,6 +5,7 @@ public class Service {
 	private String ServiceName;
 	private String ServiceDesc;
 	private double Price;
+	private int ID;//id from database
 
 	Service(){}
 	Service(String name, String desc, double price){
@@ -17,6 +18,7 @@ public class Service {
 	public String getServiceName(){return ServiceName;}
 	public String getDesc() {return ServiceDesc;}
 	public double getPrice() {return Price;}
+	public int getID() {return ID;}
 
 	//setter
 	public void setServiceName(String name){ServiceName = name;}
@@ -28,5 +30,6 @@ public class Service {
 		ServiceDesc=desc;
 		Price=price;
 	}
+	public void setID(int id) {ID=id;}
 	
 }

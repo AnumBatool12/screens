@@ -2,9 +2,11 @@ package com.example;
 import java.util.Date;
 
 public class Task {
-    public Date date;
-    public String taskDesc;
-    public String status;
+    private Date date;
+    private String taskDesc;
+    private String status;
+    private int ID;//id from database
+ 
 
     Task(){status="not done";}
     Task(Date date, String desc){
@@ -21,11 +23,13 @@ public class Task {
         taskDesc=desc;
     }
     public void setStatus(String stat){status=stat;}
+    public void setID(int id) {ID=id;}
 
     //getters
     public Date getDate(){return date;}
     public String getDesc(){return taskDesc;}
     public String getStatus(){return status;}
+    public int getID() {return ID;}
 
 
 }

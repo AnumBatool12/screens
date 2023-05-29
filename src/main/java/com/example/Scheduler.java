@@ -35,7 +35,8 @@ public class Scheduler {
 		Task newTask=new Task(date, task);
 		tasks.add(newTask);
 		totalTasks++;
-	}
+	} 
+	public void setID(int id, int index){tasks.get(index).setID(id);}
 	
 	//getter
 	public int getTotalTaskNo(){return totalTasks;}
@@ -43,5 +44,6 @@ public class Scheduler {
 	public Date getDate(int index) {return tasks.get(index).getDate();}
 	public String getTaskdesc(int index){return tasks.get(index).getDesc();}
 	public String getStat(int index) {return tasks.get(index).getStatus();}
+	public int getID(int index){return tasks.get(index).getID();}
 
 }

@@ -17,6 +17,7 @@ public class AttendeeList {
     public String getEmail(int index) {return attendees.get(index).getEmail();}
     public Boolean getAttendingStatus(int index){return attendees.get(index).getAttendingStatus();}
 	public Integer getTotal(){return totalAttendees;}
+	public int getID(int index){return attendees.get(index).getID();}
 
 	//setters
 	public void createAttendee(String name, String phone, String mail, Boolean att){
@@ -33,10 +34,6 @@ public class AttendeeList {
 	public void setPhone(int index, String ph){attendees.get(index).setPhone(ph);}
 	public void setEmail(int index, String mail){attendees.get(index).setEmail(mail);}
 	public void setStatus(int index, Boolean stat){attendees.get(index).setAttending(stat);}
+	public void setID(int id, int index){attendees.get(index).setID(id);}
 
-
-
-	public void createInvite() {
-		
-	}
 }

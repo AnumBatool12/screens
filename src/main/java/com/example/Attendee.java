@@ -5,8 +5,9 @@ public class Attendee {
     private String phoneNo;
     private String email;
     private Boolean attending;
+    private int ID;//id from database
 
-    Attendee(){
+    Attendee(){ 
         attending=true;
     }
 
@@ -22,6 +23,7 @@ public class Attendee {
     public String getPhone() {return phoneNo;}
     public String getEmail() {return email;}
     public Boolean getAttendingStatus(){return attending;}
+    public int getID() {return ID;}
 
     //setter
     public void setAll(String name, String phone, String mail, Boolean att){
@@ -35,4 +37,6 @@ public class Attendee {
     public void setPhone(String ph) {phoneNo=ph;}
     public void setEmail(String mail) {email=mail;}
     public void setAttending(Boolean att) {attending=att;}
+    public void setID(int id) {ID=id;}
+
 }
