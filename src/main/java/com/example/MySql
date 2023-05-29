@@ -4,6 +4,22 @@ import java.sql. * ;
 public class MySql implements PersistenceHandler{
     private MySqlConnection cn;
     private String ConnectionString;
+    private static MySql instance;
+
+    private MySql(){
+        
+    }
+
+    public static MySql getInstance(){
+        if(instance.equals(NULL)){
+            instance = new MySql();
+            instance.MyConnection;
+            return instance;
+        }
+        else{
+            return instance;
+        }
+    }
 
     public void MyConnection()
     {
@@ -22,7 +38,7 @@ public class MySql implements PersistenceHandler{
     ~MySql(){
         cn.close();
     }
-    
+
     // public static void main (String [] args) {
     //     Connection myconn = null;
     //     Statement mystmt = null;
