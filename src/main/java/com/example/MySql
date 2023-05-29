@@ -7,7 +7,7 @@ public class MySql implements PersistenceHandler{
     private static MySql instance;
 
     private MySql(){
-        
+        instance = null;
     }
 
     public static MySql getInstance(){
