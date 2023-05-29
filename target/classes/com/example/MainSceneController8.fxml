@@ -24,7 +24,7 @@
       <TextField fx:id="title" layoutX="40.0" layoutY="96.0" prefHeight="25.0" prefWidth="305.0" promptText="*Event Title" />
       <TextField fx:id="ESize" layoutX="40.0" layoutY="216.0" prefHeight="25.0" prefWidth="305.0" promptText="*Event Size" />
       <TextField fx:id="Etime" layoutX="40.0" layoutY="175.0" prefHeight="25.0" prefWidth="305.0" promptText="*Event Time" />
-      <Button fx:id="createEvent" layoutX="116.0" layoutY="270.0" mnemonicParsing="false" onAction="#openEventDashboard" prefHeight="35.0" prefWidth="167.0" style="-fx-background-color: #E9C7C6;" text="Create Event" />
+      <Button fx:id="createEvent" layoutX="116.0" layoutY="270.0" mnemonicParsing="false" onAction="#createEventbyClient" prefHeight="35.0" prefWidth="167.0" style="-fx-background-color: #E9C7C6;" text="Create Event" />
       <DatePicker fx:id="Edate" layoutX="40.0" layoutY="134.0" prefHeight="25.0" prefWidth="305.0" promptText="*Event Date" />
    </children>
 </AnchorPane>

@@ -1,22 +1,29 @@
 package com.example;
 
 import java.io.IOException;
-
+import java.time.LocalDate;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
-public class MainSceneController1 {
+public class MainSceneController1 {//Facade Controller
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    private Event Clientevent;
 
     // Sign Up options for different types of actors
     public void openLoginPage(ActionEvent event) throws IOException{
@@ -79,6 +86,32 @@ public class MainSceneController1 {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private TextField title;
+
+    @FXML
+    private TextField Etime;
+
+    @FXML
+    private TextField ESize;
+
+    @FXML
+    private DatePicker Edate;
+
+    @FXML
+    private Button createEvent;
+    
+
+    public void createEventbyClient(ActionEvent event) throws IOException{
+        String Title=title.getText();
+        LocalDate date=Edate.getValue();
+        String time=Etime.getText();
+        String size=ESize.getText();
+
+        Clientevent=new Event(Title, date, time, size);
+        openEventDashboard(event);
     }
 
     //Open Create Event Option
