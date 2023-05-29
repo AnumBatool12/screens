@@ -1,7 +1,23 @@
 package com.example;
+
+import java.time.LocalDate;
+
 //HappenHubController
 public class HappenHubController {
+	//variables
+	private Client client;
+	private Event Clientevent;
 
+
+	//creating Event
+	public void createEvent(String title, LocalDate date, String time, String size, String userID) {
+		Clientevent=new Event(title, date, time, size);
+		System.out.println("Im here");
+	}
+	
+	
+	
+	
 	public void createLogisticAccount(Object Username, Object Password, Object LogisticType) {
 		// begin-user-code
 		// TODO Auto-generated method stub
@@ -84,13 +100,7 @@ public class HappenHubController {
 
 		// end-user-code
 	}
-	public void createEvent(Object loctation, Object date, Object time,
-			Object size) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
+	
 	public void createEventReqs() {
 		// begin-user-code
 		// TODO Auto-generated method stub

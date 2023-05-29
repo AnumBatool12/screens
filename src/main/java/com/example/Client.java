@@ -23,10 +23,7 @@ public class Client implements User{
 	public void getUserSummary() {}
 
 	public void createEvent(String location, Date date, String time,Integer size) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+		
 	}
 
 	public void createEventRequirements() {

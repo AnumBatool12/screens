@@ -17,8 +17,8 @@
          </font>
       </Label>
       <Label layoutX="182.0" layoutY="151.0" />
-      <TextField id="username" layoutX="88.0" layoutY="135.0" prefHeight="25.0" prefWidth="210.0" promptText="Username" />
-      <TextField id="password" layoutX="88.0" layoutY="168.0" prefHeight="25.0" prefWidth="210.0" promptText="Password" />
+      <TextField id="username" fx:id="usernameLogin" layoutX="88.0" layoutY="135.0" prefHeight="25.0" prefWidth="210.0" promptText="Username" />
+      <TextField id="password" fx:id="passwordLogin" layoutX="88.0" layoutY="168.0" prefHeight="25.0" prefWidth="210.0" promptText="Password" />
       <Button id="loginBtn" fx:id="LoginBtn" layoutX="88.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #E9C7C6;" text="Log In">
          <font>
             <Font size="14.0" />

@@ -17,18 +17,27 @@ public class MainSceneController1 {//Facade Controller
 
     //MySqlClass s = MySqlClass.getInstance();
 
-
-
     //Variables for Screen Display
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private String userID;//for db identification
+    private String usertype;//for screen identification
 
     //Variables for Classses
-    private Event Clientevent;
+    private HappenHubController hhc;
 
 
     //Variables for FXML 
+    @FXML 
+    private TextField usernameLogin;
+    
+    @FXML
+    private TextField passwordLogin;
+
+    @FXML
+    private Button LoginBtn;
+
     @FXML
     private TextField title;
 
@@ -44,6 +53,7 @@ public class MainSceneController1 {//Facade Controller
     @FXML
     private Button createEvent;
 
+    //Loader Function
     public void LoadPage(Parent root, ActionEvent event){
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -99,7 +109,7 @@ public class MainSceneController1 {//Facade Controller
         String time=Etime.getText();
         String size=ESize.getText();
 
-        Clientevent=new Event(Title, date, time, size);
+        hhc.createEvent(Title, date, time, size, userID);
         openEventDashboard(event);
     }
 

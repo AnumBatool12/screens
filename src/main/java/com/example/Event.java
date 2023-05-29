@@ -18,7 +18,7 @@ public class Event {
 		eventDate=date;
 		eventTime=time;
 		eventSize=Integer.valueOf(size);
-
+		System.out.println("Im here");
 	}
 
 	//setter functions
