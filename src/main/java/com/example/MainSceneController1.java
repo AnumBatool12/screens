@@ -15,6 +15,10 @@ import javafx.scene.Node;
 
 public class MainSceneController1 {
 
+    MySqlClass s = MySqlClass.getInstance();
+
+
+
     //Variables for Screen Display
     private Stage stage;
     private Scene scene;
