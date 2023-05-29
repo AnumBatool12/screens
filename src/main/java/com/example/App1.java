@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /** 
  * Start up Screen for Login/Sign Up
- */
+ */ 
 public class App1 extends Application {
 
     //private static Scene scene;
