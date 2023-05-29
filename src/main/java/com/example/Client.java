@@ -27,7 +27,6 @@ public class Client implements User{
 
 		//initialize the array of clients
 		events=new ArrayList<Event>();
-		System.out.println("I made the client");
 	}
 
 	public void setFullname(String name) {fullname = name;}

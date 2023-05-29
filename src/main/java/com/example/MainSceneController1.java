@@ -102,15 +102,16 @@ public class MainSceneController1 {//Facade Controller
     }
 
     public void createClient(ActionEvent event) throws IOException{
-        if (!(passwordClient.getText().equals(confirmPassClient.getText()))){
+        if (!((passwordClient.getText()).equals(confirmPassClient.getText()))){
             Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
             alert.setContentText("Password and Confirm Password are not the same");
+            alert.show();
         }
         else{
             HappenHubController.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
-            System.out.println("This is working");
+            openClientDashboard(event);
         }
-        openClientDashboard(event);
+
     }
 
     //Open Sign up Form for Event Planner
