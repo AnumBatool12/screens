@@ -1,16 +1,22 @@
 package com.example;
 import java.sql. * ;
 
-public class MySql implements PersistenceHandler{
+public class MySqlClass {
     private MySqlConnection cn;
     private String ConnectionString;
-    private static MySql instance;
+    private static MySqlClass instance;
 
-    private MySql(){
-        instance = null;
+    private MySqlClass(){
+        instance = NULL;
     }
-
-    public static MySql getInstance(){
+    public void MyConnection()
+    {
+        con = "server=localhost;uid=root;pwd=Saikobaka002;database=finalproject";
+        cn.ConnectionString = con;
+        cn.Open();
+        ConnectionString = con;
+    }
+    public static MySqlClass getInstance(){
         if(instance.equals(NULL)){
             instance = new MySql();
             instance.MyConnection;
@@ -21,13 +27,6 @@ public class MySql implements PersistenceHandler{
         }
     }
 
-    public void MyConnection()
-    {
-        con = "server=localhost;uid=root;pwd=Saikobaka002;database=finalproject";
-        cn.ConnectionString = con;
-        cn.Open();
-        ConnectionString = con;
-    }
     public void testing(){
         Statement mystmt = cn.createStatement();
         ResultSet myRs = mystmt.executeQuery("select from* user where userid =1");
@@ -70,5 +69,4 @@ public class MySql implements PersistenceHandler{
     //     } 
 
     // }
-
 }
