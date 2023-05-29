@@ -56,13 +56,13 @@ public class MainSceneController1 {//Facade Controller
     private TextField email;//
 
     @FXML
-    private TextField passwordClient;
+    private TextField passwordClient;//
 
     @FXML
-    private Button signUpClient;
+    private Button signUpClient;//
 
     @FXML
-    private TextField usernameClient;
+    private TextField usernameClient;//
 
     //Variables for Screen Display
     private Stage stage;
@@ -101,19 +101,6 @@ public class MainSceneController1 {//Facade Controller
         LoadPage(root, event);
     }
 
-    public void createClient(ActionEvent event) throws IOException{
-        if (!((passwordClient.getText()).equals(confirmPassClient.getText()))){
-            Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
-            alert.setContentText("Password and Confirm Password are not the same");
-            alert.show();
-        }
-        else{
-            HappenHubController.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
-            openClientDashboard(event);
-        }
-
-    }
-
     //Open Sign up Form for Event Planner
     public void openSignUpForm1_EventPlanner(ActionEvent event) throws IOException{
         root=FXMLLoader.load(getClass().getResource("MainSceneController4.fxml"));
@@ -136,17 +123,6 @@ public class MainSceneController1 {//Facade Controller
     public void openClientDashboard(ActionEvent event) throws IOException{
         root=FXMLLoader.load(getClass().getResource("MainSceneController7.fxml"));
         LoadPage(root, event);
-    }
-
-    //create event and open client dashboard
-    public void createEventbyClient(ActionEvent event) throws IOException{
-        String Title=title.getText();
-        LocalDate date=Edate.getValue();
-        String time=Etime.getText();
-        String size=ESize.getText();
-
-        HappenHubController.getInstance().createEvent(Title, date, time, size, userID);//creating event
-        openEventDashboard(event);
     }
 
     //Open Create Event Option
@@ -269,23 +245,32 @@ public class MainSceneController1 {//Facade Controller
         root=FXMLLoader.load(getClass().getResource("MainSceneController27.fxml"));
         LoadPage(root, event);
     }
+
+
+
+    //Functions
+    //client Sign in
+    public void createClient(ActionEvent event) throws IOException{
+        if (!((passwordClient.getText()).equals(confirmPassClient.getText()))){
+            Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            alert.setContentText("Password and Confirm Password are not the same");
+            alert.show();
+        }
+        else{
+            HappenHubController.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
+            openClientDashboard(event);
+        }
+    }
+
+    //create event and open client dashboard
+    public void createEventbyClient(ActionEvent event) throws IOException{
+        String Title=title.getText();
+        LocalDate date=Edate.getValue();
+        String time=Etime.getText();
+        String size=ESize.getText();
+
+        HappenHubController.getInstance().createEvent(Title, date, time, size, userID);//creating event
+        openEventDashboard(event);
+    }
+
 }
-
-
-/*
-    @FXML
-    private Button LoginBtn;
-
-
-    @FXML
-    private Hyperlink signup;
-
-    @FXML
-    private Button ClientRegister;
-
-    @FXML
-    private Button PlannerRegister;
-
-    @FXML
-    private Button ServiceRegister2;
- */

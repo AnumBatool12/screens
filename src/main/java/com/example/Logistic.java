@@ -6,7 +6,7 @@ public class Logistic {
 	private String userName;
 	private String password;
 	private String CompanyDesc;
-	private String websiteUrl;
+	private String websiteUrl; 
 
 	public String getCompanyName(){return CompanyName;}
 	public String getCompanyType(){return CompanyType;}
