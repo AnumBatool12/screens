@@ -13,18 +13,28 @@ import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
-public class MainSceneController1 {//Facade Controller
+public class MainSceneController1 {
 
     //Variables for Screen Display
     private Stage stage;
     private Scene scene;
     private Parent root;
+    
 
     //Variables for Classses
     private Event Clientevent;
 
 
     //Variables for FXML 
+    @FXML
+    private Button LoginBtn;
+
+    @FXML
+    private TextField usernameLogin;
+
+    @FXML
+    private TextField passwordLogin;
+
     @FXML
     private TextField title;
 
@@ -40,12 +50,18 @@ public class MainSceneController1 {//Facade Controller
     @FXML
     private Button createEvent;
 
+    //Function to Load the Page
     public void LoadPage(Parent root, ActionEvent event){
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
+    
+
+
+
 
     // Login Form
     public void openLoginPage(ActionEvent event) throws IOException{
