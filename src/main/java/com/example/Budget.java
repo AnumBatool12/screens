@@ -1,75 +1,57 @@
 package com.example;
-/**
- * 
- */
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author Spectre
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
- */ 
+import java.util.ArrayList;
+
 public class Budget {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void createBudgetList() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param itemName
-	 * @param budgetPortion
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void addItem(Object itemName, Object budgetPortion) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param itemName
-	 * @param mSpent
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void updateMoneySpent(Object itemName, Object mSpent) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void createBudget(Object budget) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
+	private ArrayList<BudgetItem> budgetItems;
+	private Integer totalItems;
+	private double totalBudget;
 	
+	Budget(){
+		budgetItems=new ArrayList<BudgetItem>();
+		totalBudget=0.0;
+		totalItems=0;
+	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param itemName
-	 * @param budgetPortion
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	
+	//getter
+	public Integer getTotalItem() {return totalItems;}
+	public String getDesc(int index) {return budgetItems.get(index).getDesc();}
+	public double getPortion(int index) {return budgetItems.get(index).getportion();}
+	public double getSpent(int index) {return budgetItems.get(index).getSpent();}
+	public double getTotalBudget() {return totalBudget;}
+
+	//setter
+	public void createBudgetItem(String desc, double portion, double sp, int id){
+		BudgetItem newItem=new BudgetItem(desc, portion, sp, id);
+		budgetItems.add(newItem);
+		totalItems++;
+	}
+
+	public void setDesc(int index, String desc) {budgetItems.get(index).setDesc(desc);}
+	public void setPortion(int index, double portion) {budgetItems.get(index).setPortion(portion);}
+	public void setSpent(int index, double sp) {budgetItems.get(index).getSpent();}
+	public void setID(int id, int index){budgetItems.get(index).setID(id);}
+
+	public double calCulateTotalSpent(){
+		double spent=0.0;
+		for(BudgetItem itr: budgetItems){
+			spent+=itr.getSpent();
+		}
+		return spent;
+	}
+
+	public Boolean overBudget(){
+		Boolean over=false;
+		double spent=0.0;
+		double comp;
+		for (BudgetItem itr: budgetItems){
+			spent+=itr.getSpent();
+		}
+		
+		comp=Double.compare(spent, totalBudget);
+		if (comp>0){over=true;}
+
+		return over;
+	}
+
 }
