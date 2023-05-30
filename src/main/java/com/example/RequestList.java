@@ -54,6 +54,7 @@ public class RequestList {
 	 public Integer getSize(int index) {return requests.get(index).getSize();}
 	 public String getPaymentType(int index){return requests.get(index).getPaymentType();}
 	 public Event getEvent(int index){return requests.get(index).getEvent();}
+	 public int getEventID(int index){return requests.get(index).getEventID();}
  
 	 //Event-->event requirements
 	 public Integer getTotalReqs(int index){return requests.get(index).getTotalReqs();}

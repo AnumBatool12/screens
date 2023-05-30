@@ -11,6 +11,7 @@ public class Event {
 	private  String eventTime;
 	private Integer eventSize;
 	private String paymentType;
+	private int EventID;
 
 	//variables of other classes-->add them separately as well
 	private EventRequirements ER;
@@ -27,10 +28,11 @@ public class Event {
 		invoice=new Cash();
 	}
 
-	Event(String title, LocalDate date, String time, String size){//parametrised constructor
+	Event(String title, LocalDate date, String time, String size, int id){//parametrised constructor
 		eventTitle=title;
 		eventDate=date;
 		eventTime=time;
+		EventID=id;
 		paymentType="Cash";
 
 		eventSize=Integer.valueOf(size);
@@ -40,11 +42,12 @@ public class Event {
 		invoice=new Cash();
 	}
 
-	Event(String title, LocalDate date, String time, String size, String pT){//parametrised constructor
+	Event(String title, LocalDate date, String time, String size, String pT, int id){//parametrised constructor
 		eventTitle=title;
 		eventDate=date;
 		eventTime=time;
 		paymentType=pT;
+		EventID=id;
 
 		eventSize=Integer.valueOf(size);
 		ER=new EventRequirements();
@@ -55,10 +58,11 @@ public class Event {
 		}
 	}
 
-	Event(String title, LocalDate date, String time, String size, EventRequirements er, Budget b, AttendeeList al, Invoice in){//parametrised constructor
+	Event(String title, LocalDate date, String time, String size, EventRequirements er, Budget b, AttendeeList al, Invoice in, int id){//parametrised constructor
 		eventTitle=title;
 		eventDate=date;
 		eventTime=time;
+		EventID=id;
 		eventSize=Integer.valueOf(size);
 
 		ER=er;
@@ -73,6 +77,7 @@ public class Event {
 	public String getTime() {return eventTime;}
 	public Integer getSize() {return eventSize;}
 	public String getPaymentType() {return paymentType;}
+	public int getEventID() {return EventID;}
 	//ER
 	public Integer getTotalReqs(){return ER.getTotalReqs();}
 	public String getReq(int index) {return ER.getReq(index);}
@@ -104,6 +109,7 @@ public class Event {
 	public void setTime(String time) {eventTime=time;}
 	public void setSize (Integer size) {eventSize=size;}
 	public void setPaymentType(String type) {paymentType=type;}
+	public void setEventID(int id){EventID=id;}
 	//ER
 	public void createRequirement(String req, int id){ER.createRequirement(req, id);}
 	public void setReq(int index, String req) {ER.setReq(index, req);}

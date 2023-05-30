@@ -45,8 +45,7 @@ public class Client implements User{
 
 	//creating new Event
 	public void createEvent(String title, LocalDate date, String time, String size) {
-		Event newEvent=new Event(title, date, time, size);
-		events.add(newEvent);
+		
 	}
 	
 }

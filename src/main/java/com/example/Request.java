@@ -101,6 +101,7 @@ public class Request {
 	public String getTime() {return event.getTime();}
 	public Integer getSize() {return event.getSize();}
     public String getPaymentType(){return event.getPaymentType();}
+    public int getEventID(){return event.getEventID();}
     public Event getEvent(){return event;}
 
     //Event-->event requirements
