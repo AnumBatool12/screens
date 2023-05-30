@@ -5,7 +5,7 @@ public class BudgetItem {
 	private String itemDesc;
 	private double budgetPortion;
 	private double spent;
-
+ 
 	BudgetItem(){
 		budgetPortion=0.0;
 		spent=0.0;

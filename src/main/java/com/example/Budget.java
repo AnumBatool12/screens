@@ -19,6 +19,7 @@ public class Budget {
 	public double getPortion(int index) {return budgetItems.get(index).getportion();}
 	public double getSpent(int index) {return budgetItems.get(index).getSpent();}
 	public double getTotalBudget() {return totalBudget;}
+	public int getID(int index) {return budgetItems.get(index).getID();}
 
 	//setter
 	public void createBudgetItem(String desc, double portion, double sp, int id){
@@ -44,9 +45,7 @@ public class Budget {
 		Boolean over=false;
 		double spent=0.0;
 		double comp;
-		for (BudgetItem itr: budgetItems){
-			spent+=itr.getSpent();
-		}
+		spent=calCulateTotalSpent();
 		
 		comp=Double.compare(spent, totalBudget);
 		if (comp>0){over=true;}
