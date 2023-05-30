@@ -1,6 +1,7 @@
 package com.example;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 //Request
 public class Request {
@@ -97,7 +98,7 @@ public class Request {
 
     //Event
     public String getTitle() {return event.getTitle();}
-	public LocalDate getDate() {return event.getDate();}
+	public Date getDate() {return event.getDate();}
 	public String getTime() {return event.getTime();}
 	public Integer getSize() {return event.getSize();}
     public String getPaymentType(){return event.getPaymentType();}

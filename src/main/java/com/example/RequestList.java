@@ -1,7 +1,8 @@
 package com.example;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RequestList {
 	private ArrayList<Request> requests;
@@ -49,7 +50,7 @@ public class RequestList {
  
 	 //Event
 	 public String getTitle(int index) {return requests.get(index).getTitle();}
-	 public LocalDate getDate(int index) {return requests.get(index).getDate();}
+	 public Date getDate(int index) {return requests.get(index).getDate();}
 	 public String getTime(int index) {return requests.get(index).getTime();}
 	 public Integer getSize(int index) {return requests.get(index).getSize();}
 	 public String getPaymentType(int index){return requests.get(index).getPaymentType();}

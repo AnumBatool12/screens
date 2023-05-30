@@ -2,12 +2,13 @@ package com.example;
 /*Event Class*/
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Event {
 
 	//basic variables
 	private String eventTitle;
-	private LocalDate eventDate;
+	private Date eventDate;
 	private  String eventTime;
 	private Integer eventSize;
 	private String paymentType;
@@ -28,7 +29,7 @@ public class Event {
 		invoice=new Cash();
 	}
 
-	Event(String title, LocalDate date, String time, String size, int id){//parametrised constructor
+	Event(String title, Date date, String time, String size, int id){//parametrised constructor
 		eventTitle=title;
 		eventDate=date;
 		eventTime=time;
@@ -42,7 +43,7 @@ public class Event {
 		invoice=new Cash();
 	}
 
-	Event(String title, LocalDate date, String time, String size, String pT, int id){//parametrised constructor
+	Event(String title, Date date, String time, String size, String pT, int id){//parametrised constructor
 		eventTitle=title;
 		eventDate=date;
 		eventTime=time;
@@ -58,7 +59,7 @@ public class Event {
 		}
 	}
 
-	Event(String title, LocalDate date, String time, String size, EventRequirements er, Budget b, AttendeeList al, Invoice in, int id){//parametrised constructor
+	Event(String title, Date date, String time, String size, EventRequirements er, Budget b, AttendeeList al, Invoice in, int id){//parametrised constructor
 		eventTitle=title;
 		eventDate=date;
 		eventTime=time;
@@ -73,7 +74,7 @@ public class Event {
 
 	//getter functions
 	public String getTitle() {return eventTitle;}
-	public LocalDate getDate() {return eventDate;}
+	public Date getDate() {return eventDate;}
 	public String getTime() {return eventTime;}
 	public Integer getSize() {return eventSize;}
 	public String getPaymentType() {return paymentType;}
@@ -105,7 +106,7 @@ public class Event {
 
 	//setter functions
 	public void setEventTitle(String title)	{eventTitle=title;}
-	public void setDate(LocalDate date) {eventDate=date;}
+	public void setDate(Date date) {eventDate=date;}
 	public void setTime(String time) {eventTime=time;}
 	public void setSize (Integer size) {eventSize=size;}
 	public void setPaymentType(String type) {paymentType=type;}
