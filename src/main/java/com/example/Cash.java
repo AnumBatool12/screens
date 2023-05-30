@@ -17,7 +17,7 @@ public class Cash implements Invoice {
 	public Integer getTotalItem() {return totalItems;}
 	public String getDesc(int index) {return paymentItems.get(index).getDesc();}
 	public double getAmount(int index) {return paymentItems.get(index).getAmount();}
-	public double getTotalBudget() {return totalPayment;}
+	public double getTotal() {return totalPayment;}
     public int getID(int index) {return paymentItems.get(index).getID();}
 
 	//setter
@@ -31,7 +31,7 @@ public class Cash implements Invoice {
 	public void setAmount(int index, double amt) {paymentItems.get(index).setAmount(amt);}
 	public void setID(int id, int index){paymentItems.get(index).setID(id);}
 
-	public double calCulateTotalSpent(){
+	public double calCulateTotal(){
 		double spent=0.0;
 		for(Payment itr: paymentItems){
 			spent+=itr.getAmount();
@@ -39,15 +39,4 @@ public class Cash implements Invoice {
 		return spent;
 	}
 
-	public Boolean overBudget(){
-		Boolean over=false;
-		double spent=0.0;
-		double comp;
-		spent=calCulateTotalSpent();
-		
-		comp=Double.compare(spent, totalPayment);
-		if (comp>0){over=true;}
-
-		return over;
-	}
 }

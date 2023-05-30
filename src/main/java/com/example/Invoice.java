@@ -1,6 +1,5 @@
 package com.example;
 
-import java.util.ArrayList;
 
 public interface Invoice {
     
@@ -8,7 +7,7 @@ public interface Invoice {
 	public Integer getTotalItem();
 	public String getDesc(int index);
 	public double getAmount(int index);
-	public double getTotalBudget();
+	public double getTotal();
     public int getID(int index);
 
 	//setter
@@ -18,7 +17,6 @@ public interface Invoice {
 	public void setAmount(int index, double amt);
 	public void setID(int id, int index);
 
-	public double calCulateTotalSpent();
+	public double calCulateTotal();
 
-	public Boolean overBudget();
 }
