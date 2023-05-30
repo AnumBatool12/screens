@@ -7,7 +7,39 @@ public class Logistic {
 	private String password;
 	private String CompanyDesc;
 	private String websiteUrl; 
+
+	//objects of other classes
+	private ServicesList servicesList;
+	private RequestList eventRequests;
+
+	Logistic(){
+		servicesList=new ServicesList();
+		eventRequests=new RequestList();
+	}
  
+	Logistic(String name, String type, String usn, String paswd, String desc, String url){
+		CompanyName=name;
+		CompanyType=type;
+		userName=usn;
+		password=paswd;
+		CompanyDesc=desc;
+		websiteUrl=url; 
+		servicesList=new ServicesList();
+		eventRequests=new RequestList();
+	}
+
+	Logistic(String name, String type, String usn, String paswd, String desc, String url, ServicesList sl, RequestList rl){
+		CompanyName=name;
+		CompanyType=type;
+		userName=usn;
+		password=paswd;
+		CompanyDesc=desc;
+		websiteUrl=url; 
+		servicesList=sl;
+		eventRequests=rl;
+	}
+	
+
 	public String getCompanyName(){return CompanyName;}
 	public String getCompanyType(){return CompanyType;}
 	public String getUserName(){return userName;}
@@ -21,98 +53,7 @@ public class Logistic {
 	public void setCompanyDesc(String desc) {CompanyDesc=desc;}
 	public void setURL(String url) {websiteUrl=url;}
 
-	public void createAccount(Object Username, Object Password,Object LogisticType) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-	public void updateCompanyName(Object CompanyName) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-	public void addWebsiteURL(Object URL) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void addLogisticDescription(Object description) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void addService(Object ServiceName, Object ServiceDesc, Object Image, Object Price) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void addImageToPortfolio(Object Image) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void getClientList() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void openClientEvent(Object clientNo) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void getRequestList() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-	public void getEventRequest(Object RequestNo) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void manageEventRequest(Object RequestNo, Object decision) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void addEventToSchedular(Object RequestNo) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void updateEventRequirements(Object RequestNo, Object reqs) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void sendrequest() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
+	//services
+	
+	
 }

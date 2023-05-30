@@ -18,7 +18,7 @@ public class Service {
 	public String getServiceName(){return ServiceName;}
 	public String getDesc() {return ServiceDesc;}
 	public double getPrice() {return Price;}
-	public int getID() {return ID;}
+	public int getID() {return ID;} 
 
 	//setter
 	public void setServiceName(String name){ServiceName = name;}
