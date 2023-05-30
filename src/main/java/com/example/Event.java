@@ -55,6 +55,18 @@ public class Event {
 		}
 	}
 
+	Event(String title, LocalDate date, String time, String size, EventRequirements er, Budget b, AttendeeList al, Invoice in){//parametrised constructor
+		eventTitle=title;
+		eventDate=date;
+		eventTime=time;
+		eventSize=Integer.valueOf(size);
+
+		ER=er;
+		B=b;
+		AL=al; 
+		invoice=in;
+	}
+
 	//getter functions
 	public String getTitle() {return eventTitle;}
 	public LocalDate getDate() {return eventDate;}
@@ -95,7 +107,7 @@ public class Event {
 	//ER
 	public void createRequirement(String req, int id){ER.createRequirement(req, id);}
 	public void setReq(int index, String req) {ER.setReq(index, req);}
-	public void setID(int index, int id){ER.setID(index, id);}
+	public void setReqID(int index, int id){ER.setID(index, id);}
 	//Budget
 	public void createBudgetItem(String desc, double portion, double sp, int id){
 		B.createBudgetItem(desc, portion, sp, id);
@@ -115,7 +127,7 @@ public class Event {
 	public void setAttendeePhone(int index, String ph){AL.getPhone(index);}
 	public void setAttendeeEmail(int index, String mail){AL.getEmail(index);}
 	public void setAttendeeStatus(int index, Boolean stat){AL.getAttendingStatus(index);}
-	public void setAttendeeID(int id, int index){AL.getID(index);}
+	public void setAttendeeID(int id, int index){AL.setID(id, index);}
 	//Invoice
 	public void createPaymentItem(String desc, double amt, int id){invoice.createPaymentItem(desc, amt, id);}
 	public void setPaymentDesc(int index, String desc){invoice.setDesc(index, desc);}
