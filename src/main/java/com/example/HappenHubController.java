@@ -1,7 +1,39 @@
 package com.example;
-//HappenHubController
-public class HappenHubController {
 
+import java.time.LocalDate;
+
+//HappenHubController which is a singleton
+public class HappenHubController {
+	private static HappenHubController hhc;
+
+	//variables
+	private Client client;
+	private Event Clientevent;
+
+	//singleton constructor
+	HappenHubController(){
+		client=new Client();
+		Clientevent=null;
+	}
+
+	public static HappenHubController getInstance(){//get instance
+		if (hhc==null){
+			hhc=new HappenHubController();
+		}
+		return hhc;
+	}
+
+
+	//creating Event via the Client
+	public void createEvent(String title, LocalDate date, String time, String size, String userID) {
+		client.createEvent(title, date, time, size);
+
+	}
+	
+	public void createClient(String name, String mail, String phone, String usn, String pw){
+		client=new Client(name, mail, phone, usn, pw);
+	}
+	
 	public void createLogisticAccount(Object Username, Object Password, Object LogisticType) {
 		// begin-user-code
 		// TODO Auto-generated method stub
@@ -84,13 +116,7 @@ public class HappenHubController {
 
 		// end-user-code
 	}
-	public void createEvent(Object loctation, Object date, Object time,
-			Object size) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
+	
 	public void createEventReqs() {
 		// begin-user-code
 		// TODO Auto-generated method stub

@@ -1,9 +1,9 @@
 package com.example;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * 
- */
+ */ 
 
 public class EventPlanner implements User {
 	private String fullname;
@@ -22,68 +22,10 @@ public class EventPlanner implements User {
 	public String getPhoneNo() {return phoneNo;}
 	public String getUsername() {return username;}
 	public String getPassword() {return password;}
-
-	public void getUserSummary() {}
-
-	public void createEvent(String location, Date date, String time, Integer size) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	@Override
+	public void createEvent(String title, LocalDate date, String time, String sizee) {
+		
 	}
 
-	public void createEventRequirements() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void createInvite() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void createBudget(Integer budget) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void createBudgetItemList() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void addBudgetItem(Object itemName, Object budgetPortion) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void updateMoneySpent(Object itemName, Object mSpent) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void PaymentEvent() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-	public void request() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
+	
 }

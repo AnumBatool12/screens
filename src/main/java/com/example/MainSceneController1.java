@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
@@ -15,20 +16,70 @@ import javafx.scene.Node;
 
 public class MainSceneController1 {
 
-    MySqlClass s = MySqlClass.getInstance();
+    //MySqlClass s = MySqlClass.getInstance();
 
+    //Variables for FXML 
+    @FXML 
+    private TextField usernameLogin;
+    
+    @FXML
+    private TextField passwordLogin;
 
+    @FXML
+    private Button LoginBtn;
+
+    @FXML
+    private TextField title;//
+
+    @FXML
+    private TextField Etime;//
+
+    @FXML
+    private TextField ESize;//
+
+    @FXML
+    private DatePicker Edate;//
+
+    @FXML
+    private Button createEvent;//
+
+    @FXML
+    private TextField FullName;//
+
+    @FXML
+    private TextField PhoneNo;//
+
+    @FXML
+    private TextField confirmPassClient;
+
+    @FXML
+    private TextField email;//
+
+    @FXML
+    private TextField passwordClient;//
+
+    @FXML
+    private Button signUpClient;//
+
+    @FXML
+    private TextField usernameClient;//
 
     //Variables for Screen Display
     private Stage stage;
     private Scene scene;
     private Parent root;
+<<<<<<< HEAD
     
+=======
+    private String userID;//for db identification
+    private String usertype;//for screen identification
+>>>>>>> 5a8faaa309313d85fba2a974c74e8b5c3be2a943
 
     //Variables for Classses
-    private Event Clientevent;
+    private HappenHubController hhc;
 
 
+<<<<<<< HEAD
     //Variables for FXML 
     @FXML
     private Button LoginBtn;
@@ -55,6 +106,9 @@ public class MainSceneController1 {
     private Button createEvent;
 
     //Function to Load the Page
+=======
+    //Loader Function
+>>>>>>> 5a8faaa309313d85fba2a974c74e8b5c3be2a943
     public void LoadPage(Parent root, ActionEvent event){
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -107,16 +161,6 @@ public class MainSceneController1 {
     public void openClientDashboard(ActionEvent event) throws IOException{
         root=FXMLLoader.load(getClass().getResource("MainSceneController7.fxml"));
         LoadPage(root, event);
-    }
-
-    public void createEventbyClient(ActionEvent event) throws IOException{
-        String Title=title.getText();
-        LocalDate date=Edate.getValue();
-        String time=Etime.getText();
-        String size=ESize.getText();
-
-        Clientevent=new Event(Title, date, time, size);
-        openEventDashboard(event);
     }
 
     //Open Create Event Option
@@ -239,23 +283,32 @@ public class MainSceneController1 {
         root=FXMLLoader.load(getClass().getResource("MainSceneController27.fxml"));
         LoadPage(root, event);
     }
+
+
+
+    //Functions
+    //client Sign in
+    public void createClient(ActionEvent event) throws IOException{
+        if (!((passwordClient.getText()).equals(confirmPassClient.getText()))){
+            Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            alert.setContentText("Password and Confirm Password are not the same");
+            alert.show();
+        }
+        else{
+            HappenHubController.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
+            openClientDashboard(event);
+        }
+    }
+
+    //create event and open client dashboard
+    public void createEventbyClient(ActionEvent event) throws IOException{
+        String Title=title.getText();
+        LocalDate date=Edate.getValue();
+        String time=Etime.getText();
+        String size=ESize.getText();
+
+        HappenHubController.getInstance().createEvent(Title, date, time, size, userID);//creating event
+        openEventDashboard(event);
+    }
+
 }
-
-
-/*
-    @FXML
-    private Button LoginBtn;
-
-
-    @FXML
-    private Hyperlink signup;
-
-    @FXML
-    private Button ClientRegister;
-
-    @FXML
-    private Button PlannerRegister;
-
-    @FXML
-    private Button ServiceRegister2;
- */

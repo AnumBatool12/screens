@@ -1,25 +1,34 @@
 package com.example;
-/**
- * 
- */
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author mimis
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
- */
 public class Payment {
+    private int ID;
+	private String PayDesc;
+	private double amount;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	 */
-	public void PrintInvoice() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+    Payment(){
+		amount=0.0;
 	}
+
+	Payment(String desc, double amt, int id){
+		ID=id;
+		PayDesc=desc;
+		amount=amt;
+	}
+
+    //getters
+	public int getID(){return ID;}
+	public String getDesc(){return PayDesc;}
+	public double getAmount(){return amount;}
+
+
+	//setters
+	public void setID(int id) {ID=id;}
+	public void setDesc(String desc) {PayDesc=desc;}
+	public void setAmount(double amt) {amount=amt;}
+	public void setAll(String desc, double amt, int id){
+		ID=id;
+		PayDesc=desc;
+		amount=amt;
+	}
+
 }
