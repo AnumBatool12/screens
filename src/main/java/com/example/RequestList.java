@@ -80,7 +80,6 @@ public class RequestList {
  
 	 //removers
 	 public void removeAttendee(int index, int INDEX){requests.get(INDEX).removeAttendee(index);}
-	 public void removeBudgetItem(int index, int INDEX){requests.get(INDEX).removeBudgetItem(index);}
 	 public void removePayment(int index, int INDEX){requests.get(INDEX).removePayment(index);}
 	 public void removeReq(int index, int INDEX){requests.get(INDEX).removeReq(index);}
 	 public void removeRequest(int index){

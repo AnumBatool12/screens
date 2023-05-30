@@ -5,7 +5,7 @@ import java.time.LocalDate;
 //Request
 public class Request {
     private Boolean status;//accepted or rejected
-    private int reqNum;
+    private int reqNum;//total reqs
     private double limit;//how much can they spend
     private Event event;
     private User user;
@@ -63,16 +63,19 @@ public class Request {
             user=new Client();
         }
     }
+
     //setters
     public void setStatus(Boolean stat){status = stat;}
     public void setNum(int num) {reqNum=num;}
     public void setID(int id) {ID=id;}
     public void setLimit(double spend){limit=spend;}
+    //Event
     //Event-->event requirements
     public void createRequirement(String req, int id){event.createRequirement(req, id);}
 	public void setReq(int index, String req) {event.setReq(index, req);}
 	public void setReqID(int index, int id){event.setReqID(index, id);}
     //Event-->attendee list
+    public void createAttendee(String name, String phone, String mail, Boolean att){event.createAttendee(name, phone, mail, att);}
     public void addAttendee(Attendee add){ event.addAttendee(add);}
 	public void setAttendeeName(int index, String name){event.setAttendeeName(index, name);}
 	public void setAttendeePhone(int index, String ph){event.setAttendeePhone(index, ph);}
@@ -125,7 +128,6 @@ public class Request {
 
     //removers
     public void removeAttendee(int index){event.removeAttendee(index);}
-	public void removeBudgetItem(int index){event.removeBudgetItem(index);}
 	public void removePayment(int index) {event.removePayment(index);}
 	public void removeReq(int index){event.removeReq(index);}
     

@@ -11,6 +11,7 @@ public class Logistic {
 	//objects of other classes
 	private ServicesList servicesList;
 	private RequestList eventRequests;
+	private Scheduler toDoList;
 
 	Logistic(){
 		servicesList=new ServicesList();
