@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-
+/* 
 public class MySqlClass {
     private Connection cn;
     private static MySqlClass instance;
