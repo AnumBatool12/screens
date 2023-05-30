@@ -1,9 +1,6 @@
 package com.example;
-import java.time.LocalDate;
 
-/**
- * 
- */ 
+
 
 public class EventPlanner implements User {
 	private String fullname;
@@ -22,10 +19,7 @@ public class EventPlanner implements User {
 	public String getPhoneNo() {return phoneNo;}
 	public String getUsername() {return username;}
 	public String getPassword() {return password;}
-	@Override
-	public void createEvent(String title, LocalDate date, String time, String sizee) {
-		
-	}
+	
 
 	
 }

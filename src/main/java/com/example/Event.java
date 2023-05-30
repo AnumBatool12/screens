@@ -1,7 +1,6 @@
 package com.example;
 /*Event Class*/
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Event {

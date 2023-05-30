@@ -14,19 +14,13 @@ public class Scheduler {
 	}
 
 	//setter
-	public void setDate(int index, Date date) {
-		tasks.get(index).setDate(date);
-	}
-	public void setTask(int index, String task) {
-		tasks.get(index).setDesc(task);
-	}
+	public void setDate(int index, Date date) {tasks.get(index).setDate(date); }
+	public void setTask(int index, String task) {tasks.get(index).setDesc(task);}
 	public void setAll(int index, String task, Date date){
 		tasks.get(index).setDesc(task);
 		tasks.get(index).setDate(date);
 	}
-	public void setStatus(int index, String stat){
-		tasks.get(index).setStatus(stat);
-	}
+	public void setStatus(int index, String stat){tasks.get(index).setStatus(stat);}
 	public void addTask(Task task){
 		tasks.add(task);
 		totalTasks++;
@@ -46,7 +40,5 @@ public class Scheduler {
 	public String getStat(int index) {return tasks.get(index).getStatus();}
 	public int getID(int index){return tasks.get(index).getID();}
 
-	public void removeTask(int index){
-		tasks.remove(index);
-	}
+	public void removeTask(int index){tasks.remove(index);}
 }

@@ -13,6 +13,6 @@ public interface User {
 	public String getPhoneNo();
 	public String getUsername();
 	public String getPassword();
-	public void createEvent(String title, LocalDate date, String time, String sizee);
+	
 	
 }
