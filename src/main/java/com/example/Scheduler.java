@@ -46,4 +46,7 @@ public class Scheduler {
 	public String getStat(int index) {return tasks.get(index).getStatus();}
 	public int getID(int index){return tasks.get(index).getID();}
 
+	public void removeTask(int index){
+		tasks.remove(index);
+	}
 }

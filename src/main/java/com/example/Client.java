@@ -1,7 +1,7 @@
 package com.example;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+ 
 //Client Class
 public class Client implements User{
 	private String fullname;
@@ -48,53 +48,5 @@ public class Client implements User{
 		Event newEvent=new Event(title, date, time, size);
 		events.add(newEvent);
 	}
-
-	public void createEventRequirements() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void createInvite() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void createBudget(Integer budget) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void createBudgetItemList() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void addBudgetItem(Object itemName, Object budgetPortion) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void updateMoneySpent(Object itemName, Object mSpent) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	public void PaymentEvent() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
+	
 }

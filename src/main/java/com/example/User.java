@@ -14,11 +14,5 @@ public interface User {
 	public String getUsername();
 	public String getPassword();
 	public void createEvent(String title, LocalDate date, String time, String sizee);
-	public void createEventRequirements();
-	public void createInvite();
-	public void createBudget(Integer budget);
-	public void createBudgetItemList();
-	public void addBudgetItem(Object itemName, Object budgetPortion);
-	public void updateMoneySpent(Object itemName, Object mSpent);
-	public void PaymentEvent();
+	
 }

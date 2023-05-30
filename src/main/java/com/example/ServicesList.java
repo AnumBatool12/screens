@@ -34,5 +34,7 @@ public class ServicesList {
 	public void setName(int index, String name) {services.get(index).setServiceName(name);}
 	public void setDesc(int index, String desc){services.get(index).setServiceDesc(desc);}
 	public void setPrice(int index, double price){services.get(index).setPrice(price);}
-	
+	public void removeService(int index){
+		services.remove(index);
+	}	
 }

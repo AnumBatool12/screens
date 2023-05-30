@@ -15,6 +15,7 @@ public class Request {
     {
         event=new Event();
         user=new Client();
+        status=true;
     } 
 
     Request(Boolean stat, int num, Event event, User user, int id, double spend){

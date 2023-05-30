@@ -83,6 +83,16 @@ public class RequestList {
 	 public void removeBudgetItem(int index, int INDEX){requests.get(INDEX).removeBudgetItem(index);}
 	 public void removePayment(int index, int INDEX){requests.get(INDEX).removePayment(index);}
 	 public void removeReq(int index, int INDEX){requests.get(INDEX).removeReq(index);}
+	 public void removeRequest(int index){
+		requests.remove(index);
+	 }
+	 public void getRidOFRejectRequest(){
+		for(Request itr: requests){
+			if (!itr.getStatus()){
+				requests.remove(itr);
+			}
+		}
+	 }
 
 
 
