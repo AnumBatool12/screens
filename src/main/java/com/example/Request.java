@@ -11,7 +11,11 @@ public class Request {
     private User user;
     private int ID;
 
-    Request(){} 
+    Request()
+    {
+        event=new Event();
+        user=new Client();
+    } 
 
     Request(Boolean stat, int num, Event event, User user, int id, double spend){
         status = stat;
@@ -20,8 +24,44 @@ public class Request {
         this.user=user;
         ID=id;
         limit=spend;
+        event=new Event();
+        user=new Client();
     }
 
+    Request(Boolean stat, int num, Event event, User user, int id, double spend, String userType){
+        status = stat;
+        reqNum=num;
+        this.event=event;
+        this.user=user;
+        ID=id;
+        limit=spend;
+
+        event=new Event();
+        if (userType.equals("Client")){
+            user=new Client();
+        }
+        else if(userType.equals("Event Planner")){
+
+        }
+        else {
+            user=new Client();
+        }
+        
+    }
+
+    Request (String userType){
+        event=new Event();
+        event=new Event();
+        if (userType.equals("Client")){
+            user=new Client();
+        }
+        else if(userType.equals("Event Planner")){
+
+        }
+        else {
+            user=new Client();
+        }
+    }
     //setters
     public void setStatus(Boolean stat){status = stat;}
     public void setNum(int num) {reqNum=num;}
