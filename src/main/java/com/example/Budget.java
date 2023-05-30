@@ -53,4 +53,5 @@ public class Budget {
 		return over;
 	}
 
+	public void removeBudgetItem(int index){budgetItems.remove(index);}
 }

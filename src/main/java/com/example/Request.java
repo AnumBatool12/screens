@@ -81,5 +81,11 @@ public class Request {
     public String getFullname() {return user.getFullname();}
 	public String getEmailmail() {return user.getEmailmail();}
 	public String getPhoneNo(){return user.getPhoneNo();}
+
+    //removers
+    public void removeAttendee(int index){event.removeAttendee(index);}
+	public void removeBudgetItem(int index){event.removeBudgetItem(index);}
+	public void removePayment(int index) {event.removePayment(index);}
+	public void removeReq(int index){event.removeReq(index);}
     
 }

@@ -18,5 +18,6 @@ public interface Invoice {
 	public void setID(int id, int index);
 
 	public double calCulateTotal();
+	public void removePayment(int index);
 
 }

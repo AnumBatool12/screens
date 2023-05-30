@@ -36,4 +36,5 @@ public class AttendeeList {
 	public void setStatus(int index, Boolean stat){attendees.get(index).setAttending(stat);}
 	public void setID(int id, int index){attendees.get(index).setID(id);}
 
+	public void removeAttendee(int index){attendees.remove(index);}
 }

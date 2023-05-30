@@ -134,4 +134,10 @@ public class Event {
 	public void setAmount(int index, double amt){invoice.setAmount(index, amt);}
 	public void setPaymentID(int id, int index) {invoice.setID(id, index);}
 	public double calculatePaymentTotal(){return invoice.calCulateTotal();}
+
+	//removers
+	public void removeAttendee(int index){AL.removeAttendee(index);}
+	public void removeBudgetItem(int index){B.removeBudgetItem(index);}
+	public void removePayment(int index) {invoice.removePayment(index);}
+	public void removeReq(int index){ER.removeReq(index);}
 }

@@ -26,4 +26,5 @@ public class EventRequirements {
 	public void setReq(int index, String req) {eventRequirements.get(index).setRequirement(req);}
 	public void setID(int index, int id){eventRequirements.get(index).setID(id);}
 
+	public void removeReq(int index){eventRequirements.remove(index);}
 }
