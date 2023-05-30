@@ -68,47 +68,14 @@ public class MainSceneController1 {
     private Stage stage;
     private Scene scene;
     private Parent root;
-<<<<<<< HEAD
-    
-=======
     private String userID;//for db identification
     private String usertype;//for screen identification
->>>>>>> 5a8faaa309313d85fba2a974c74e8b5c3be2a943
 
     //Variables for Classses
     private HappenHubController hhc;
 
 
-<<<<<<< HEAD
-    //Variables for FXML 
-    @FXML
-    private Button LoginBtn;
-
-    @FXML
-    private TextField usernameLogin;
-
-    @FXML
-    private TextField passwordLogin;
-
-    @FXML
-    private TextField title;
-
-    @FXML
-    private TextField Etime;
-
-    @FXML
-    private TextField ESize;
-
-    @FXML
-    private DatePicker Edate;
-
-    @FXML
-    private Button createEvent;
-
-    //Function to Load the Page
-=======
     //Loader Function
->>>>>>> 5a8faaa309313d85fba2a974c74e8b5c3be2a943
     public void LoadPage(Parent root, ActionEvent event){
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
