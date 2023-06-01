@@ -26,8 +26,7 @@ public class HappenHubController {
 
 	//creating Event via the Client
 	public void createEvent(String title, LocalDate date, String time, String size, String userID) {
-		client.createEvent(title, date, time, size);
-
+		
 	}
 	
 	public void createClient(String name, String mail, String phone, String usn, String pw){
