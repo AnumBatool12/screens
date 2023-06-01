@@ -30,8 +30,10 @@ public class App1 extends Application {
     }
 
     public static void main(String[] args) {
-       // MySqlClass s = MySqlClass.getInstance();
-       // s.testing();
+        // MySqlClass s = MySqlClass.getInstance();
+        // boolean yes = s.userExists("one");
+        // if(yes == true){System.out.println("yes");}
+        
         launch();
     }
  

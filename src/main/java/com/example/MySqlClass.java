@@ -36,7 +36,7 @@ public class MySqlClass{
     public static MySqlClass getInstance(){
         if(instance == null){
             instance = new MySqlClass();
-            //instance.MyConnection();
+            instance.MyConnection();
             return instance;
         }
         else{
@@ -58,12 +58,14 @@ public class MySqlClass{
                 System.out.println(resultset.getString("username"));  
                 if (i == 0){
                     user = resultset.getString("username");
+                    System.out.println(user);
                 }
                 i++;
             }
 
-            if(user == username){
+            if(user.equals(username)){
                 exists = true;
+                System.out.println("yes");
             }else{
                 exists = false;
             }
