@@ -48,17 +48,17 @@ public interface User {
 	public Integer getTotalAttendee(int Uindex);
 	public int geAttendeetID(int index, int Uindex);
 	//Invoice for Event Planner Only
-	public Integer getTotalItem();
-	public String getDesc(int index);
-	public double getAmount(int index);
-	public double getTotalPayment();
-    public int getPaymentID(int index);
+	public Integer getTotalItem(int Uindex);
+	public String getDesc(int index, int Uindex);
+	public double getAmount(int index, int Uindex);
+	public double getTotalPayment(int Uindex);
+    public int getPaymentID(int index, int Uindex);
 	//Request List Function(For Event Planner Only)
-	public boolean getStatus(int index);
-	public int getReqNum(int index);
-	public double getLimit(int index);
-	public int getID(int index);
-	public Request getRequest(int index);
+	public boolean getStatus(int index, int Uindex);
+	public int getReqNum(int index, int Uindex);
+	public double getLimit(int index, int Uindex);
+	public int getID(int index, int Uindex);
+	public Request getRequest(int index, int Uindex);
 	//Functions for Schedular
 	public int getTotalTaskNo();
 	public Task getTask(int index);
@@ -96,17 +96,17 @@ public interface User {
 	public void setAttendeeStatus(int index, Boolean stat, int Uindex);
 	public void setAttendeeID(int id, int index, int Uindex);
 	//Invoice
-	public void createPaymentItem(String desc, double amt, int id);
-	public void setPaymentDesc(int index, String desc);
-	public void setAmount(int index, double amt);
-	public void setPaymentID(int id, int index);
-	public double calculatePaymentTotal();
+	public void createPaymentItem(String desc, double amt, int id, int Uindex);
+	public void setPaymentDesc(int index, String desc, int Uindex);
+	public void setAmount(int index, double amt, int Uindex);
+	public void setPaymentID(int id, int index, int Uindex);
+	public double calculatePaymentTotal(int Uindex);
 	//Request
-	public void createRequest(Request r);
-	public void setRequestStatus(Boolean stat, int index);
-    public void setRequestNum(int num, int index);
-    public void setReuqestID(int id, int index);
-    public void setRequestLimit(double spend, int index);
+	public void createRequest(Request r, int Uindex);
+	public void setRequestStatus(Boolean stat, int index, int Uindex);
+    public void setRequestNum(int num, int index, int Uindex);
+    public void setReuqestID(int id, int index, int Uindex);
+    public void setRequestLimit(double spend, int index, int Uindex);
 	//Schedular
 	public void setDate(int index, Date date);
 	public void setTask(int index, String task);

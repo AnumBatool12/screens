@@ -1,5 +1,4 @@
 package com.example;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
  
@@ -134,118 +133,118 @@ public class Client implements User{
 
 	//Functionality not to be implemented by Client
 	//Invoice for Event Planner Only
-	public Integer getTotalItem() {
+	public Integer getTotalItem(int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'getTotalItem'");
 	}
-	public String getDesc(int index) {
+	public String getDesc(int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'getDesc'");
 	}
 	@Override
-	public double getAmount(int index) {
+	public double getAmount(int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'getAmount'");
 	}
 
 	@Override
-	public double getTotalPayment() {
+	public double getTotalPayment(int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'getTotalPayment'");
 	}
 
 	@Override
-	public int getPaymentID(int index) {
+	public int getPaymentID(int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'getPaymentID'");
 	}
 	//Request List Functionality for Event Planner Only
 	@Override
-	public boolean getStatus(int index) {
+	public boolean getStatus(int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'getStatus'");
 	}
 
 	@Override
-	public int getReqNum(int index) {
+	public int getReqNum(int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'getReqNum'");
 	}
 
 	@Override
-	public double getLimit(int index) {
+	public double getLimit(int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'getLimit'");
 	}
 
 	@Override
-	public int getID(int index) {
+	public int getID(int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'getID'");
 	}
 
 	@Override
-	public Request getRequest(int index) {
+	public Request getRequest(int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'getRequest'");
 	}
 	
 	@Override
-	public void createPaymentItem(String desc, double amt, int id) {
+	public void createPaymentItem(String desc, double amt, int id, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'createPaymentItem'");
 	}
 
 	@Override
-	public void setPaymentDesc(int index, String desc) {
+	public void setPaymentDesc(int index, String desc, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'setPaymentDesc'");
 	}
 
 	@Override
-	public void setAmount(int index, double amt) {
+	public void setAmount(int index, double amt, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'setAmount'");
 	}
 
 	@Override
-	public void setPaymentID(int id, int index) {
+	public void setPaymentID(int id, int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'setPaymentID'");
 	}
 
 	@Override
-	public double calculatePaymentTotal() {
+	public double calculatePaymentTotal(int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'calculatePaymentTotal'");
 	}
 
 	@Override
-	public void createRequest(Request r) {
+	public void createRequest(Request r, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'createRequest'");
 	}
 
 	@Override
-	public void setRequestStatus(Boolean stat, int index) {
+	public void setRequestStatus(Boolean stat, int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'setRequestStatus'");
 	}
 
 	@Override
-	public void setRequestNum(int num, int index) {
+	public void setRequestNum(int num, int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'setRequestNum'");
 	}
 
 	@Override
-	public void setReuqestID(int id, int index) {
+	public void setReuqestID(int id, int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'setReuqestID'");
 	}
 
 	@Override
-	public void setRequestLimit(double spend, int index) {
+	public void setRequestLimit(double spend, int index, int Uindex) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'setRequestLimit'");
 	}
