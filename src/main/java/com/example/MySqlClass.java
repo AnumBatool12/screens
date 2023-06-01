@@ -2,12 +2,13 @@ package com.example;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-/* 
-public class MySqlClass {
+ 
+ 
+public class MySqlClass{
     private Connection cn;
     private static MySqlClass instance;
     private String jdbcUrl = "jdbc:mysql://localhost:3306/finalproject";
@@ -43,10 +44,66 @@ public class MySqlClass {
         }
     }
 
+    public boolean userExists(String username){
+        boolean exists = false;
+        try {
+            Statement statement = cn.createStatement();
+            String sqlQuery = "select username from User_ where username = ? ";
+            PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+            pstmt.setString(1, username);
+            ResultSet resultset = pstmt.executeQuery();
+            int i=0;
+            String user = "";
+            while (resultset.next()) {
+                System.out.println(resultset.getString("username"));  
+                if (i == 0){
+                    user = resultset.getString("username");
+                }
+                i++;
+            }
+
+            if(user == username){
+                exists = true;
+            }else{
+                exists = false;
+            }
+        
+            resultset.close();
+            statement.close();
+            // cn.close(); auto closes when the the object is closed
+        } 
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return exists;
+    }
+
+    public char userType(){
+        char type = 's';
+
+        return type;
+    }
+
+    public boolean verifyPassword(){
+        boolean correct = false;
+
+        return correct;
+    }
+
+    public void updateUsername(){
+
+    }
+
+    public void updatePassword(){
+
+    }
+
+
     public void testing()
     {
         try {
-            Connection cn = DriverManager.getConnection(jdbcUrl, username, password);
+            //Connection cn = DriverManager.getConnection(jdbcUrl, username, password);
         
             // Create a statement object
             Statement statement = cn.createStatement();
@@ -63,7 +120,7 @@ public class MySqlClass {
             // Close the resources
             resultSet.close();
             statement.close();
-            cn.close();
+            // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
             // Handle any potential errors that might occur during connection or query execution
@@ -113,4 +170,4 @@ public class MySqlClass {
     //     } 
 
     // }
-    */
+    

@@ -7,4 +7,4 @@ public interface PersistenceHandler{
     boolean checkPassword(String username, String password);
     char userIS(String usernamae);
     void testing();
-}
+} 

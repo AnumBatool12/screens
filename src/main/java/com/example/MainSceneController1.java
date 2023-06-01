@@ -83,11 +83,6 @@ public class MainSceneController1 {
         stage.show();
     }
 
-    
-
-
-
-
     // Login Form
     public void openLoginPage(ActionEvent event) throws IOException{
         root=FXMLLoader.load(getClass().getResource("MainSceneController1.fxml"));
