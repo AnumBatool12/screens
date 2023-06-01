@@ -10,11 +10,11 @@ public class Client implements User{
 	private String username;
 	private String password;
 
-	private ArrayList<Event> events;
+	//objects of other classes
+	private ArrayList<Event> event;
 
 	Client(){
-		//initialize the array of clients
-		events=new ArrayList<Event>();
+		
 	}
 
 	Client(String name, String mail, String phone, String usn, String pw){//parametrised constructor
@@ -24,8 +24,8 @@ public class Client implements User{
 		username=usn;
 		password=pw;
 
-		//initialize the array of clients
-		events=new ArrayList<Event>();
+		event=new ArrayList<Event>();
+		
 	}
 
 	//setter functions
