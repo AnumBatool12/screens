@@ -21,13 +21,12 @@ public class EventPlanner implements User {
 		rl=new RequestList();
 	}
 	
-	EventPlanner(String name, String mail, String phone, String usn, String pw, String expert, String exp, Date d, int id){
+	EventPlanner(String name, String mail, String phone, String usn, String pw, String expert, String exp, Date d){
 		fullname=name;
 		email=mail;
 		phoneNo=phone;
 		username=usn;
 		password=pw;
-		UserID=id;
 		expertise=expert;
 		experience=exp;
 		EPDate=d;

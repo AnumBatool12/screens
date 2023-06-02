@@ -22,7 +22,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="PlannerRegister" layoutX="90.0" layoutY="203.0" mnemonicParsing="false" onAction="#openSignUpForm1_EventPlanner" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #E9C7C6;" text="Event Planner">
+      <Button fx:id="PlannerRegister" layoutX="90.0" layoutY="203.0" mnemonicParsing="false" onAction="#openSignUpForm2_EventPlanner" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #E9C7C6;" text="Event Planner">
          <font>
             <Font size="18.0" />
          </font>
