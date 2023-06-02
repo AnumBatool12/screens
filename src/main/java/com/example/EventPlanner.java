@@ -10,6 +10,8 @@ public class EventPlanner implements User {
 	private String password;
 	private int UserID;
 
+	//add expertise and experience and date
+
 	private Scheduler tdl;//To Do List
 	private RequestList rl;//request List
 

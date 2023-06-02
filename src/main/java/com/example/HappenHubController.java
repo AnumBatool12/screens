@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class HappenHubController {
 	private static HappenHubController hhc;
 
-
+	
 	//singleton constructor
 	HappenHubController(){
 		

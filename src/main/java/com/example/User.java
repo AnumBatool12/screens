@@ -79,12 +79,3 @@ public interface User {
 	public void removeTask(int index);
 }
 
-/*
- * 
- * 
-	//Request
-	
-	public void setRequestStatus(Boolean stat, int index);
-
-   
-*/
