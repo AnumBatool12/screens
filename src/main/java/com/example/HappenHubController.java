@@ -16,11 +16,7 @@ public class HappenHubController {
 
 
 	//singleton constructor
-	HappenHubController(){
-		C=new Client();
-		EP=new EventPlanner();
-		L=new Logistic();
-	}
+	HappenHubController(){}
 
 	public static HappenHubController getInstance(){//get instance
 		if (hhc==null){
@@ -29,6 +25,17 @@ public class HappenHubController {
 		return hhc;
 	}
 	
+	public void setUserType(String type){//and create the relevant user if user is new
+		userType=type;
+	}
+
+	public void LoadUser(){//Used when user Logs In
+		/**
+		 * For Whatever Database functions needed here
+		 * To load the User and all relevant classes
+		 */
+	}
+
 
 
 

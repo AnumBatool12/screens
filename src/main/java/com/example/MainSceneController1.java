@@ -87,6 +87,7 @@ public class MainSceneController1 {
          * or wrong password
         */
         userType="";
+        hhc.setUserType(userType);
 
         //opening the relevant dashboard
         if (userType.equals("Client")){
@@ -101,6 +102,19 @@ public class MainSceneController1 {
         else {
             Alert alert=new Alert(AlertType.ERROR, "Error in Opening");
             alert.show();
+        }
+    }
+
+    //client Sign in
+    public void createClient(ActionEvent event) throws IOException{
+        if (!((passwordClient.getText()).equals(confirmPassClient.getText()))){
+            Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            alert.setContentText("Password and Confirm Password are not the same");
+            alert.show();
+        }
+        else{
+            HappenHubController.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
+            openClientDashboard(event);
         }
     }
 
@@ -292,21 +306,6 @@ public class MainSceneController1 {
         LoadPage(root, event);
     }
 
-
-
-    //Functions
-    //client Sign in
-    public void createClient(ActionEvent event) throws IOException{
-        if (!((passwordClient.getText()).equals(confirmPassClient.getText()))){
-            Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
-            alert.setContentText("Password and Confirm Password are not the same");
-            alert.show();
-        }
-        else{
-            HappenHubController.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
-            openClientDashboard(event);
-        }
-    }
 
     //create event and open client dashboard
     public void createEventbyClient(ActionEvent event) throws IOException{
