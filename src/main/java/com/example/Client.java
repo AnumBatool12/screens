@@ -32,6 +32,18 @@ public class Client implements User{
 		tdl=new Scheduler();
 	} 
 
+	Client(String name, String mail, String phone, String usn, String pw, int id, ArrayList<Event> e, Scheduler s){
+		fullname=name;
+		email=mail;
+		phoneNo=phone;
+		username=usn;
+		password=pw;
+		UserID=id;
+
+		event=e;
+		tdl=s;
+	}
+
 	//Client getter functions
 	public String getFullname(){ return fullname;}
 	public String getEmailmail() {return email;}
