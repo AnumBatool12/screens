@@ -22,7 +22,7 @@ public class Scheduler {
 	}
 	public void setStatus(int index, String stat){tasks.get(index).setStatus(stat);}
 	public void addTask(Task task){
-		tasks.add(task);
+		tasks.add(task); 
 		totalTasks++;
 	}
 	public void allNewTask(String task, Date date){

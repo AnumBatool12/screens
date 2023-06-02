@@ -8,7 +8,7 @@ public class Task {
     private int ID;//id from database
  
 
-    Task(){status="not done";}
+    Task(){} 
     Task(Date date, String desc){
         this.date=date;
         taskDesc=desc;

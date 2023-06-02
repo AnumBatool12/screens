@@ -56,7 +56,7 @@ public class Client implements User{
 	public void setEmail(String mail) {email=mail;}
 	public void setPhoneNo(String phone) {phoneNo = phone;}
 	public void setUsername (String user){username = user;}
-	public void setPassword (String pass){password = pass;}
+	public void setPassword (String pass){password = pass;} 
 	public void setUserID(int ID) {UserID=ID;}
 
 	//Event getter Functions

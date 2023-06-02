@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.sql.Date; 
  
 public class MySqlClass{
@@ -551,6 +552,215 @@ public class MySqlClass{
     }
 
 // ---------------END OF LOGISTICS UPDATES-----------------------------------------
+
+//----------------UPDATING EVENT PLANNER DATA--------------------------------------
+
+public void updatePlannerUser(EventPlanner planner){   
+    try {
+        Statement statement = cn.createStatement(); 
+        String sqlQuery = "UPDATE User_ SET username = ? WHERE userid = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, planner.getUsername());
+        pstmt.setInt(2, planner.getUserID());
+        pstmt.executeQuery();
+        statement.close();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public void updatePlannerPass(EventPlanner planner){
+    try {
+        Statement statement = cn.createStatement(); 
+        String sqlQuery = "UPDATE User_ SET password = ? WHERE userid = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, planner.getPassword());
+        pstmt.setInt(2, planner.getUserID());
+        pstmt.executeQuery();
+        statement.close();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public void updatePlannerName(EventPlanner planner){
+    try {
+        Statement statement = cn.createStatement(); 
+        String sqlQuery = "UPDATE User_ SET fullname = ? WHERE userid = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, planner.getUsername());
+        pstmt.setInt(2, planner.getUserID());
+        pstmt.executeQuery();
+        statement.close();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public void updatePlannerEmail(EventPlanner planner){
+    try {
+        Statement statement = cn.createStatement(); 
+        String sqlQuery = "UPDATE User_ SET email = ? WHERE userid = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, planner.getEmailmail());
+        pstmt.setInt(2, planner.getUserID());
+        pstmt.executeQuery();
+        statement.close();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public void updatePlannerPhone(EventPlanner planner){
+    try {
+        Statement statement = cn.createStatement(); 
+        String sqlQuery = "UPDATE User_ SET phoneno = ? WHERE userid = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, planner.getPhoneNo());
+        pstmt.setInt(2, planner.getUserID());
+        pstmt.executeQuery();
+        statement.close();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public void updatePlannerDate(EventPlanner planner){
+    try {
+        Statement statement = cn.createStatement(); 
+        String sqlQuery = "UPDATE EventPlanner SET datesince = ? WHERE userid = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        Date sqlDate = new Date(planner.getStartDate().getTime());
+        pstmt.setDate(1, sqlDate);
+        pstmt.setInt(2, planner.getUserID());
+        pstmt.executeQuery();
+        statement.close();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public void updatePlannerExpertise(EventPlanner planner){
+    try {
+        Statement statement = cn.createStatement(); 
+        String sqlQuery = "UPDATE EventPlanner SET expertise = ? WHERE userid = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, planner.getExpertise());
+        pstmt.setInt(2, planner.getUserID());
+        pstmt.executeQuery();
+        statement.close();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public void updatePlannerExperience(EventPlanner planner){
+    try {
+        Statement statement = cn.createStatement(); 
+        String sqlQuery = "UPDATE EventPlanner SET experience = ? WHERE userid = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, planner.getExperience());
+        pstmt.setInt(2, planner.getUserID());
+        pstmt.executeQuery();
+        statement.close();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+//-----------------END OF EVENT PLANNER UPDATES-------------------------------------
+
+//---------------LOGING IN AS DIFF USERS--------------------------------------------
+
+public void fillSchedular(Client client, String type, int schedularid){
+    try {
+        String sqlQuery = "Select * FROM Task WHERE schedularid = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setInt(1, schedularid);
+        ResultSet resultset = pstmt.executeQuery();
+        while (resultset.next()) {
+           // System.out.println(resultset.getString("username"));  
+           Task task = new Task();
+        //    java.sql.Date sqlDate = resultset.getDate("dateadded");
+        //    Date utilDate = new Date(resultset.getString("dateadded").getTime());
+            task.setDate(resultset.getDate("dateadded"));
+            task.setDesc(resultset.getString("taskdesc"));
+            task.setStatus(resultset.getString("status"));
+            task.setID(resultset.getInt("taskid"));
+            client.addTask(task);
+        }
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+public void fillClientEvents (Client client){
+    try {
+        String sqlQuery = "Select * FROM Event WHERE userID = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setInt(1, client.getUserID());
+        ResultSet resultset = pstmt.executeQuery();
+        while (resultset.next()) {
+            
+          // client.createEventSql(resultset.getString("eventName"), resultset.getDate("dateofevent"), resultset.getString("timeofevent"), resultset.getString("eventSize"), null, null, null, null, resultset.getString("eventID")));
+        }
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+public Client LoginClient(String username){
+    Client client = new Client();
+    int schedularid=0;
+    try {
+        String sqlQuery = "Select * FROM User_ WHERE username = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, username);
+        ResultSet resultset = pstmt.executeQuery();
+        int i=0;
+        while (resultset.next()) {
+           // System.out.println(resultset.getString("username"));  
+            if (i == 0){
+                client.setUserID(resultset.getInt("userid"));
+                client.setFullname(resultset.getString("fullname"));
+                client.setEmail(resultset.getString("email"));
+                client.setPhoneNo(resultset.getString("phoneno"));
+                client.setUsername(resultset.getString("username"));
+                client.setPassword(resultset.getString("password"));
+                schedularid = resultset.getInt(schedularid);
+            }
+            i++;
+        }
+        fillSchedular(client, "Client" , schedularid);
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return client;
+}
+
+//------------------END OF LOGINS---------------------------------------------------
+
+public void createEvent(Event event){
+     //   title date time size location desc
+
+}   
+
+
 
     public void testing()
     {
