@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -24,13 +25,7 @@ public class MainSceneController1 {
     private Parent root;
     
     private String userType;//Can e Logistic, Event Planner or Client
-
-
-
-
-
-
-
+    private HappenHubController hhc;
 
     //Variables for FXML 
     @FXML 
@@ -39,8 +34,6 @@ public class MainSceneController1 {
     @FXML
     private TextField passwordLogin;
 
-    @FXML
-    private Button LoginBtn;
 
     @FXML
     private TextField title;//
@@ -78,8 +71,54 @@ public class MainSceneController1 {
     @FXML
     private TextField usernameClient;//
 
-    //Variables for Classses
-    //private HappenHubController hhc;
+    //Functions
+    //Function to Confirm Login and determine User Type//
+    public void Login(ActionEvent event) throws IOException{
+        String usn, pswrd;
+
+        usn=usernameLogin.getText();
+        pswrd=passwordLogin.getText();
+
+        /* 
+         * Functions to determine who the User is
+         * Use these to Determine User Type
+         * From Database
+         * Add Alerts here in case of wrong username
+         * or wrong password
+        */
+        userType="";
+
+        //opening the relevant dashboard
+        if (userType.equals("Client")){
+            openClientDashboard(event);
+        }
+        else if (userType.equals("Event Planner")){
+            openEP_LS_Dashboard(event);
+        }
+        else if (userType.equals("Logistic")){
+            openEP_LS_Dashboard(event);
+        }
+        else {
+            Alert alert=new Alert(AlertType.ERROR, "Error in Opening");
+            alert.show();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     //Loader Function
