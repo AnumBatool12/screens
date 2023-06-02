@@ -2,7 +2,7 @@ package com.example;
 
 import java.util.ArrayList;
 
-public class Budget {
+public class Budget { 
 	private ArrayList<BudgetItem> budgetItems;
 	private Integer totalItems;
 	private double totalBudget;

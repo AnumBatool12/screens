@@ -64,7 +64,7 @@ public class Client implements User{
 	public String getEventTime(int index) {return event.get(index).getTime();}
 	public Integer getEventSize(int index) {return event.get(index).getSize();}
 	public String getEventPaymentType(int index) {return event.get(index).getPaymentType();}
-	public int getEventID(int index) {return event.get(index).getEventID();}
+	public int getEventID(int index) {return event.get(index).getEventID();} 
 	//Event Setter Functions
 	public void setEventTitle(String title, int Uindex) {event.get(Uindex).setEventTitle(title);}
 	public void setEventDate(Date date, int Uindex) {event.get(Uindex).setDate(date);}

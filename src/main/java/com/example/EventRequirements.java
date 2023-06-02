@@ -7,7 +7,7 @@ public class EventRequirements {
 	private ArrayList<Requirement> eventRequirements;
 	Integer totalReqs;
 
-	EventRequirements(){
+	EventRequirements(){   
 		eventRequirements=new ArrayList<Requirement>();
 		totalReqs=0;
 	}

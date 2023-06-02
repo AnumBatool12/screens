@@ -712,8 +712,26 @@ public void fillClientEvents (Client client){
         pstmt.setInt(1, client.getUserID());
         ResultSet resultset = pstmt.executeQuery();
         while (resultset.next()) {
-            
+            EventRequirements eventRequirements = new EventRequirements();
+            sqlQuery = "select * from ReqList where eventreqsID = ?";
+            PreparedStatement pstmt1 = cn.prepareStatement(sqlQuery);
+            pstmt1.setInt(1, resultset.getInt("eventReqsID"));    
+            ResultSet rs = pstmt1.executeQuery();
+            while(rs.next()){
+                eventRequirements.createRequirement(rs.getString(" eventReqDesc"), rs.getInt("reqID"));
+            }
+            Budget budget = new Budget();
+            sqlQuery = "selet * from Budgetitem where budgetID = ?";
+            PreparedStatement pstmt2 = cn.prepareStatement(sqlQuery);
+            pstmt1.setInt(1, resultset.getInt("budgetID"));    
+            ResultSet rs2 = pstmt2.executeQuery();
+            while (rs2.next()){ // HERE ----aslk,bdkjwva 
+                budget.createBudgetItem(rs2.getString("itemdesc"), getLatestSchedularid(), getLatestSchedularid(), getLatestSchedularid());
+            }
           // client.createEventSql(resultset.getString("eventName"), resultset.getDate("dateofevent"), resultset.getString("timeofevent"), resultset.getString("eventSize"), null, null, null, null, resultset.getString("eventID")));
+            
+            pstmt1.close();
+            pstmt2.close();
         }
         // cn.close(); auto closes when the the object is closed
     } 
