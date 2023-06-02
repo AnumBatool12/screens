@@ -9,6 +9,7 @@ public class Logistic {
 	private String userName;
 	private String password;
 	private String CompanyDesc;
+	private String CompanyEmail;
 	private String websiteUrl; 
 
 	//objects of other classes
@@ -22,25 +23,27 @@ public class Logistic {
 		tdl=new Scheduler();
 	}
  
-	Logistic(String name, String type, String usn, String paswd, String desc, String url){
+	Logistic(String name, String type, String usn, String paswd, String desc, String url, String email){
 		CompanyName=name;
 		CompanyType=type;
 		userName=usn;
 		password=paswd;
 		CompanyDesc=desc;
 		websiteUrl=url; 
+		CompanyEmail=email;
 		Sl=new ServicesList();
 		er=new RequestList();
 		tdl=new Scheduler();
 	}
 
-	Logistic(String name, String type, String usn, String paswd, String desc, String url, ServicesList sl, RequestList rl, Scheduler T){
+	Logistic(String name, String type, String usn, String paswd, String desc, String url, String email, ServicesList sl, RequestList rl, Scheduler T){
 		CompanyName=name;
 		CompanyType=type;
 		userName=usn;
 		password=paswd;
 		CompanyDesc=desc;
 		websiteUrl=url; 
+		CompanyEmail=email;
 		Sl=sl;
 		er=rl;
 		tdl=T;
@@ -53,12 +56,14 @@ public class Logistic {
 	public String getPassword(){return password;}
 	public String getCompanyDesc(){return CompanyDesc;}
 	public  String getWebsiteUrl(){return websiteUrl;}
+	public String getLogisticEmail(){return CompanyEmail;}
 	public void setCompanyName(String name) {CompanyName=name;}
 	public void setCompanyType(String Type) {CompanyType=Type;}
 	public void setUsername(String un) {userName=un;}
 	public void setPassword(String pw) {password=pw;}
 	public void setCompanyDesc(String desc) {CompanyDesc=desc;}
 	public void setURL(String url) {websiteUrl=url;}
+	public void setCompanyEmail(String email){CompanyEmail=email;}
 
 	//services functions
 	//getters

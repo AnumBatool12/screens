@@ -8,9 +8,10 @@ public class EventPlanner implements User {
 	private String phoneNo;
 	private String username;
 	private String password;
+	private String expertise;
+	private String experience;
+	private Date  EPDate;
 	private int UserID;
-
-	//add expertise and experience and date
 
 	private Scheduler tdl;//To Do List
 	private RequestList rl;//request List
@@ -20,25 +21,31 @@ public class EventPlanner implements User {
 		rl=new RequestList();
 	}
 	
-	EventPlanner(String name, String mail, String phone, String usn, String pw, int id){
+	EventPlanner(String name, String mail, String phone, String usn, String pw, String expert, String exp, Date d, int id){
 		fullname=name;
 		email=mail;
 		phoneNo=phone;
 		username=usn;
 		password=pw;
 		UserID=id;
+		expertise=expert;
+		experience=exp;
+		EPDate=d;
 
 		tdl=new Scheduler();
 		rl=new RequestList();
 	}
 
-	EventPlanner(String name, String mail, String phone, String usn, String pw, int id, RequestList r, Scheduler s){
+	EventPlanner(String name, String mail, String phone, String usn, String pw, String expert, String exp, Date d,int id, RequestList r, Scheduler s){
 		fullname=name;
 		email=mail;
 		phoneNo=phone;
 		username=usn;
 		password=pw;
 		UserID=id;
+		expertise=expert;
+		experience=exp;
+		EPDate=d;
 
 		tdl=s;
 		rl=r;
@@ -52,6 +59,9 @@ public class EventPlanner implements User {
 	public String getUsername() {return username;}
 	public String getPassword() {return password;}
 	public int getUserID() {return UserID;}
+	public String getExpertise(){return expertise;}
+	public String getExperience(){return experience;}
+	public Date getStartDate(){return EPDate;}
 	//Event Planner setter Function
 	public void setFullname(String name) {fullname = name;}
 	public void setEmail(String mail) {email=mail;}
@@ -59,6 +69,9 @@ public class EventPlanner implements User {
 	public void setUsername (String user){username = user;}
 	public void setPassword (String pass){password = pass;}
 	public void setUserID(int ID) {UserID=ID;}
+	public void setExpertise(String exp){expertise=exp;}
+	public void setExperience(String exp){experience=exp;}
+	public void setStartDate(Date d){EPDate=d;}
 
 	//Event getter function
 	public String getEventTitle(int index){return rl.getTitle(index);}
