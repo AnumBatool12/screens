@@ -1,5 +1,7 @@
 package com.example;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 //HappenHubController is a singleton
@@ -36,10 +38,39 @@ public class HappenHubController {
 		 */
 	}
 
+	//Sign Up Functions
+	//Client Sign UP-->Creating new Client
+	public void createClient(String name, String mail, String phone, String usn, String pw){
+		C=new Client(name, mail, phone, usn, pw);
 
+		/*
+		 * Function adds Client to database
+		 * Assign Client an ID from here
+		 */
+	}
 
+	//Event Planner Sign Up-->Creating New Event Planner
+	public void createEventPlanner(String name, String mail, String phone, String usn, String pw, String expert, String exp, String dString){
+		SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd"); 
+		try {
+			Date d=formatter.parse(dString);
+			EP=new EventPlanner(name, mail, phone, usn, pw, expert, exp, d);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} 
+		/*
+		 * Function adds EP to database
+		 * Assign EP an ID from here
+		 */
+	}
 
-
+	public void createLogistic(String name, String type, String usn, String paswd, String url, String email){
+		L=new Logistic(name, type, usn, paswd, url, email);
+		/*
+		 * Function adds Logistic to database
+		 * Assign Logistic an ID from here
+		 */
+	}
 
 
 
@@ -50,8 +81,7 @@ public class HappenHubController {
 		
 	}
 	
-	public void createClient(String name, String mail, String phone, String usn, String pw){
-	}
+	
 	
 	public void createLogisticAccount(Object Username, Object Password, Object LogisticType) {
 		// begin-user-code

@@ -2,6 +2,7 @@ package com.example;
 
 import java.util.Date;
 
+
 //Logistic
 public class Logistic {
 	private String CompanyName;
@@ -11,6 +12,7 @@ public class Logistic {
 	private String CompanyDesc;
 	private String CompanyEmail;
 	private String websiteUrl; 
+	private int LogID;
 
 	//objects of other classes
 	private ServicesList Sl;
@@ -23,12 +25,11 @@ public class Logistic {
 		tdl=new Scheduler();
 	}
  
-	Logistic(String name, String type, String usn, String paswd, String desc, String url, String email){
+	Logistic(String name, String type, String usn, String paswd, String url, String email){
 		CompanyName=name;
 		CompanyType=type;
 		userName=usn;
 		password=paswd;
-		CompanyDesc=desc;
 		websiteUrl=url; 
 		CompanyEmail=email;
 		Sl=new ServicesList();
@@ -36,7 +37,7 @@ public class Logistic {
 		tdl=new Scheduler();
 	}
 
-	Logistic(String name, String type, String usn, String paswd, String desc, String url, String email, ServicesList sl, RequestList rl, Scheduler T){
+	Logistic(String name, String type, String usn, String paswd, String desc, String url, String email, ServicesList sl, RequestList rl, Scheduler T, int id){
 		CompanyName=name;
 		CompanyType=type;
 		userName=usn;
@@ -44,12 +45,12 @@ public class Logistic {
 		CompanyDesc=desc;
 		websiteUrl=url; 
 		CompanyEmail=email;
+		LogID=id;
 		Sl=sl;
 		er=rl;
 		tdl=T;
 	}
 	
-
 	public String getCompanyName(){return CompanyName;}
 	public String getCompanyType(){return CompanyType;}
 	public String getUserName(){return userName;}
@@ -57,6 +58,7 @@ public class Logistic {
 	public String getCompanyDesc(){return CompanyDesc;}
 	public  String getWebsiteUrl(){return websiteUrl;}
 	public String getLogisticEmail(){return CompanyEmail;}
+	public int getLogID(){return LogID;}
 	public void setCompanyName(String name) {CompanyName=name;}
 	public void setCompanyType(String Type) {CompanyType=Type;}
 	public void setUsername(String un) {userName=un;}
@@ -64,6 +66,7 @@ public class Logistic {
 	public void setCompanyDesc(String desc) {CompanyDesc=desc;}
 	public void setURL(String url) {websiteUrl=url;}
 	public void setCompanyEmail(String email){CompanyEmail=email;}
+	public void setLogID(int id){LogID=id;}
 
 	//services functions
 	//getters

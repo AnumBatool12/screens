@@ -20,13 +20,12 @@ public class Client implements User{
 		tdl=new Scheduler();
 	}
 
-	Client(String name, String mail, String phone, String usn, String pw, int id){//parametrised constructor
+	Client(String name, String mail, String phone, String usn, String pw){//parametrised constructor
 		fullname=name;
 		email=mail;
 		phoneNo=phone;
 		username=usn;
 		password=pw;
-		UserID=id;
 
 		event=new ArrayList<Event>();
 		tdl=new Scheduler();

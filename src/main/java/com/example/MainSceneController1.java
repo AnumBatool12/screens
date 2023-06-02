@@ -28,11 +28,38 @@ public class MainSceneController1 {
     private HappenHubController hhc;
 
     //Variables for FXML 
-    @FXML 
-    private TextField usernameLogin;
-    
-    @FXML
-    private TextField passwordLogin;
+    //Login
+    @FXML private TextField usernameLogin;
+    @FXML private TextField passwordLogin;
+    //Login
+    //SignUp Client
+    @FXML private TextField FullName;
+    @FXML private TextField PhoneNo;
+    @FXML private TextField confirmPassClient;
+    @FXML private TextField email;
+    @FXML private TextField passwordClient;
+    @FXML private TextField usernameClient;
+    //SignUp Client
+    //SignUp Event Planner
+    @FXML private TextField PasswordEP;
+    @FXML private TextField confirmPassEP;
+    @FXML private TextField usernameEP;
+    @FXML private TextField EPdate;
+    @FXML private TextField emailEP;
+    @FXML private TextField expEP;
+    @FXML private TextField expertiseEP;
+    @FXML private TextField fullNameEP;
+    @FXML private TextField phoneNoEP;
+    //SignUp Event Planner
+    //SignUp for Logistic Service
+    @FXML private TextField LogisticType;
+    @FXML private TextField LogisticUrl;
+    @FXML private TextField LogisticUsername;
+    @FXML private TextField companyEmail;
+    @FXML private TextField companyName;
+    @FXML private TextField confirmpassLog;
+    @FXML private TextField passwordLog;
+    //SignUp for Logistic Service
 
 
     @FXML
@@ -50,26 +77,7 @@ public class MainSceneController1 {
     @FXML
     private Button createEvent;//
 
-    @FXML
-    private TextField FullName;//
-
-    @FXML
-    private TextField PhoneNo;//
-
-    @FXML
-    private TextField confirmPassClient;
-
-    @FXML
-    private TextField email;//
-
-    @FXML
-    private TextField passwordClient;//
-
-    @FXML
-    private Button signUpClient;//
-
-    @FXML
-    private TextField usernameClient;//
+    
 
     //Functions
     //Function to Confirm Login and determine User Type//
@@ -105,23 +113,49 @@ public class MainSceneController1 {
         }
     }
 
-    //client Sign in
+    //Client Sign in
     public void createClient(ActionEvent event) throws IOException{
+        userType="Client";
+        
         if (!((passwordClient.getText()).equals(confirmPassClient.getText()))){
             Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
             alert.setContentText("Password and Confirm Password are not the same");
             alert.show();
         }
         else{
-            HappenHubController.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
+            hhc.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
             openClientDashboard(event);
         }
     }
 
+    //Event Planner Sign Up
+    public void createEventPlanner(ActionEvent event) throws IOException{
+        userType="Event Planner";
+        if (!((PasswordEP.getText()).equals(confirmPassEP.getText()))){
+            Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            alert.setContentText("Password and Confirm Password are not the same");
+            alert.show();
+        }
+        else{
+            hhc.getInstance().createEventPlanner(fullNameEP.getText(), emailEP.getText(), phoneNoEP.getText(), usernameEP.getText(), PasswordEP.getText(), expertiseEP.getText(), expEP.getText(), EPdate.getText());
+            openEP_LS_Dashboard(event);
+        }
+        
+    }
 
-
-
-
+    //Logistic Service Sign Up
+    public void createLogistic(ActionEvent event) throws IOException{
+        userType="Logistic";
+        if (!((passwordLog.getText()).equals(confirmpassLog.getText()))){
+            Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            alert.setContentText("Password and Confirm Password are not the same");
+            alert.show();
+        }
+        else{
+            hhc.getInstance().createLogistic(companyName.getText(), LogisticType.getText(), LogisticUsername.getText(), passwordLog.getText(), LogisticUrl.getText(), companyEmail.getText());
+            openEP_LS_Dashboard(event);
+        }
+    }
 
 
 
@@ -158,12 +192,6 @@ public class MainSceneController1 {
     //Open Sign Up Form for Client
     public void openSignUpForm_Client(ActionEvent event) throws IOException{
         root=FXMLLoader.load(getClass().getResource("MainSceneController3.fxml"));
-        LoadPage(root, event);
-    }
-
-    //Open Sign up Form for Event Planner
-    public void openSignUpForm1_EventPlanner(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController4.fxml"));
         LoadPage(root, event);
     }
 
@@ -216,13 +244,12 @@ public class MainSceneController1 {
     }
 
     //Opening Event Planner or Logistic Service Dashboard
-    //we might need an if-else here so that itll open the relevant profile page
     public void openEP_LS_Dashboard(ActionEvent event) throws IOException{
         root=FXMLLoader.load(getClass().getResource("MainSceneController13.fxml"));
         LoadPage(root, event);
     }
 
-    //Open Form to Chanege Event Planners Personal Information
+    //Open Form to Change Event Planners Personal Information
     public void openProfilePage_EP(ActionEvent event) throws IOException{
         root=FXMLLoader.load(getClass().getResource("MainSceneController14.fxml"));
         LoadPage(root, event);
