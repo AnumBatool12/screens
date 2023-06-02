@@ -69,10 +69,10 @@ public class MainSceneController1 {
     private Scene scene;
     private Parent root;
     private String userID;//for db identification
-    private String usertype;//for screen identification
+    //private String usertype;//for screen identification
 
     //Variables for Classses
-    private HappenHubController hhc;
+    //private HappenHubController hhc;
 
 
     //Loader Function

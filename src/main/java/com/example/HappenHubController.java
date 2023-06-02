@@ -2,18 +2,14 @@ package com.example;
 
 import java.time.LocalDate;
 
-//HappenHubController which is a singleton
+//HappenHubController is a singleton
 public class HappenHubController {
 	private static HappenHubController hhc;
 
-	//variables
-	private Client client;
-	private Event Clientevent;
 
 	//singleton constructor
 	HappenHubController(){
-		client=new Client();
-		Clientevent=null;
+		
 	}
 
 	public static HappenHubController getInstance(){//get instance
@@ -22,6 +18,14 @@ public class HappenHubController {
 		}
 		return hhc;
 	}
+	
+
+
+
+
+
+
+
 
 
 	//creating Event via the Client
