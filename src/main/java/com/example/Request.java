@@ -116,7 +116,7 @@ public class Request {
 	public Integer getTotalAttendee(){return event.getTotalAttendee();}
 	public int geAttendeetID(int index){return event.geAttendeetID(index);}
     //Event -->Invoice
-    public Integer getTotalPaymenetItem(){return event.getTotalItem();}
+    public Integer getTotalPaymenetItem(){return event.getPaymentTotalItem();}
 	public String getInvoiceDesc(int index){return event.getDesc(index);}
 	public double getAmount(int index){return event.getAmount(index);}
 	public double getTotalPayment(){return event.getTotal();}

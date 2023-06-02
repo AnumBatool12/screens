@@ -97,7 +97,7 @@ public class Event {
 	public Integer getTotalAttendee(){return AL.getTotal();}
 	public int geAttendeetID(int index){return AL.getID(index);}
 	//Invoice
-	public Integer getTotalItem(){return invoice.getTotalItem();}
+	public Integer getPaymentTotalItem(){return invoice.getTotalItem();}
 	public String getDesc(int index){return invoice.getDesc(index);}
 	public double getAmount(int index){return invoice.getAmount(index);}
 	public double getTotalPayment(){return invoice.getTotal();}
