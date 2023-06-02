@@ -7,15 +7,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="cpassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController1">
    <children>
-      <Rectangle fx:id="bg" arcHeight="5.0" arcWidth="5.0" fill="#f5f2eb" height="91.0" stroke="#f7f4eb" strokeType="INSIDE" width="400.0" />
-      <Label fx:id="Title" layoutX="100.0" layoutY="14.0" prefWidth="199.0" text="HappenHub">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f2eb" height="91.0" stroke="#f7f4eb" strokeType="INSIDE" width="400.0" />
+      <Label layoutX="100.0" layoutY="14.0" prefWidth="199.0" text="HappenHub">
          <font>
             <Font name="Californian FB" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="subtitle" layoutX="115.0" layoutY="63.0" text="Join The Logistic Team">
+      <Label layoutX="115.0" layoutY="63.0" text="Join The Logistic Team">
          <font>
             <Font name="Californian FB" size="18.0" />
          </font>

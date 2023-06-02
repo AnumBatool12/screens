@@ -59,11 +59,18 @@ public class HappenHubController {
 			e.printStackTrace();
 		} 
 		/*
-		 * Function adds Client to database
-		 * Assign Client an ID from here
+		 * Function adds EP to database
+		 * Assign EP an ID from here
 		 */
 	}
 
+	public void createLogistic(String name, String type, String usn, String paswd, String url, String email){
+		L=new Logistic(name, type, usn, paswd, url, email);
+		/*
+		 * Function adds Logistic to database
+		 * Assign Logistic an ID from here
+		 */
+	}
 
 
 

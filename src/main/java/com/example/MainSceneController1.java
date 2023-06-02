@@ -51,6 +51,15 @@ public class MainSceneController1 {
     @FXML private TextField fullNameEP;
     @FXML private TextField phoneNoEP;
     //SignUp Event Planner
+    //SignUp for Logistic Service
+    @FXML private TextField LogisticType;
+    @FXML private TextField LogisticUrl;
+    @FXML private TextField LogisticUsername;
+    @FXML private TextField companyEmail;
+    @FXML private TextField companyName;
+    @FXML private TextField confirmpassLog;
+    @FXML private TextField passwordLog;
+    //SignUp for Logistic Service
 
 
     @FXML
@@ -134,7 +143,19 @@ public class MainSceneController1 {
         
     }
 
-
+    //Logistic Service Sign Up
+    public void createLogistic(ActionEvent event) throws IOException{
+        userType="Logistic";
+        if (!((passwordLog.getText()).equals(confirmpassLog.getText()))){
+            Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            alert.setContentText("Password and Confirm Password are not the same");
+            alert.show();
+        }
+        else{
+            hhc.getInstance().createLogistic(companyName.getText(), LogisticType.getText(), LogisticUsername.getText(), passwordLog.getText(), LogisticUrl.getText(), companyEmail.getText());
+            openEP_LS_Dashboard(event);
+        }
+    }
 
 
 
