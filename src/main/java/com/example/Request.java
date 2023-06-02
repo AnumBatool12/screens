@@ -5,7 +5,6 @@ import java.util.Date;
 //Request
 public class Request {
     private Boolean status;//accepted or rejected
-    private int reqNum;//total reqs
     private double limit;//how much can they spend
     private Event event;
     private User user;
@@ -18,9 +17,8 @@ public class Request {
         status=true;
     } 
 
-    Request(Boolean stat, int num, Event event, User user, int id, double spend){
+    Request(Boolean stat, Event event, User user, int id, double spend){
         status = stat;
-        reqNum=num;
         this.event=event;
         this.user=user;
         ID=id;
@@ -29,9 +27,8 @@ public class Request {
         user=new Client();
     }
 
-    Request(Boolean stat, int num, Event event, User user, int id, double spend, String userType){
+    Request(Boolean stat, Event event, User user, int id, double spend, String userType){
         status = stat;
-        reqNum=num;
         this.event=event;
         this.user=user;
         ID=id;
@@ -66,7 +63,6 @@ public class Request {
 
     //setters
     public void setStatus(Boolean stat){status = stat;}
-    public void setNum(int num) {reqNum=num;}
     public void setID(int id) {ID=id;}
     public void setLimit(double spend){limit=spend;}
     //Event
@@ -91,7 +87,6 @@ public class Request {
 
     //getters
     public boolean getStatus(){return status;}
-    public int getReqNum(){return reqNum;}
     public double getLimit() {return limit;}
     public int getID(){return ID;}
 

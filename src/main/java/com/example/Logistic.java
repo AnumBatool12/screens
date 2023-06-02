@@ -105,7 +105,6 @@ public class Logistic {
 	//setter 
 	public void AddRequest(Request r){er.AddRequest(r);}
 	public void setRequestStatus(Boolean stat, int index){er.setStatus(stat, index);}
-    public void setRequestNum(int num, int index) {er.setNum(num, index);}
     public void setRequestID(int id, int index) {er.setID(id, index);}
     public void setRequestLimit(double spend, int index){er.setLimit(spend, index);}
     //Event-->event requirements

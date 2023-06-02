@@ -23,17 +23,15 @@ public class MainSceneController1 {
     private Scene scene;
     private Parent root;
     
-
-    private String userID;
     private String userType;//Can e Logistic, Event Planner or Client
-    private String username;
 
 
 
 
 
 
-    
+
+
     //Variables for FXML 
     @FXML 
     private TextField usernameLogin;

@@ -140,12 +140,10 @@ public class EventPlanner implements User {
 	
 	//Request getter function
 	public boolean getRequestStatus(int index) {return rl.getStatus(index);}
-	public int getRequestNum(int index) {return rl.getReqNum(index);}
 	public double getRequestLimit(int index) {return rl.getLimit(index);}
 	public int getRequestID(int index) {return rl.getID(index);}
 	public Request getRequest(int index) {return rl.getRequest(index);}
-	//Request setter function
-	public void setRequestNum(int num, int Uindex) {rl.setNum(num, Uindex);}
+	//Request setter function}
 	public void setReuqestID(int id, int Uindex) {rl.setID(id, Uindex);}
 	public void setRequestLimit(double spend, int Uindex) {rl.setLimit(spend, Uindex);}
 	public void createRequest(Request r) {rl.AddRequest(r);}

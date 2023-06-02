@@ -19,7 +19,6 @@ public class RequestList {
 		totalRequests++;
 	}
 	public void setStatus(Boolean stat, int index){requests.get(index).setStatus(stat);}
-    public void setNum(int num, int index) {requests.get(index).setNum(num);}
     public void setID(int id, int index) {requests.get(index).setID(id);}
     public void setLimit(double spend, int index){requests.get(index).setLimit(spend);}
     //Event-->event requirements
@@ -43,7 +42,6 @@ public class RequestList {
 	//getter
 	 //getters
 	 public boolean getStatus(int index){return requests.get(index).getStatus();}
-	 public int getReqNum(int index){return requests.get(index).getReqNum();}
 	 public double getLimit(int index){return requests.get(index).getLimit();}
 	 public int getID(int index){return requests.get(index).getID();}
 	 public Request getRequest(int index) {return requests.get(index);}

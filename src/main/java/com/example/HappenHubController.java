@@ -12,13 +12,14 @@ public class HappenHubController {
 	private Logistic L;
 
 	//variables to help identify
-	private String userID;
     private String userType;//Can e Logistic, Event Planner or Client
-    private String username;
+
 
 	//singleton constructor
 	HappenHubController(){
-		
+		C=new Client();
+		EP=new EventPlanner();
+		L=new Logistic();
 	}
 
 	public static HappenHubController getInstance(){//get instance
