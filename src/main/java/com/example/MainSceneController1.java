@@ -18,6 +18,22 @@ public class MainSceneController1 {
 
     //MySqlClass s = MySqlClass.getInstance();
 
+    //Variables for Screen Display
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    
+
+    private String userID;
+    private String userType;//Can e Logistic, Event Planner or Client
+    private String username;
+
+
+
+
+
+
+    
     //Variables for FXML 
     @FXML 
     private TextField usernameLogin;
@@ -63,13 +79,6 @@ public class MainSceneController1 {
 
     @FXML
     private TextField usernameClient;//
-
-    //Variables for Screen Display
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private String userID;//for db identification
-    //private String usertype;//for screen identification
 
     //Variables for Classses
     //private HappenHubController hhc;
@@ -269,7 +278,7 @@ public class MainSceneController1 {
         String time=Etime.getText();
         String size=ESize.getText();
 
-        HappenHubController.getInstance().createEvent(Title, date, time, size, userID);//creating event
+        //HappenHubController.getInstance().createEvent(Title, date, time, size, userID);//creating event
         openEventDashboard(event);
     }
 

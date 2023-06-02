@@ -1,12 +1,21 @@
 package com.example;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 //HappenHubController is a singleton
 public class HappenHubController {
-	private static HappenHubController hhc;
+	private static HappenHubController hhc;//HappenHu's static Variable
 
-	
+	//Variables of other classes
+	private Client C;
+	private EventPlanner EP;
+	private Logistic L;
+
+	//variables to help identify
+	private String userID;
+    private String userType;//Can e Logistic, Event Planner or Client
+    private String username;
+
 	//singleton constructor
 	HappenHubController(){
 		
@@ -29,7 +38,7 @@ public class HappenHubController {
 
 
 	//creating Event via the Client
-	public void createEvent(String title, LocalDate date, String time, String size, String userID) {
+	public void createEvent(String title, Date date, String time, String size, String userID) {
 		
 	}
 	
