@@ -27,9 +27,8 @@ public class HappenHubController {
 		return hhc;
 	}
 	
-	public void setUserType(String type){//and create the relevant user if user is new
-		userType=type;
-	}
+	public void setUserType(String type){userType=type;}
+	public String getUserType(){return userType;}
 
 	public void LoadUser(){//Used when user Logs In
 		/**
