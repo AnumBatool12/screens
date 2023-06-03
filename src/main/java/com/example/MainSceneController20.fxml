@@ -20,10 +20,10 @@
             <Font name="Californian FB" size="14.0" />
          </font>
       </Label>
-      <TextField id="usernameClient" fx:id="usernameClient" layoutX="49.0" layoutY="202.0" prefHeight="35.0" prefWidth="303.0" text="*Username" />
-      <TextField id="passwordClient" fx:id="passwordClient" layoutX="49.0" layoutY="245.0" prefHeight="35.0" prefWidth="303.0" text="*Password" />
-      <TextField id="confirmPassClient" fx:id="confirmPassClient" layoutX="49.0" layoutY="291.0" prefHeight="35.0" prefWidth="303.0" text="*Confirm Password" />
-      <Button fx:id="confirmChanges" layoutX="51.0" layoutY="342.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Confirm Changes">
+      <TextField id="usernameClient" fx:id="usernameComp" layoutX="49.0" layoutY="202.0" prefHeight="35.0" prefWidth="303.0" text="*Username" />
+      <TextField id="passwordClient" fx:id="passwordComp" layoutX="49.0" layoutY="245.0" prefHeight="35.0" prefWidth="303.0" text="*Password" />
+      <TextField id="confirmPassClient" fx:id="confirmPassComp" layoutX="49.0" layoutY="291.0" prefHeight="35.0" prefWidth="303.0" text="*Confirm Password" />
+      <Button fx:id="confirmChangesComp" layoutX="51.0" layoutY="342.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Confirm Changes">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>
@@ -35,7 +35,7 @@
       </TextField>
       <TextField id="Email" fx:id="Cemail" layoutX="48.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="*Email" />
       <TextField fx:id="ServiceType" layoutX="202.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="*Service Type" />
-      <Button fx:id="Return" layoutX="51.0" layoutY="437.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Return">
+      <Button fx:id="ReturnComp" layoutX="51.0" layoutY="437.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="303.0" style="-fx-background-color: #E9C7C6;" text="Return">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>

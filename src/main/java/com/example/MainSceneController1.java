@@ -88,7 +88,18 @@ public class MainSceneController1 implements Initializable{
     @FXML private TextField passwordEP;
     @FXML private TextField EPusername;
     //Profile Page Event Planner
-
+    //Profile Page Logistic Service
+    @FXML private TextField Cemail;
+    @FXML private TextField CompanyName;
+    @FXML private Button ReturnComp;
+    @FXML private TextField ServiceType;
+    @FXML private TextField companyURL;
+    @FXML private Button confirmChangesComp;
+    @FXML private TextField confirmPassComp;
+    @FXML private TextField passwordComp;
+    @FXML private Button updateServicePage;
+    @FXML private TextField usernameComp;
+    //Profile Page Logistic Service
 
     @FXML
     private TextField title;//
@@ -171,7 +182,6 @@ public class MainSceneController1 implements Initializable{
             hhc.getInstance().createEventPlanner(fullNameEP.getText(), emailEP.getText(), phoneNoEP.getText(), usernameEP.getText(), PasswordEP.getText(), expertiseEP.getText(), expEP.getText(), EPdate.getText());
             openEP_LS_Dashboard(event);
         }
-        
     }
 
     //Logistic Service Sign Up
@@ -219,15 +229,15 @@ public class MainSceneController1 implements Initializable{
         dateEP.setText(date);
     }
 
-    //Logistics Profile Change
-    //Logistics Services Section
-    //Create Event Client
-    //Load To-Do List Client
-
-
-
-
-
+    //Function to take input for profile change Logistic Service
+    public void setUpLogisticProfile(String name, String type, String usn, String pswd, String url, String email){
+        CompanyName.setText(name);
+        ServiceType.setText(type);
+        usernameComp.setText(usn);
+        passwordComp.setText(pswd);
+        companyURL.setText(url);
+        Cemail.setText(email);
+    }
 
     @Override //initializes all the pages
     public void initialize(URL location, ResourceBundle resources) { }
@@ -392,8 +402,22 @@ public class MainSceneController1 implements Initializable{
 
     //Profile Change for Logistic Service
     public void openProfilePage_LS(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController20.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController20.fxml"));
+        Parent root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        String name=hhc.getInstance().getCompanyName();
+        String type=hhc.getInstance().getCompanyType();
+        String username=hhc.getInstance().getCompanyUserName();
+        String password=hhc.getInstance().getCompanyPassword();
+        String url=hhc.getInstance().getWebsiteUrl();
+        String email=hhc.getInstance().getLogisticEmail();
+        controller1.setUpLogisticProfile(name, type, username, password, url, email);
+
+        /**
+        * Can use this function to take in changes made to profile
+        */
     }
 
     //Open Logistic's Service/Web Page
@@ -437,7 +461,6 @@ public class MainSceneController1 implements Initializable{
         root=FXMLLoader.load(getClass().getResource("MainSceneController27.fxml"));
         LoadPage(root, event);
     }
-
 
     //create event and open client dashboard
     public void createEventbyClient(ActionEvent event) throws IOException{

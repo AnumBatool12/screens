@@ -112,6 +112,25 @@ public class HappenHubController {
 	public void setEPExperience(String exp){EP.setExperience(exp);}
 	public void setEPStartDate(Date d){EP.setStartDate(d);}
 
+	//Logistic Service Getter Functions
+	public String getCompanyName(){return L.getCompanyName();}
+	public String getCompanyType(){return L.getCompanyType();}
+	public String getCompanyUserName(){return L.getUserName();}
+	public String getCompanyPassword(){return L.getPassword();}
+	public String getCompanyDesc(){return L.getCompanyDesc();}
+	public String getWebsiteUrl(){return L.getWebsiteUrl();}
+	public String getLogisticEmail(){return L.getLogisticEmail();}
+	public int getLogID(){return L.getLogID();}
+	//Logistic Service Setter Function
+	public void setCompanyName(String name) {L.setCompanyName(name);}
+	public void setCompanyType(String Type) {L.setCompanyType(Type);}
+	public void setCompanyUsername(String un) {L.setUsername(un);}
+	public void setCompanyPassword(String pw) {L.setPassword(pw);}
+	public void setCompanyDesc(String desc) {L.setCompanyDesc(desc);}
+	public void setURL(String url) {L.setURL(url);}
+	public void setCompanyEmail(String email){L.setCompanyEmail(email);}
+	//Logistic Service Setter Functions
+
 
 	//creating Event via the Client
 	public void createEvent(String title, Date date, String time, String size, String userID) {
