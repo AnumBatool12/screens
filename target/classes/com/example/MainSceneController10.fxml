@@ -20,21 +20,21 @@
             <Font name="Californian FB" size="14.0" />
          </font>
       </Label>
-      <TextField id="usernameClient" fx:id="usernameClient" layoutX="48.0" layoutY="181.0" prefHeight="35.0" prefWidth="303.0" text="*Username" />
-      <TextField id="passwordClient" fx:id="passwordClient" layoutX="48.0" layoutY="224.0" prefHeight="35.0" prefWidth="303.0" text="*Password" />
-      <TextField id="confirmPassClient" fx:id="confirmPassClient" layoutX="48.0" layoutY="270.0" prefHeight="35.0" prefWidth="303.0" text="*Confirm Password" />
+      <TextField id="usernameClient" fx:id="PusernameClient" layoutX="48.0" layoutY="181.0" prefHeight="35.0" prefWidth="303.0" text="*Username" />
+      <TextField id="passwordClient" fx:id="PpasswordClient" layoutX="48.0" layoutY="224.0" prefHeight="35.0" prefWidth="303.0" text="*Password" />
+      <TextField id="confirmPassClient" fx:id="PconfirmPassClient" layoutX="48.0" layoutY="270.0" prefHeight="35.0" prefWidth="303.0" text="*Confirm Password Before Confirming Changes" />
       <Button fx:id="confirmChanges" layoutX="50.0" layoutY="321.0" mnemonicParsing="false" onAction="#openClientDashboard" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Confirm Changes">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>
       </Button>
-      <TextField id="firstName" fx:id="FullName" layoutX="48.0" layoutY="97.0" prefHeight="27.0" prefWidth="303.0" text="*Full Name">
+      <TextField id="firstName" fx:id="PFullName" layoutX="48.0" layoutY="97.0" prefHeight="27.0" prefWidth="303.0" text="*Full Name">
          <font>
             <Font name="Californian FB" size="13.0" />
          </font>
       </TextField>
-      <TextField id="Email" fx:id="email" layoutX="48.0" layoutY="139.0" prefHeight="27.0" prefWidth="149.0" text="*Email" />
-      <TextField fx:id="PhoneNo" layoutX="205.0" layoutY="139.0" prefHeight="27.0" prefWidth="149.0" text="*PhoneNo" />
+      <TextField id="Email" fx:id="Pemail" layoutX="48.0" layoutY="139.0" prefHeight="27.0" prefWidth="149.0" text="*Email" />
+      <TextField fx:id="PPhoneNo" layoutX="205.0" layoutY="139.0" prefHeight="27.0" prefWidth="149.0" text="*PhoneNo" />
       <Button fx:id="Return" layoutX="205.0" layoutY="321.0" mnemonicParsing="false" onAction="#openClientDashboard" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Return">
          <font>
             <Font name="Californian FB" size="14.0" />

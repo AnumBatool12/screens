@@ -64,6 +64,7 @@ public class HappenHubController {
 		 */
 	}
 
+	//Logistic Service Sign Up
 	public void createLogistic(String name, String type, String usn, String paswd, String url, String email){
 		L=new Logistic(name, type, usn, paswd, url, email);
 		/*
@@ -71,8 +72,15 @@ public class HappenHubController {
 		 * Assign Logistic an ID from here
 		 */
 	}
+	//Sign Up Functions
 
-
+	//Profile Loader Functions (Getter Functions)
+	//Client Get Client functions
+	public String getClientName(){return C.getFullname();}
+	public String getClientEmail(){return C.getEmailmail();}
+	public String getClientPhoneNo(){return C.getPhoneNo();}
+	public String getClientUsername(){return C.getUsername();}
+	public String getClientPassword(){return C.getPassword();}
 
 
 

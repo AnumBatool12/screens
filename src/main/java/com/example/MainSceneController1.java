@@ -2,6 +2,8 @@ package com.example;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +16,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import javafx.fxml.Initializable;
+import java.net.URL;
 
-public class MainSceneController1 {
+public class MainSceneController1 implements Initializable{
 
     //MySqlClass s = MySqlClass.getInstance();
 
@@ -26,6 +30,7 @@ public class MainSceneController1 {
     
     private String userType;//Can e Logistic, Event Planner or Client
     private HappenHubController hhc;
+
 
     //Variables for FXML 
     //Login
@@ -60,6 +65,16 @@ public class MainSceneController1 {
     @FXML private TextField confirmpassLog;
     @FXML private TextField passwordLog;
     //SignUp for Logistic Service
+    //Profile Page Client
+    @FXML private TextField PFullName;
+    @FXML private TextField PPhoneNo;
+    @FXML private TextField PconfirmPassClient;
+    @FXML private TextField Pemail;
+    @FXML private TextField PpasswordClient;
+    @FXML private TextField PusernameClient;
+    @FXML private Button Return;
+    @FXML private Button confirmChanges;
+    //Profile Page Client
 
 
     @FXML
@@ -76,8 +91,6 @@ public class MainSceneController1 {
 
     @FXML
     private Button createEvent;//
-
-    
 
     //Functions
     //Function to Confirm Login and determine User Type//
@@ -157,17 +170,27 @@ public class MainSceneController1 {
         }
     }
 
+    public void setUPClientProfilePage(String fullname, String email, String phone, String username, String password){
+        PFullName.setText(fullname);
+        PPhoneNo.setText(phone);
+        Pemail.setText(email);
+        PusernameClient.setText(username);
+        PpasswordClient.setText(password);
+    }
+
+    //Event Planner profile change
+    //Logistics Profile Change
+    //Logistics Services Section
+    //Create Event Client
+    //Load To-Do List Client
 
 
 
 
 
 
-
-
-
-
-
+    @Override //initializes all the pages
+    public void initialize(URL location, ResourceBundle resources) { }
 
     //Loader Function
     public void LoadPage(Parent root, ActionEvent event){
@@ -227,8 +250,22 @@ public class MainSceneController1 {
 
     //Open Form to Change Client's Personal Profile Information
     public void openProfilePage_Client(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController10.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController10.fxml"));
+        Parent root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        String clientFullName = hhc.getInstance().getClientName();
+        String clientEmail=hhc.getInstance().getClientEmail();
+        String clientPhone=hhc.getInstance().getClientPhoneNo();
+        String username=hhc.getInstance().getClientUsername();
+        String password=hhc.getInstance().getClientPassword();
+        controller1.setUPClientProfilePage(clientFullName, clientEmail, clientPhone, username, password);
+        
+        /**
+         * Can use this function to take in changes made to profile
+         */
+    
     }
 
     //Open Form to Create/Update Attendee List
