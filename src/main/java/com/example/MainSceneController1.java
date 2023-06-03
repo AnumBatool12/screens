@@ -66,21 +66,9 @@ public class MainSceneController1 implements Initializable{
     @FXML private TextField ServiceType, companyURL, confirmPassComp;
     @FXML private TextField passwordComp, usernameComp;
     //Profile Page Logistic Service
-
-    @FXML
-    private TextField title;//
-
-    @FXML
-    private TextField Etime;//
-
-    @FXML
-    private TextField ESize;//
-
-    @FXML
-    private DatePicker Edate;//
-
-    @FXML
-    private Button createEvent;//
+    //Create Event Page
+    @FXML private TextField title, Etime, ESize, Edate;
+    //Create Event Page
 
     //Functions
     //Set User Type
@@ -205,6 +193,27 @@ public class MainSceneController1 implements Initializable{
         Cemail.setText(email);
     }
 
+    //create event by Client and open client dashboard
+    public void createEventbyClient(ActionEvent event) throws IOException{
+        String Title=title.getText();
+        String date=Edate.getText();
+        String time=Etime.getText();
+        String size=ESize.getText();
+
+        hhc.getInstance().createEvent(Title, date, time, size);
+        openEventDashboard(event);
+    }
+
+
+
+
+
+
+
+
+
+
+
     @Override //initializes all the pages
     public void initialize(URL location, ResourceBundle resources) { }
 
@@ -266,7 +275,8 @@ public class MainSceneController1 implements Initializable{
 
     //Open Create Event Option
     public void openCreateEventForm(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController8.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController8.fxml"));
+        root=loader.load();
         LoadPage(root, event);
     }
 
@@ -427,16 +437,4 @@ public class MainSceneController1 implements Initializable{
         root=FXMLLoader.load(getClass().getResource("MainSceneController27.fxml"));
         LoadPage(root, event);
     }
-
-    //create event and open client dashboard
-    public void createEventbyClient(ActionEvent event) throws IOException{
-        String Title=title.getText();
-        LocalDate date=Edate.getValue();
-        String time=Etime.getText();
-        String size=ESize.getText();
-
-        //HappenHubController.getInstance().createEvent(Title, date, time, size, userID);//creating event
-        openEventDashboard(event);
-    }
-
 }
