@@ -34,71 +34,37 @@ public class MainSceneController1 implements Initializable{
 
     //Variables for FXML 
     //Login
-    @FXML private TextField usernameLogin;
-    @FXML private TextField passwordLogin;
+    @FXML private TextField usernameLogin, passwordLogin;
     //Login
     //SignUp Client
-    @FXML private TextField FullName;
-    @FXML private TextField PhoneNo;
-    @FXML private TextField confirmPassClient;
-    @FXML private TextField email;
-    @FXML private TextField passwordClient;
-    @FXML private TextField usernameClient;
+    @FXML private TextField FullName, PhoneNo, confirmPassClient;
+    @FXML private TextField email, passwordClient, usernameClient;
     //SignUp Client
     //SignUp Event Planner
-    @FXML private TextField PasswordEP;
-    @FXML private TextField confirmPassEP;
-    @FXML private TextField usernameEP;
-    @FXML private TextField EPdate;
-    @FXML private TextField emailEP;
-    @FXML private TextField expEP;
-    @FXML private TextField expertiseEP;
-    @FXML private TextField fullNameEP;
-    @FXML private TextField phoneNoEP;
+    @FXML private TextField PasswordEP, confirmPassEP, usernameEP;
+    @FXML private TextField EPdate, emailEP, expEP, expertiseEP;
+    @FXML private TextField fullNameEP, phoneNoEP;
     //SignUp Event Planner
     //SignUp for Logistic Service
-    @FXML private TextField LogisticType;
-    @FXML private TextField LogisticUrl;
-    @FXML private TextField LogisticUsername;
-    @FXML private TextField companyEmail;
-    @FXML private TextField companyName;
-    @FXML private TextField confirmpassLog;
+    @FXML private TextField LogisticType, LogisticUrl, LogisticUsername;
+    @FXML private TextField companyEmail, companyName, confirmpassLog;
     @FXML private TextField passwordLog;
     //SignUp for Logistic Service
     //Profile Page Client
-    @FXML private TextField PFullName;
-    @FXML private TextField PPhoneNo;
-    @FXML private TextField PconfirmPassClient;
-    @FXML private TextField Pemail;
-    @FXML private TextField PpasswordClient;
-    @FXML private TextField PusernameClient;
-    @FXML private Button Return;
-    @FXML private Button confirmChanges;
+    @FXML private TextField PFullName, PPhoneNo, PconfirmPassClient;
+    @FXML private TextField Pemail, PpasswordClient, PusernameClient;
+    @FXML private Button Return, confirmChanges;
     //Profile Page Client
     //Profile Page Event Planner
-    @FXML private TextField EPFullName;
-    @FXML private TextField EPPhoneNo;
-    @FXML private TextField EPconfirmPass;
-    @FXML private TextField EPemail;
-    @FXML private Button ReturnEP;
-    @FXML private Button confirmChangesEP;
-    @FXML private TextField dateEP;
-    @FXML private TextField experience;
-    @FXML private TextField expertise;
-    @FXML private TextField passwordEP;
-    @FXML private TextField EPusername;
+    @FXML private TextField EPFullName, EPPhoneNo, EPconfirmPass, EPemail;
+    @FXML private Button ReturnEP, confirmChangesEP;
+    @FXML private TextField dateEP, experience, expertise, passwordEP, EPusername;
     //Profile Page Event Planner
     //Profile Page Logistic Service
-    @FXML private TextField Cemail;
-    @FXML private TextField CompanyName;
-    @FXML private Button ReturnComp;
-    @FXML private TextField ServiceType;
-    @FXML private TextField companyURL;
-    @FXML private Button confirmChangesComp;
-    @FXML private TextField confirmPassComp;
-    @FXML private TextField passwordComp;
-    @FXML private Button updateServicePage;
-    @FXML private TextField usernameComp;
+    @FXML private TextField Cemail, CompanyName;
+    @FXML private Button ReturnComp, confirmChangesComp, updateServicePage;
+    @FXML private TextField ServiceType, companyURL, confirmPassComp;
+    @FXML private TextField passwordComp, usernameComp;
     //Profile Page Logistic Service
 
     @FXML
