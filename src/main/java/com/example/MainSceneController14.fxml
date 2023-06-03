@@ -20,28 +20,28 @@
             <Font name="Californian FB" size="14.0" />
          </font>
       </Label>
-      <TextField id="usernameClient" fx:id="usernameClient" layoutX="48.0" layoutY="314.0" prefHeight="35.0" prefWidth="303.0" text="*Username" />
-      <TextField id="passwordClient" fx:id="passwordClient" layoutX="48.0" layoutY="357.0" prefHeight="35.0" prefWidth="303.0" text="*Password" />
-      <TextField id="confirmPassClient" fx:id="confirmPassClient" layoutX="48.0" layoutY="403.0" prefHeight="35.0" prefWidth="303.0" text="*Confirm Password" />
-      <Button fx:id="confirmChanges" layoutX="50.0" layoutY="454.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Confirm Changes">
+      <TextField id="usernameClient" fx:id="EPusername" layoutX="48.0" layoutY="314.0" prefHeight="35.0" prefWidth="303.0" text="*Username" />
+      <TextField id="passwordClient" fx:id="passwordEP" layoutX="48.0" layoutY="357.0" prefHeight="35.0" prefWidth="303.0" text="*Password" />
+      <TextField id="confirmPassClient" fx:id="EPconfirmPass" layoutX="48.0" layoutY="403.0" prefHeight="35.0" prefWidth="303.0" text="*Confirm Password" />
+      <Button fx:id="confirmChangesEP" layoutX="50.0" layoutY="454.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Confirm Changes">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>
       </Button>
-      <TextField id="firstName" fx:id="FullName" layoutX="48.0" layoutY="97.0" prefHeight="27.0" prefWidth="303.0" text="*Full Name">
+      <TextField id="firstName" fx:id="EPFullName" layoutX="48.0" layoutY="97.0" prefHeight="27.0" prefWidth="303.0" text="*Full Name">
          <font>
             <Font name="Californian FB" size="13.0" />
          </font>
       </TextField>
-      <TextField id="Email" fx:id="email" layoutX="48.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="*Email" />
-      <TextField fx:id="PhoneNo" layoutX="202.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="*PhoneNo" />
-      <Button fx:id="Return" layoutX="205.0" layoutY="454.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Return">
+      <TextField id="Email" fx:id="EPemail" layoutX="48.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="*Email" />
+      <TextField fx:id="EPPhoneNo" layoutX="202.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="*PhoneNo" />
+      <Button fx:id="ReturnEP" layoutX="205.0" layoutY="454.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Return">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="EPdate" layoutX="48.0" layoutY="165.0" prefHeight="25.0" prefWidth="303.0" text="*Event Planner Since (dd-mm-yy)" />
-      <TextField fx:id="expertiseEP" layoutX="48.0" layoutY="198.0" prefHeight="25.0" prefWidth="303.0" text="*Expertise" />
-      <TextField fx:id="expEP" alignment="TOP_LEFT" layoutX="48.0" layoutY="232.0" prefHeight="75.0" prefWidth="303.0" text="*Experience" />
+      <TextField fx:id="dateEP" layoutX="48.0" layoutY="165.0" prefHeight="25.0" prefWidth="303.0" text="*Event Planner Since (dd-mm-yy)" />
+      <TextField fx:id="expertise" layoutX="48.0" layoutY="198.0" prefHeight="25.0" prefWidth="303.0" text="*Expertise" />
+      <TextField fx:id="experience" alignment="TOP_LEFT" layoutX="48.0" layoutY="232.0" prefHeight="75.0" prefWidth="303.0" text="*Experience" />
    </children>
 </AnchorPane>

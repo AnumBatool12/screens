@@ -2,6 +2,7 @@ package com.example;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 //HappenHubController is a singleton
@@ -14,7 +15,7 @@ public class HappenHubController {
 	private Logistic L;
 
 	//variables to help identify
-    private String userType;//Can e Logistic, Event Planner or Client
+    private String userType;//Can be Logistic, Event Planner or Client
 
 
 	//singleton constructor
@@ -80,7 +81,36 @@ public class HappenHubController {
 	public String getClientPhoneNo(){return C.getPhoneNo();}
 	public String getClientUsername(){return C.getUsername();}
 	public String getClientPassword(){return C.getPassword();}
+	//Client Setter Functions
+	public void setClientName(String name){C.setFullname(name);}
+	public void setClientEmail(String email){C.setEmail(email);}
+	public void setClientPhoneNo(String phone){C.setPhoneNo(phone);}
+	public void setUsername(String usn){C.setUsername(usn);}
+	public void setPassword(String p){C.setPassword(p);}
 
+	//Event Planner Getter Functions
+	public String getEPFullname(){ return EP.getFullname();}
+	public String getEPEmailmail() {return EP.getEmailmail();}
+	public String getEPPhoneNo() {return EP.getPhoneNo();}
+	public String getEPUsername() {return EP.getUsername();}
+	public String getEPPassword() {return EP.getPassword();}
+	public String getEPExpertise(){return EP.getExperience();}
+	public String getEPExperience(){return EP.getExperience();}
+	public String getEPStartDate(){
+		String date_string = null;
+   		SimpleDateFormat str = new SimpleDateFormat("dd/MMM/yyyy");
+		date_string = str.format(EP.getStartDate());
+		return date_string;
+	}
+	//Event Planner Setter Functions
+	public void setEPFullname(String name) {EP.setFullname(name);}
+	public void setEPEmail(String mail) {EP.setEmail(mail);}
+	public void setEPPhoneNo(String phone) {EP.setPhoneNo(phone);}
+	public void setEPUsername (String user){EP.setUsername(user);}
+	public void setEPPassword (String pass){EP.setPassword(pass);}
+	public void setEPExpertise(String exp){EP.setExpertise(exp);}
+	public void setEPExperience(String exp){EP.setExperience(exp);}
+	public void setEPStartDate(Date d){EP.setStartDate(d);}
 
 
 	//creating Event via the Client

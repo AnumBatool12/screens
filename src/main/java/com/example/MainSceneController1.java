@@ -28,7 +28,7 @@ public class MainSceneController1 implements Initializable{
     private Scene scene;
     private Parent root;
     
-    private String userType;//Can e Logistic, Event Planner or Client
+    private static String userType;//Can e Logistic, Event Planner or Client
     private HappenHubController hhc;
 
 
@@ -75,6 +75,19 @@ public class MainSceneController1 implements Initializable{
     @FXML private Button Return;
     @FXML private Button confirmChanges;
     //Profile Page Client
+    //Profile Page Event Planner
+    @FXML private TextField EPFullName;
+    @FXML private TextField EPPhoneNo;
+    @FXML private TextField EPconfirmPass;
+    @FXML private TextField EPemail;
+    @FXML private Button ReturnEP;
+    @FXML private Button confirmChangesEP;
+    @FXML private TextField dateEP;
+    @FXML private TextField experience;
+    @FXML private TextField expertise;
+    @FXML private TextField passwordEP;
+    @FXML private TextField EPusername;
+    //Profile Page Event Planner
 
 
     @FXML
@@ -93,6 +106,11 @@ public class MainSceneController1 implements Initializable{
     private Button createEvent;//
 
     //Functions
+    //Set User Type
+    public void setUserType(String st){userType=st;}
+    //Get User Type
+    public String getUserType(){return userType;}
+
     //Function to Confirm Login and determine User Type//
     public void Login(ActionEvent event) throws IOException{
         String usn, pswrd;
@@ -170,6 +188,7 @@ public class MainSceneController1 implements Initializable{
         }
     }
 
+    //Function to take in input from Client Profile Page
     public void setUPClientProfilePage(String fullname, String email, String phone, String username, String password){
         PFullName.setText(fullname);
         PPhoneNo.setText(phone);
@@ -178,7 +197,28 @@ public class MainSceneController1 implements Initializable{
         PpasswordClient.setText(password);
     }
 
-    //Event Planner profile change
+    //opening the right profile page
+    public void selectEP_LS_ProfilePage(ActionEvent event) throws IOException{
+        if (userType.equals("Event Planner")){
+            openProfilePage_EP(event);
+        }
+        else if (userType.equals("Logistic")){
+            openProfilePage_LS(event);
+        }
+    }
+
+    //Function to take input from Event Planner for Profile Page
+    public void setUpEventPlannerProfile(String fullname, String email, String phone, String username, String password, String expert, String exp, String date){
+        EPFullName.setText(fullname);
+        EPPhoneNo.setText(phone);
+        EPemail.setText(email);
+        EPusername.setText(username);
+        passwordEP.setText(password);
+        expertise.setText(expert);
+        experience.setText(exp);
+        dateEP.setText(date);
+    }
+
     //Logistics Profile Change
     //Logistics Services Section
     //Create Event Client
@@ -214,20 +254,32 @@ public class MainSceneController1 implements Initializable{
 
     //Open Sign Up Form for Client
     public void openSignUpForm_Client(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController3.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController3.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        controller1.setUserType("Client");
     }
 
     //Open Final SignUp Form for Event Planner
     public void openSignUpForm2_EventPlanner(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController5.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController5.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        controller1.setUserType("Event Planner");
     }
 
     //Open Sign Up Form for Logistic Service
     public void openSignUpFormLogisticService(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController6.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController6.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        controller1.setUserType("Logistic");
     }
 
     //Open Dashboard for Client
@@ -288,8 +340,24 @@ public class MainSceneController1 implements Initializable{
 
     //Open Form to Change Event Planners Personal Information
     public void openProfilePage_EP(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController14.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController14.fxml"));
+        Parent root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        String EPFullName = hhc.getInstance().getEPFullname();
+        String EPEmail=hhc.getInstance().getEPEmailmail();
+        String EPPhone=hhc.getInstance().getEPPhoneNo();
+        String username=hhc.getInstance().getEPUsername();
+        String password=hhc.getInstance().getEPPassword();
+        String expert=hhc.getInstance().getEPExpertise();
+        String exp=hhc.getInstance().getEPExperience();
+        String EPDate=hhc.getInstance().getEPStartDate();
+
+        controller1.setUpEventPlannerProfile(EPFullName, EPEmail, EPPhone, username, password, expert, exp, EPDate);
+        /**
+         * Can use this function to take in changes made to profile
+         */
     }
 
     //Opening Event Dashboard for Event Planner
