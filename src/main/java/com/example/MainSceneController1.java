@@ -15,10 +15,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MultipleSelectionModel;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.fxml.Initializable;
 import java.net.URL;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 public class MainSceneController1 implements Initializable{
 
@@ -71,8 +74,12 @@ public class MainSceneController1 implements Initializable{
     @FXML private TextField title, Etime, ESize, Edate;
     //Create Event Page
     //Client Main Page
-    @FXML
-    private ListView<String> eventList;
+    @FXML private ListView<String> eventList;
+    @FXML private TextField EventIndex;
+    //Event Dashboard
+    @FXML private TextField eventTitle, eventDate, eventTime, eventSize;
+    //Event Dashboard
+
 
     //Functions
     //Set User Type
@@ -208,6 +215,7 @@ public class MainSceneController1 implements Initializable{
         openClientDashboard(event);
     }
 
+    //Functions used to display event in listview
     public Boolean checkIndex(int index){
         Boolean present=hhc.getInstance().checkIndexEvent(index);
         return present;
@@ -225,10 +233,15 @@ public class MainSceneController1 implements Initializable{
     public void addItemToEventListC(String summ){
         eventList.getItems().add(summ);
     }
+    //Functions used to display event in listview
 
-
-
-
+    //Fill in Information for Event Main Page
+    public void fillEventDashboard(String title, String date, String time, String size){
+        eventTitle.setText(title);
+        eventDate.setText(date);
+        eventTime.setText(time);
+        eventSize.setText(size);
+    }
 
 
 
@@ -298,8 +311,8 @@ public class MainSceneController1 implements Initializable{
         for(int i=0;controller1.checkIndex(i); i++){
             controller1.addItemToEventListC(controller1.getEventSumm(i));
         }
-         
     }
+
 
     //Open Create Event Option
     public void openCreateEventForm(ActionEvent event) throws IOException{
@@ -310,8 +323,20 @@ public class MainSceneController1 implements Initializable{
 
     //Open DashBoard For Event
     public void openEventDashboard(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController9.fxml"));
+        int index=Integer.parseInt(EventIndex.getText());
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController9.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        String title=hhc.getInstance().getEventTitle(index);
+        String date=hhc.getInstance().getEventDate(index);
+        String time=hhc.getInstance().getEventTime(index);
+        String size=Integer.toString(hhc.getInstance().getEventSize(index));
+
+        controller1.fillEventDashboard(title, date, time, size);
+
     }
 
     //Open Form to Change Client's Personal Profile Information

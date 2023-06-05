@@ -146,11 +146,17 @@ public class HappenHubController {
 	
 	//getter functions of event from client
 	public String getEventTitle(int index)	{return C.getEventTitle(index);}
-	public Date getEventDate(int index) {return C.getEventDate(index);}
+	public String getEventDate(int index) {
+		String date_string = null;
+   		SimpleDateFormat str = new SimpleDateFormat("dd/MMM/yyyy");
+		date_string = str.format(C.getEventDate(index));
+		return date_string;
+	}
 	public String getEventTime(int index) {return C.getEventTime(index);}
 	public Integer getEventSize(int index) {return C.getEventSize(index);}
 	public String getEventSummary(int index){
 		String summ="";
+		summ+=Integer.toString(index)+". ";
 		summ+=getEventTitle(index);
 		summ+=" (";
 		summ+=getEventSize(index);
