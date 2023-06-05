@@ -151,4 +151,14 @@ public class Client implements User{
 	public void removeRequirement(int index, int Uindex) {event.get(Uindex).removeReq(Uindex);}
 	public void removeTask(int index) {tdl.removeTask(index);}
 	public void removeEvent(int index){event.remove(index);}
+
+	//function to see if index is greater than size of event list
+	public Boolean checkIndex(int index){
+		Boolean present=false;
+		int comp=Integer.compare(index, event.size());
+		if (comp<0 && event!=null){
+			present=true;
+		}
+		return present;
+	}
 }

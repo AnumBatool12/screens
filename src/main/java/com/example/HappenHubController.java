@@ -130,9 +130,6 @@ public class HappenHubController {
 	public void setURL(String url) {L.setURL(url);}
 	public void setCompanyEmail(String email){L.setCompanyEmail(email);}
 	//Logistic Service Setter Functions
-	//Event Getter Functions
-	
-	//Event Setter Functions
 
 	//creating Event via the Client
 	public void createEvent(String title, String Edate, String time, String size) {
@@ -147,4 +144,21 @@ public class HappenHubController {
 		System.out.println(Edate);
 	}
 	
+	//getter functions of event from client
+	public String getEventTitle(int index)	{return C.getEventTitle(index);}
+	public Date getEventDate(int index) {return C.getEventDate(index);}
+	public String getEventTime(int index) {return C.getEventTime(index);}
+	public Integer getEventSize(int index) {return C.getEventSize(index);}
+	public String getEventSummary(int index){
+		String summ="";
+		summ+=getEventTitle(index);
+		summ+=" (";
+		summ+=getEventSize(index);
+		summ+=" people)";
+		return summ;
+	}
+
+	public Boolean checkIndexEvent(int index){
+		return C.checkIndex(index);
+	}
 }

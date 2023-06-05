@@ -14,6 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.fxml.Initializable;
@@ -69,6 +70,9 @@ public class MainSceneController1 implements Initializable{
     //Create Event Page
     @FXML private TextField title, Etime, ESize, Edate;
     //Create Event Page
+    //Client Main Page
+    @FXML
+    private ListView<String> eventList;
 
     //Functions
     //Set User Type
@@ -201,10 +205,26 @@ public class MainSceneController1 implements Initializable{
         String size=ESize.getText();
 
         hhc.getInstance().createEvent(Title, date, time, size);
-        openEventDashboard(event);
+        openClientDashboard(event);
     }
 
+    public Boolean checkIndex(int index){
+        Boolean present=hhc.getInstance().checkIndexEvent(index);
+        return present;
+    }
 
+    public String getEventSumm(int index){
+        String summ=hhc.getInstance().getEventSummary(index);
+        return summ;
+    }
+
+    public void clearEventList() {
+        eventList.getItems().clear();//clear the list view
+    }
+
+    public void addItemToEventListC(String summ){
+        eventList.getItems().add(summ);
+    }
 
 
 
@@ -269,8 +289,16 @@ public class MainSceneController1 implements Initializable{
 
     //Open Dashboard for Client
     public void openClientDashboard(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController7.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController7.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+        
+        MainSceneController1 controller1=loader.getController();
+        controller1.clearEventList();
+        for(int i=0;controller1.checkIndex(i); i++){
+            controller1.addItemToEventListC(controller1.getEventSumm(i));
+        }
+         
     }
 
     //Open Create Event Option
