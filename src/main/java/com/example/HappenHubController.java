@@ -10,7 +10,7 @@ public class HappenHubController {
 	private static HappenHubController hhc;//HappenHu's static Variable
 
 	//variable for database
-	MySqlClass database = MySqlClass.getInstance();
+	//MySqlClass database = MySqlClass.getInstance();
 
 	//Variables of other classes
 	private Client C;
@@ -45,8 +45,8 @@ public class HappenHubController {
 	//Client Sign UP-->Creating new Client
 	public void createClient(String name, String mail, String phone, String usn, String pw){
 		C=new Client(name, mail, phone, usn, pw);
-
-		database.signupClient(C);
+		userType="Client";
+		//database.signupClient(C);
 		/*
 		 * Function adds Client to database
 		 * Assign Client an ID from here
@@ -62,8 +62,8 @@ public class HappenHubController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} 
-
-		database.signupEventPlanner(EP);
+		userType="Event Planner";
+		//database.signupEventPlanner(EP);
 		/*
 		 * Function adds EP to database
 		 * Assign EP an ID from here
@@ -73,8 +73,8 @@ public class HappenHubController {
 	//Logistic Service Sign Up
 	public void createLogistic(String name, String type, String usn, String paswd, String url, String email){
 		L=new Logistic(name, type, usn, paswd, url, email);
-
-		database.signupLogistic(L);
+		userType="Logistic";
+		//database.signupLogistic(L);
 		/*
 		 * Function adds Logistic to database
 		 * Assign Logistic an ID from here
@@ -175,4 +175,66 @@ public class HappenHubController {
 	public Boolean checkIndexEvent(int index){
 		return C.checkIndex(index);
 	}
+	//creating Event via the Client
+
+	//Handling Attendee List
+	public void createAttendee(String name, String phone, String mail, Boolean att, int Uindex){
+		if (userType.equals("Client")){
+			C.createAttendee(name, phone, mail, att, Uindex);
+		}
+		else if (userType.equals("Event Planner")){
+			EP.createAttendee(name, phone, mail, att, Uindex);
+		}
+	}
+
+	public String getAttendeeSummary(int index, int EventIndex){
+		String attendee="";
+		if (userType.equals("Client")){
+			attendee+=C.geAttendeetID(index, EventIndex)+". ";
+			attendee+=C.getAttendeeName(index, EventIndex)+": ";
+			attendee+=C.getAttendeeEmail(index, EventIndex)+", ";
+			attendee+=C.getAttendeePhone(index, EventIndex)+ " ";
+			if (C.getAttendingStatus(index, EventIndex)){
+				attendee+="(Attending)";
+			}
+			else{
+				attendee+="(Not Attending)";
+			}
+		}
+		else if (userType.equals("Event Planner")){
+			attendee+=EP.geAttendeetID(index, EventIndex)+". ";
+			attendee+=EP.getAttendeeName(index, EventIndex)+": ";
+			attendee+=EP.getAttendeeEmail(index, EventIndex)+", ";
+			attendee+=EP.getAttendeePhone(index, EventIndex)+" ";	
+			if (EP.getAttendingStatus(index, EventIndex)){
+				attendee+="(Attending)";
+			}
+			else{
+				attendee+="(Not Attending)";
+			}
+		}
+		return attendee;
+	}
+
+	public void removeAttendee(int index, int Eindex){
+		if (userType.equals("Client")){
+			C.removeAttendee(index, Eindex);
+		}
+		else if (userType.equals("Event Planner")){
+			EP.removeAttendee(index, Eindex);
+		}
+	}
+
+	public Boolean checkIndexAttList(int index, int Eindex){
+		if (userType.equals("Client")){
+			return C.checkAttendeeIndex(index, Eindex);
+		}
+		else if (userType.equals("Event Planner")){
+			return EP.checkAttendeeIndex(index, Eindex);//Eindex here isrequest no.
+		}
+		
+		
+		return false;
+	}
+
 }

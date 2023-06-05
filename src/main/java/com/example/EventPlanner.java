@@ -155,4 +155,14 @@ public class EventPlanner implements User {
 	public void removePayment(int index, int Uindex){rl.removePayment(index, Uindex);}
 	public void removeRequest(int index) {rl.removeRequest(index);}
 	public void getRidOFRejectRequest(int Uindex) {rl.getRidOFRejectRequest();}
+
+	public Boolean checkAttendeeIndex(int index, int requestIndex){
+		Boolean present=false;
+		int attendeeSize=rl.getTotalAttendee(requestIndex);
+		int comp=Integer.compare(index, attendeeSize);
+		if (comp<0){
+			present=true;
+		}
+		return present;
+	}
 }

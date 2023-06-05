@@ -22,12 +22,15 @@ public class AttendeeList {
 	//setters
 	public void createAttendee(String name, String phone, String mail, Boolean att){
 		Attendee newAttendee=new Attendee(name, phone, mail);
+		newAttendee.setID(totalAttendees);
 		newAttendee.setAttending(att);
 		attendees.add(newAttendee);
 		totalAttendees++;
 	}
 	public void addAttendee(Attendee add){
+		add.setID(totalAttendees);
 		attendees.add(add);
+		totalAttendees++;
 	}
 
 	public void setName(int index, String name){attendees.get(index).setName(name);}

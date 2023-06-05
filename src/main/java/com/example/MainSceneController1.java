@@ -1,8 +1,8 @@
 package com.example;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,17 +15,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MultipleSelectionModel;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.fxml.Initializable;
 import java.net.URL;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+ 
 
 public class MainSceneController1 implements Initializable{
 
-    MySqlClass database = MySqlClass.getInstance();
+    //MySqlClass database = MySqlClass.getInstance();
     // boolean yes = s.userExists("one");
     // if(yes == true){System.out.println("yes");}
 
@@ -35,6 +33,8 @@ public class MainSceneController1 implements Initializable{
     private Parent root;
     
     private static String userType;//Can e Logistic, Event Planner or Client
+    private static int EventIndexNo;//storage for current event that is open
+
     private HappenHubController hhc;
 
 
@@ -81,6 +81,10 @@ public class MainSceneController1 implements Initializable{
     //Event Dashboard
     @FXML private TextField eventTitle, eventDate, eventTime, eventSize;
     //Event Dashboard
+    //Attendee List
+    @FXML private TextField guestfullName, GuestEmail, GuestphoneNum, removeGuest;
+    @FXML private ListView<String> attendeeList;
+    //Attendee List
 
     
     //Functions
@@ -102,7 +106,7 @@ public class MainSceneController1 implements Initializable{
          * From Database
          * Add Alerts here in case of wrong username
          * or wrong password
-        */
+        
         boolean validuser  = database.userExists(usn);
         boolean correctPass=false;
         if(validuser){
@@ -135,7 +139,7 @@ public class MainSceneController1 implements Initializable{
                 Alert alert=new Alert(AlertType.ERROR, "Error in Opening");
                 alert.show();
             }
-        }
+        }*/
        
     }
 
@@ -254,6 +258,12 @@ public class MainSceneController1 implements Initializable{
     }
     //Functions used to display event in listview
 
+    //Function to save Event/Request we are using
+    public int getEventNo(){
+        
+        return EventIndexNo;
+    }
+
     //Fill in Information for Event Main Page
     public void fillEventDashboard(String title, String date, String time, String size){
         eventTitle.setText(title);
@@ -261,6 +271,58 @@ public class MainSceneController1 implements Initializable{
         eventTime.setText(time);
         eventSize.setText(size);
     }
+
+    //Adding Attendee in Attendee List
+    public void createAttendee(ActionEvent event) throws IOException{
+        hhc.getInstance().createAttendee(guestfullName.getText(), GuestphoneNum.getText(), GuestEmail.getText(), true, EventIndexNo);
+        openAttendeeList(event);
+    }
+
+
+    public Boolean checkAttIndex(int index){
+        Boolean present=hhc.getInstance().checkIndexAttList(index, EventIndexNo);
+        return present;
+    }
+
+    public void addAttendeetoList(String sum){
+        attendeeList.getItems().add(sum);
+    }
+
+    public void ClearAttendeeList() {
+        attendeeList.getItems().clear();
+    }
+     //Adding Attendee in Attendee List
+
+    //Return utton in Attendee List
+    public void returnToDashAttendeeToEvent(ActionEvent event) throws IOException{
+        if(getUserType().equals("Client")){
+            openEventDashboard(event);
+        }
+        else if (getUserType().equals("Event Planner")){
+            openEventDashboard_EP(event);
+        }
+        else if (getUserType().equals("Logistic")){
+            openEventDashboard_LS(event);
+        }
+    }
+
+    //removing attendee
+    public void removeAttendee(ActionEvent event) throws IOException{
+        int indexRemove=Integer.parseInt(removeGuest.getText());
+        if(getUserType().equals("Client")){
+            hhc.getInstance().removeAttendee(indexRemove, EventIndexNo);
+        }
+        //add for event planner
+
+        openAttendeeList(event);
+    }
+
+
+
+
+
+
+
 
 
 
@@ -330,8 +392,12 @@ public class MainSceneController1 implements Initializable{
         for(int i=0;controller1.checkIndex(i); i++){
             controller1.addItemToEventListC(controller1.getEventSumm(i));
         }
-    }
 
+        if (EventIndex!=null){
+            EventIndexNo=Integer.parseInt(EventIndex.getText());
+        }
+       
+    }
 
     //Open Create Event Option
     public void openCreateEventForm(ActionEvent event) throws IOException{
@@ -342,7 +408,8 @@ public class MainSceneController1 implements Initializable{
 
     //Open DashBoard For Event
     public void openEventDashboard(ActionEvent event) throws IOException{
-        int index=Integer.parseInt(EventIndex.getText());
+        int index=EventIndexNo;
+        
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController9.fxml"));
         root=loader.load();
@@ -380,8 +447,16 @@ public class MainSceneController1 implements Initializable{
 
     //Open Form to Create/Update Attendee List
     public void openAttendeeList(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController11.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController11.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+        
+        MainSceneController1 controller1=loader.getController();
+        controller1.ClearAttendeeList();
+        for(int i=0;controller1.checkAttIndex(i); i++){
+                controller1.addAttendeetoList(hhc.getInstance().getAttendeeSummary(i, EventIndexNo));;
+            }  
+        
     }
 
     //Open Form to Create/Update To Do List

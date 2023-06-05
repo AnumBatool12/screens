@@ -161,4 +161,15 @@ public class Client implements User{
 		}
 		return present;
 	}
+
+	//function to see if index is greater than size of attendee list
+	public Boolean checkAttendeeIndex(int index, int Eventindex){
+		Boolean present=false;
+		int attendeeSize=event.get(Eventindex).getTotalAttendee();
+		int comp=Integer.compare(index, attendeeSize);
+		if (comp<0 && event!=null){
+			present=true;
+		}
+		return present;
+	}
 }
