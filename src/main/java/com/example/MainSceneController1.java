@@ -22,7 +22,9 @@ import java.net.URL;
 
 public class MainSceneController1 implements Initializable{
 
-    //MySqlClass s = MySqlClass.getInstance();
+    MySqlClass database = MySqlClass.getInstance();
+    // boolean yes = s.userExists("one");
+    // if(yes == true){System.out.println("yes");}
 
     //Variables for Screen Display
     private Stage stage;
@@ -73,7 +75,7 @@ public class MainSceneController1 implements Initializable{
     //Client Main Page
     @FXML
     private ListView<String> eventList;
-
+    
     //Functions
     //Set User Type
     public void setUserType(String st){userType=st;}
@@ -94,29 +96,45 @@ public class MainSceneController1 implements Initializable{
          * Add Alerts here in case of wrong username
          * or wrong password
         */
-        userType="";
-        hhc.setUserType(userType);
-
-        //opening the relevant dashboard
-        if (userType.equals("Client")){
-            openClientDashboard(event);
-        }
-        else if (userType.equals("Event Planner")){
-            openEP_LS_Dashboard(event);
-        }
-        else if (userType.equals("Logistic")){
-            openEP_LS_Dashboard(event);
-        }
-        else {
-            Alert alert=new Alert(AlertType.ERROR, "Error in Opening");
+        boolean validuser  = database.userExists(usn);
+        boolean correctPass=false;
+        if(validuser){
+            userType = database.userType(usn);
+            correctPass = database.verifyPassword(pswrd);
+            if(!correctPass){
+                Alert alert=new Alert(AlertType.ERROR, "Incorrect Password!");
+                alert.show();
+            }
+        }else{
+            Alert alert=new Alert(AlertType.ERROR, "Incorrect Username!");
             alert.show();
         }
+
+        if(correctPass){
+             //userType="";
+            hhc.setUserType(userType);
+
+            //opening the relevant dashboard
+            if (userType.equals("Client")){
+                openClientDashboard(event);
+            }
+            else if (userType.equals("Event Planner")){
+                openEP_LS_Dashboard(event);
+            }
+            else if (userType.equals("Logistic")){
+                openEP_LS_Dashboard(event);
+            }
+            else {
+                Alert alert=new Alert(AlertType.ERROR, "Error in Opening");
+                alert.show();
+            }
+        }
+       
     }
 
     //Client Sign in
     public void createClient(ActionEvent event) throws IOException{
         userType="Client";
-        
         if (!((passwordClient.getText()).equals(confirmPassClient.getText()))){
             Alert alert=new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
             alert.setContentText("Password and Confirm Password are not the same");
@@ -124,6 +142,7 @@ public class MainSceneController1 implements Initializable{
         }
         else{
             hhc.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
+            
             openClientDashboard(event);
         }
     }
@@ -225,13 +244,6 @@ public class MainSceneController1 implements Initializable{
     public void addItemToEventListC(String summ){
         eventList.getItems().add(summ);
     }
-
-
-
-
-
-
-
 
 
     @Override //initializes all the pages
