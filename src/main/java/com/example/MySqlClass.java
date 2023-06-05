@@ -148,7 +148,7 @@ public class MySqlClass{
         }else{
             logistic = logisticExists(username);
             if(logistic == true){
-                type = "logistic";
+                type = "Logistic";
             }
         }
         return type;
@@ -188,7 +188,7 @@ public class MySqlClass{
         return correct;
     }
 
-    public boolean verifyPassword(){
+    public boolean verifyPassword(String Pass){
         boolean correct = false;
         try {
             Statement statement = cn.createStatement();
@@ -197,7 +197,7 @@ public class MySqlClass{
             pstmt.setString(1, username);
             ResultSet resultset = pstmt.executeQuery();
             int i=0;
-            String pass = "";
+            String pass = Pass;
             while (resultset.next()) {
                // System.out.println(resultset.getString("username"));  
                 if (i == 0){
@@ -296,6 +296,28 @@ public class MySqlClass{
         }
         return id;
     }
+    public int getEventID(){
+        int id=0;
+        try {
+            String sqlQuery = "Select Count(eventID) AS count FROM Event_";
+            PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+            pstmt.setString(1, username);
+            ResultSet resultset = pstmt.executeQuery();
+            int i=0;
+            while (resultset.next()) {
+               // System.out.println(resultset.getString("username"));  
+                if (i == 0){
+                    id = resultset.getInt("count");
+                }
+                i++;
+            }
+            // cn.close(); auto closes when the the object is closed
+        } 
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
 
 // ----------- CREATING A NEW USER / SIGN UP-----------------------------------------------------
 
@@ -322,6 +344,7 @@ public class MySqlClass{
             pstmt.setInt(0, getUserID(client.getUsername()));
             pstmt.executeQuery();
             statement.close();
+            client.setUserID(getUserID(client.getUsername()));
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -355,6 +378,8 @@ public class MySqlClass{
             pstmt.setString(4, planner.getExperience());
             pstmt.executeQuery();
 
+            planner.setUserID(getUserID(planner.getUsername()));
+
             statement.close();
             // cn.close(); auto closes when the the object is closed
         } 
@@ -377,6 +402,7 @@ public class MySqlClass{
             pstmt.setString(7, logistic.getPassword());
             pstmt.executeQuery();
             statement.close();
+            logistic.setLogID(getLogisticID(logistic.getUserName()));
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -774,9 +800,81 @@ public Client LoginClient(String username){
 //------------------END OF LOGINS---------------------------------------------------
 
 public void createEvent(Event event){
-     //   title date time size location desc
+     try {
+        String sqlQuery = "Insert into  Event_ (eventName, dateofevent, timeofevent, eventSize) Values (?,?,?,?)";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, event.getTitle());
+        Date sqlDate = new Date(event.getDate().getTime());
+        pstmt.setDate(2, sqlDate);
+        pstmt.setString(3, event.getTime());
+        pstmt.setInt(4, event.getSize());
+
+        pstmt.executeQuery();
+        event.setEventID(getEventID());
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
 
 }   
+
+public void updateEventTitle(Event event){
+    try { 
+        String sqlQuery = "UPDATE Event_ SET eventName = ? WHERE eventID = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, event.getTitle());
+        pstmt.setInt(2, event.getEventID());
+        pstmt.executeQuery();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+public void updateEventdate(Event event){
+    try { 
+        String sqlQuery = "UPDATE Event_ SET dateofevent = ? WHERE eventID = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        Date sqlDate = new Date(event.getDate().getTime());
+        pstmt.setDate(1, sqlDate);
+        pstmt.setInt(2, event.getEventID());
+        pstmt.executeQuery();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+public void updateEventSize(Event event){
+    try { 
+        String sqlQuery = "UPDATE Event_ SET eventSize = ? WHERE eventID = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setInt(1, event.getSize());
+        pstmt.setInt(2, event.getEventID());
+        pstmt.executeQuery();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+public void updateEventTime(Event event){
+    try { 
+        String sqlQuery = "UPDATE Event_ SET timeofevent = ? WHERE eventID = ?";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, event.getTime());
+        pstmt.setInt(2, event.getEventID());
+        pstmt.executeQuery();
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 
 
 

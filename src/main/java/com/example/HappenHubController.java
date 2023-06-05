@@ -9,6 +9,9 @@ import java.util.Date;
 public class HappenHubController {
 	private static HappenHubController hhc;//HappenHu's static Variable
 
+	//variable for database
+	MySqlClass database = MySqlClass.getInstance();
+
 	//Variables of other classes
 	private Client C;
 	private EventPlanner EP;
@@ -43,6 +46,7 @@ public class HappenHubController {
 	public void createClient(String name, String mail, String phone, String usn, String pw){
 		C=new Client(name, mail, phone, usn, pw);
 
+		database.signupClient(C);
 		/*
 		 * Function adds Client to database
 		 * Assign Client an ID from here
@@ -58,6 +62,8 @@ public class HappenHubController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} 
+
+		database.signupEventPlanner(EP);
 		/*
 		 * Function adds EP to database
 		 * Assign EP an ID from here
@@ -67,6 +73,8 @@ public class HappenHubController {
 	//Logistic Service Sign Up
 	public void createLogistic(String name, String type, String usn, String paswd, String url, String email){
 		L=new Logistic(name, type, usn, paswd, url, email);
+
+		database.signupLogistic(L);
 		/*
 		 * Function adds Logistic to database
 		 * Assign Logistic an ID from here
