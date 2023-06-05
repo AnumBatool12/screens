@@ -296,6 +296,28 @@ public class MySqlClass{
         }
         return id;
     }
+    public int getEventID(){
+        int id=0;
+        try {
+            String sqlQuery = "Select Count(eventID) AS count FROM Event_";
+            PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+            pstmt.setString(1, username);
+            ResultSet resultset = pstmt.executeQuery();
+            int i=0;
+            while (resultset.next()) {
+               // System.out.println(resultset.getString("username"));  
+                if (i == 0){
+                    id = resultset.getInt("count");
+                }
+                i++;
+            }
+            // cn.close(); auto closes when the the object is closed
+        } 
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
 
 // ----------- CREATING A NEW USER / SIGN UP-----------------------------------------------------
 
@@ -774,9 +796,27 @@ public Client LoginClient(String username){
 //------------------END OF LOGINS---------------------------------------------------
 
 public void createEvent(Event event){
-     //   title date time size location desc
+     try {
+        String sqlQuery = "Insert into  Event_ (eventName, dateofevent, timeofevent, eventSize) Values (?,?,?,?)";
+        PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
+        pstmt.setString(1, event.getTitle());
+        pstmt.setDate(2, null);
+        pstmt.setString(3, event.getTime());
+        pstmt.setInt(4, event.getSize());
+
+        pstmt.executeQuery();
+        event.setEventID(getEventID());
+        // cn.close(); auto closes when the the object is closed
+    } 
+    catch (SQLException e) {
+        e.printStackTrace();
+    }
 
 }   
+
+public void updateEventTitle(Event event){
+
+}
 
 
 
