@@ -254,9 +254,13 @@ public class MainSceneController1 implements Initializable{
     }
     //Functions used to display event in listview
 
-
-
-
+    //Fill in Information for Event Main Page
+    public void fillEventDashboard(String title, String date, String time, String size){
+        eventTitle.setText(title);
+        eventDate.setText(date);
+        eventTime.setText(time);
+        eventSize.setText(size);
+    }
 
 
 
