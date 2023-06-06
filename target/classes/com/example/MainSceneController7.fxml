@@ -28,7 +28,7 @@
             <Font name="Californian FB Bold" size="14.0" />
          </font>
       </Label>
-      <ListView fx:id="toDoList" layoutX="23.0" layoutY="107.0" prefHeight="297.0" prefWidth="177.0" />
+      <ListView fx:id="toDoListDash" layoutX="23.0" layoutY="107.0" prefHeight="297.0" prefWidth="177.0" />
       <Label layoutX="231.0" layoutY="96.0" text="Events">
          <font>
             <Font name="Californian FB Bold" size="18.0" />

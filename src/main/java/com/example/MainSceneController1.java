@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.text.Text;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -77,6 +78,7 @@ public class MainSceneController1 implements Initializable{
     //Create Event Page
     //Client Main Page
     @FXML private ListView<String> eventList;
+    @FXML private ListView<String> toDoListDash;
     @FXML private TextField EventIndex;
     //Event Dashboard
     @FXML private TextField eventTitle, eventDate, eventTime, eventSize;
@@ -89,6 +91,10 @@ public class MainSceneController1 implements Initializable{
     @FXML private TextField addReq, removeReq;
     @FXML private ListView<String> reqsList;
     //Requirement List
+    //To Do list page
+    @FXML private TextField task, taskDate, removeTask;
+    @FXML private ListView<String> toDoList;
+    //To do  list
 
     
     //Functions
@@ -351,7 +357,38 @@ public class MainSceneController1 implements Initializable{
         openEventReqirementsForm(event);
     }
     //Event Requirement Related Functions
+    //To DO list related Functions
+    public void clearToDoListDash() {
+        toDoListDash.getItems().clear();//clear the list view
+    }
 
+    public void clearToDoList() {
+        toDoList.getItems().clear();//clear the list view
+    }
+
+    public void addItemToDoListC(String summ){
+        toDoListDash.getItems().add(summ);
+    }
+
+    public void addItemToDoList(String summ){
+        toDoList.getItems().add(summ);
+    }
+
+    public void createTask(ActionEvent event) throws IOException{
+        hhc.getInstance().createTask(task.getText(), taskDate.getText());
+        openToDoList(event);
+    }
+
+    public void removeTask(ActionEvent event) throws IOException{
+        int indexRemove=Integer.parseInt(removeTask.getText());
+        if(getUserType().equals("Client")){
+            hhc.getInstance().removeTask(indexRemove);
+        }
+        //add for event planner
+
+        openToDoList(event);
+    }
+    //To do list functions
 
 
 
@@ -428,6 +465,11 @@ public class MainSceneController1 implements Initializable{
             controller1.addItemToEventListC(controller1.getEventSumm(i));
         }
 
+        controller1.clearToDoListDash();
+        for (int i=0;i<hhc.getInstance().getTotalTask();i++){
+            controller1.addItemToDoListC(hhc.getInstance().getTaskSummary(i));
+        }
+
         if (EventIndex!=null){
             EventIndexNo=Integer.parseInt(EventIndex.getText());
         }
@@ -495,8 +537,15 @@ public class MainSceneController1 implements Initializable{
 
     //Open Form to Create/Update To Do List
     public void openToDoList(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController12.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController12.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+        
+        MainSceneController1 controller1=loader.getController();
+        controller1.clearToDoList();
+        for (int i=0;i<hhc.getInstance().getTotalTask();i++){
+            controller1.addItemToDoList(hhc.getInstance().getTaskSummary(i));
+        }
     }
 
     //Opening Event Planner or Logistic Service Dashboard

@@ -280,4 +280,84 @@ public class HappenHubController {
 		return false;
 	}
 	//Handling Event Requirements
+
+	//To-Do list
+	public void createTask(String task, String Tdate){
+		SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
+		Date date=null;
+		try {
+			date=formatter.parse(Tdate);
+		} catch (ParseException e) {e.printStackTrace();}
+		
+		if (userType.equals("Client")){
+			C.allNewTask(task, date);
+		}
+		else if (userType.equals("Event Planner")){
+			EP.allNewTask(task, date);
+		}
+		else if (userType.equals("Logistic")){
+			L.allNewTask(task, date);
+		}
+	}
+
+	public String getTaskSummary(int index){
+		String task="";
+		if (userType.equals("Client")){
+			String date_string = null;
+			SimpleDateFormat str = new SimpleDateFormat("dd/MMM/yyyy");
+			date_string = str.format(C.gettaskDate(index));
+
+			task+=C.getScheduleID(index)+ ". ";
+			task+=C.getTaskdesc(index)+ "(";
+			task+=date_string+")";
+		}
+		else if(userType.equals("Event Planner")){
+			String date_string = null;
+			SimpleDateFormat str = new SimpleDateFormat("dd/MMM/yyyy");
+			date_string = str.format(EP.gettaskDate(index));
+
+			task+=EP.getScheduleID(index)+ ". ";
+			task+=EP.getTaskdesc(index)+ "(";
+			task+=date_string+")";
+		}
+		else if(userType.equals("Logistic")){
+			String date_string = null;
+			SimpleDateFormat str = new SimpleDateFormat("dd/MMM/yyyy");
+			date_string = str.format(L.getTaskDate(index));
+
+			task+=L.getTaskID(index)+ ". ";
+			task+=L.getTaskdesc(index)+ "(";
+			task+=date_string+")";
+		}
+		return task;
+	}
+
+	public int getTotalTask(){
+		int index=0;
+		if(userType.equals("Client")){
+			return C.getTotalTaskNo();
+		}
+		else if(userType.equals("Event Planner")){
+			return EP.getTotalTaskNo();
+		}
+		else if(userType.equals("Logistic")){
+			return L.getTotalTaskNo();
+		}
+
+		return index;
+	}
+
+	public void removeTask(int index){
+		if (userType.equals("Client")){
+			C.removeTask(index);
+		}
+		else if (userType.equals("Event Planner")){
+			EP.removeTask(index);
+		}
+		else if (userType.equals("Logistic")){
+			L.removeTask(index);
+		}
+	}
+	//To-Do list
+
 }
