@@ -396,7 +396,6 @@ public class MainSceneController1 implements Initializable{
         if (EventIndex!=null){
             EventIndexNo=Integer.parseInt(EventIndex.getText());
         }
-       
     }
 
     //Open Create Event Option
