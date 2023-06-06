@@ -360,4 +360,31 @@ public class HappenHubController {
 	}
 	//To-Do list
 
+	//Budget List
+	public void createbudgetItem(String desc, String p, int EventID){
+		double portion=Double.valueOf(p);
+		double spent=0.0;
+		int id=C.getTotalItemBudget(EventID);
+
+		C.createBudgetItem(desc, portion, spent, id, EventID);
+	}
+
+	public String getBudgetSummary(int index, int EventIndex){
+		String Budget="";
+		Budget+=C.getBudegtID(index, EventIndex)+". ";
+		Budget+=C.getDescBudget(index, EventIndex)+" (RS. ";
+		Budget+=C.getPortion(index, EventIndex)+ " )";
+
+		return Budget;
+	}
+
+	public void removeBudget(int index, int Eindex){
+		C.removeBudgetItem(index, Eindex);
+	}
+
+	public Boolean checkBudgetIndex(int index, int Eindex){
+		return C.BudgetIndex(index, Eindex);
+	}
+	//Budget List
+
 }

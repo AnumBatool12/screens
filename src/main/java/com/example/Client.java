@@ -183,4 +183,15 @@ public class Client implements User{
 		}
 		return present;
 	}
+
+	//function to see if index is greater than size of udget list
+	public Boolean BudgetIndex(int index, int Eventindex){
+		Boolean present=false;
+		int BudgetSize=event.get(Eventindex).getTotalItemBudget();
+		int comp=Integer.compare(index, BudgetSize);
+		if (comp<0 && event!=null){
+			present=true;
+		}
+		return present;
+	} 
 }

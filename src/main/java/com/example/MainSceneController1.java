@@ -96,7 +96,11 @@ public class MainSceneController1 implements Initializable{
     @FXML private ListView<String> toDoList;
     //To do  list
 
-    
+    //Budget List
+    @FXML private TextField BudgetDesc, price, removeBudgetItem;
+    @FXML private ListView<String> BudgetList;
+    //Budget List
+
     //Functions
     //Set User Type
     public void setUserType(String st){userType=st;}
@@ -390,15 +394,30 @@ public class MainSceneController1 implements Initializable{
     }
     //To do list functions
 
+    //Budget List
+    public void createBudgetItem(ActionEvent event) throws IOException{
+        hhc.getInstance().createbudgetItem(BudgetDesc.getText(), price.getText(), EventIndexNo);
+        openCreateBudgetForm(event);
+    }
 
+    public Boolean checkBudgetIndex(int index){
+        return hhc.getInstance().checkBudgetIndex(index, EventIndexNo);
+    }
 
+    public void addBudgettoList(String summ){
+        BudgetList.getItems().add(summ);
+    }
 
+    public void removeBudgetItem(ActionEvent event) throws IOException{
+        int indexRemove=Integer.parseInt(removeBudgetItem.getText());
+        hhc.getInstance().removeBudget(indexRemove, EventIndexNo);
+        openCreateBudgetForm(event);
+    }
 
-
-
-
-
-
+    public void clearBudgetList(){
+        BudgetList.getItems().clear();
+    }
+    //Budget List
 
     @Override //initializes all the pages
     public void initialize(URL location, ResourceBundle resources) { }
@@ -530,7 +549,7 @@ public class MainSceneController1 implements Initializable{
         MainSceneController1 controller1=loader.getController();
         controller1.ClearAttendeeList();
         for(int i=0;controller1.checkAttIndex(i); i++){
-                controller1.addAttendeetoList(hhc.getInstance().getAttendeeSummary(i, EventIndexNo));
+            controller1.addAttendeetoList(hhc.getInstance().getAttendeeSummary(i, EventIndexNo));
         }  
         
     }
@@ -665,8 +684,15 @@ public class MainSceneController1 implements Initializable{
 
     //Page to Create Budget
     public void openCreateBudgetForm(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController26.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController26.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        controller1.clearBudgetList();
+        for (int i=0; controller1.checkBudgetIndex(i); i++){
+            controller1.addBudgettoList(hhc.getInstance().getBudgetSummary(i, EventIndexNo));
+        }
     }
 
     //Page to Create Bill
