@@ -165,4 +165,15 @@ public class EventPlanner implements User {
 		}
 		return present;
 	}
+
+	//function to see if index is greater than size of requirement list
+	public Boolean RequirementIndex(int index, int Eventindex){
+		Boolean present=false;
+		int ReqSize=rl.getTotalReqs(Eventindex);
+		int comp=Integer.compare(index, ReqSize);
+		if (comp<0){
+			present=true;
+		}
+		return present;
+	}
 }

@@ -232,9 +232,52 @@ public class HappenHubController {
 		else if (userType.equals("Event Planner")){
 			return EP.checkAttendeeIndex(index, Eindex);//Eindex here isrequest no.
 		}
-		
-		
 		return false;
 	}
+	//Handling Attendee List
 
+	//Handling Event Requirements
+	public void createRequirement(String req, int EventIndex){
+		if (userType.equals("Client")){
+			int id=C.getTotalReqs(EventIndex);
+			C.createRequirement(req, id, EventIndex);
+		}
+		else if (userType.equals("Event Planner")){
+			int id=EP.getTotalReqs(EventIndex);
+			EP.createRequirement(req, id, EventIndex);
+		}
+	}
+
+	public String getRequirementSummary(int index, int EventIndex){
+		String req="";
+		if (userType.equals("Client")){
+			req+=C.getReqID(index, EventIndex)+". ";
+			req+=C.getReq(index, EventIndex);
+		}
+		else if (userType.equals("Event Planner")){
+			req+=EP.getReqID(index, EventIndex)+". ";
+			req+=EP.getReq(index, EventIndex);
+		}
+		return req;
+	}
+
+	public void removeRequirement(int index, int Eindex){
+		if (userType.equals("Client")){
+			C.removeRequirement(index, Eindex);
+		}
+		else if (userType.equals("Event Planner")){
+			EP.removeRequirement(index, Eindex);
+		}
+	}
+
+	public Boolean checkIndexReqList(int index, int Eindex){
+		if (userType.equals("Client")){
+			return C.RequirementIndex(index, Eindex);
+		}
+		else if (userType.equals("Event Planner")){
+			return EP.RequirementIndex(index, Eindex);//Eindex here isrequest no.
+		}
+		return false;
+	}
+	//Handling Event Requirements
 }

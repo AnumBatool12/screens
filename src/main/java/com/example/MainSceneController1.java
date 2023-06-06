@@ -85,6 +85,10 @@ public class MainSceneController1 implements Initializable{
     @FXML private TextField guestfullName, GuestEmail, GuestphoneNum, removeGuest;
     @FXML private ListView<String> attendeeList;
     //Attendee List
+    //Requirement List
+    @FXML private TextField addReq, removeReq;
+    @FXML private ListView<String> reqsList;
+    //Requirement List
 
     
     //Functions
@@ -272,12 +276,12 @@ public class MainSceneController1 implements Initializable{
         eventSize.setText(size);
     }
 
+    //Attendee Related Functions
     //Adding Attendee in Attendee List
     public void createAttendee(ActionEvent event) throws IOException{
         hhc.getInstance().createAttendee(guestfullName.getText(), GuestphoneNum.getText(), GuestEmail.getText(), true, EventIndexNo);
         openAttendeeList(event);
     }
-
 
     public Boolean checkAttIndex(int index){
         Boolean present=hhc.getInstance().checkIndexAttList(index, EventIndexNo);
@@ -316,6 +320,37 @@ public class MainSceneController1 implements Initializable{
 
         openAttendeeList(event);
     }
+    //Attendee Related Functions
+
+    //Event Requirement Related Functions
+    public void createRequirement(ActionEvent event) throws IOException{
+        hhc.getInstance().createRequirement(addReq.getText(), EventIndexNo);
+        openEventReqirementsForm(event);
+    }
+
+    public Boolean checkReqIndex(int index){
+        Boolean present=hhc.getInstance().checkIndexReqList(index, EventIndexNo);
+        return present;
+    }
+
+    public void addRequirementtoList(String sum){
+        reqsList.getItems().add(sum);
+    }
+
+    public void ClearRequirementList() {
+        reqsList.getItems().clear();
+    }
+
+    public void removeRequirement(ActionEvent event) throws IOException{
+        int indexRemove=Integer.parseInt(removeReq.getText());
+        if(getUserType().equals("Client")){
+            hhc.getInstance().removeRequirement(indexRemove, EventIndexNo);
+        }
+        //add for event planner
+
+        openEventReqirementsForm(event);
+    }
+    //Event Requirement Related Functions
 
 
 
@@ -453,8 +488,8 @@ public class MainSceneController1 implements Initializable{
         MainSceneController1 controller1=loader.getController();
         controller1.ClearAttendeeList();
         for(int i=0;controller1.checkAttIndex(i); i++){
-                controller1.addAttendeetoList(hhc.getInstance().getAttendeeSummary(i, EventIndexNo));;
-            }  
+                controller1.addAttendeetoList(hhc.getInstance().getAttendeeSummary(i, EventIndexNo));
+        }  
         
     }
 
@@ -550,8 +585,15 @@ public class MainSceneController1 implements Initializable{
 
     //Open Form to Set Event Requirements
     public void openEventReqirementsForm(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController22.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController22.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        controller1.ClearRequirementList();
+        for(int i=0;controller1.checkReqIndex(i); i++){
+            controller1.addRequirementtoList(hhc.getInstance().getRequirementSummary(i, EventIndexNo));;
+        }
     }
 
     //Open Search for Event Planner and Logistics
