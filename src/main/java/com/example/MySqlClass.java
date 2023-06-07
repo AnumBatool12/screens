@@ -557,12 +557,12 @@ public class MySqlClass{
 
 //----------------UPDATING EVENT PLANNER DATA--------------------------------------
 
-public void updatePlannerUser(EventPlanner planner){   
+public void updatePlannerUser(EventPlanner planner, String olduser){   
     try { 
-        String sqlQuery = "UPDATE User_ SET username = ? WHERE userid = ?";
+        String sqlQuery = "UPDATE User_ SET username = ? WHERE username = ?";
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, planner.getUsername());
-        pstmt.setInt(2, planner.getUserID());
+        pstmt.setString(2, olduser);
         pstmt.executeUpdate();
         // cn.close(); auto closes when the the object is closed
     } 

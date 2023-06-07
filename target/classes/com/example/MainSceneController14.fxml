@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f4eb" height="66.0" stroke="#f7f4eb" strokeType="INSIDE" width="400.0" />
       <Label layoutX="154.0" layoutY="14.0" text="HappenHub">
@@ -23,7 +22,7 @@
       <TextField id="usernameClient" fx:id="EPusername" layoutX="48.0" layoutY="314.0" prefHeight="35.0" prefWidth="303.0" text="*Username" />
       <TextField id="passwordClient" fx:id="passwordEP" layoutX="48.0" layoutY="357.0" prefHeight="35.0" prefWidth="303.0" text="*Password" />
       <TextField id="confirmPassClient" fx:id="EPconfirmPass" layoutX="48.0" layoutY="403.0" prefHeight="35.0" prefWidth="303.0" text="*Confirm Password" />
-      <Button fx:id="confirmChangesEP" layoutX="50.0" layoutY="454.0" mnemonicParsing="false" onAction="#openEP_LS_Dashboard" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Confirm Changes">
+      <Button fx:id="confirmChangesEP" layoutX="50.0" layoutY="454.0" mnemonicParsing="false" onAction="#updateClientProfile" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #E9C7C6;" text="Confirm Changes">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>

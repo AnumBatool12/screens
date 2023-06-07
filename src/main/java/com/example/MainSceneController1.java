@@ -498,25 +498,24 @@ public class MainSceneController1 implements Initializable{
 
     // update profile client
     public void updateClientProfile(ActionEvent event) throws Exception{
-        System.out.println("in update");
-        if(PconfirmPassClient.getText().equals(PconfirmPassClient.getText())){
+        if(PpasswordClient.getText().equals(PconfirmPassClient.getText())){
             System.out.println("pass matches");
-            if(!PFullName.getText().equals(hhc.getClientName())){
-                hhc.getClient().setFullname(PFullName.getText());
-                database.updateClientname(hhc.getClient());
+            if(!PFullName.getText().equals(hhc.getInstance().getClientName())){
+                hhc.getInstance().getClient().setFullname(PFullName.getText());
+                database.updateClientname(hhc.getInstance().getClient());
             }
-            else if(!Pemail.getText().equals(hhc.getClientEmail())){
-                hhc.getClient().setEmail(Pemail.getText());
-                database.updateClientemail(hhc.getClient());
+            else if(!Pemail.getText().equals(hhc.getInstance().getClientEmail())){
+                hhc.getInstance().getClient().setEmail(Pemail.getText());
+                database.updateClientemail(hhc.getInstance().getClient());
             }
-            else if(!PPhoneNo.getText().equals(hhc.getClientPhoneNo())){
-                hhc.getClient().setPhoneNo(PPhoneNo.getText());
-                database.updateClientPhoneNo(hhc.getClient());
+            else if(!PPhoneNo.getText().equals(hhc.getInstance().getClientPhoneNo())){
+                hhc.getInstance().getClient().setPhoneNo(PPhoneNo.getText());
+                database.updateClientPhoneNo(hhc.getInstance().getClient());
             }
-            else if (!PusernameClient.getText().equals(hhc.getClientUsername())){
+            else if (!PusernameClient.getText().equals(hhc.getInstance().getClientUsername())){
                 String oldUser = hhc.getClientUsername();
-                hhc.getClient().setUsername(PusernameClient.getText());
-                database.updateClientUser(hhc.getClient(), oldUser);
+                hhc.getInstance().getClient().setUsername(PusernameClient.getText());
+                database.updateClientUser(hhc.getInstance().getClient(), oldUser);
             }
         }
         else{
@@ -524,6 +523,49 @@ public class MainSceneController1 implements Initializable{
             alert.show();           
         }
         openClientDashboard(event);
+    }
+
+    public void updatePlannerProfile(ActionEvent event) throws Exception{
+        if(passwordEP.getText().equals(EPconfirmPass.getText())){
+            System.out.println("pass matches");
+            if(!EPFullName.getText().equals(hhc.getInstance().getEPFullname())){
+                hhc.getInstance().getPlanner().setFullname(EPFullName.getText());
+                database.updatePlannerName(hhc.getInstance().getPlanner());
+            }
+            else if(!EPemail.getText().equals(hhc.getInstance().getEPEmailmail())){
+                hhc.getInstance().getPlanner().setEmail(EPemail.getText());
+                database.updatePlannerEmail(hhc.getInstance().getPlanner());
+            }
+            else if(!EPPhoneNo.getText().equals(hhc.getInstance().getEPPhoneNo())){
+                hhc.getInstance().getPlanner().setPhoneNo(EPPhoneNo.getText());
+                database.updatePlannerPhone(hhc.getInstance().getPlanner());
+            }
+            else if (!EPusername.getText().equals(hhc.getInstance().getEPUsername())){
+                String oldUser = hhc.getEPUsername();
+                hhc.getInstance().getPlanner().setUsername(EPusername.getText());
+                database.updatePlannerUser(hhc.getInstance().getPlanner(), oldUser);
+            }
+            else if(!dateEP.getText().equals(hhc.getInstance().getEPStartDate())){
+                //convert date :UGHKASJDMBH UQ9Bo NO
+            }
+            else if(!expertise.getText().equals(hhc.getEPExpertise())){
+                hhc.getInstance().getPlanner().setExpertise(expertise.getText());
+                database.updatePlannerExpertise(hhc.getInstance().getPlanner());
+            }
+            else if(!experience.getText().equals(hhc.getInstance().getEPExperience())){
+                hhc.getInstance().getPlanner().setExperience(experience.getText());
+                database.updatePlannerExperience(hhc.getInstance().getPlanner());
+            }
+        }
+        else{
+            Alert alert = new Alert(AlertType.ERROR, "Passwords do not match");
+            alert.show();           
+        }
+        openProfilePage_EP(event);
+    }
+
+    public void updateLogistiProfile(ActionEvent event) throws Exception{
+
     }
 
     //Open Create Event Option
