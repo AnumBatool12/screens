@@ -154,10 +154,9 @@ public class MySqlClass{
         return type;
     }
 
-    public boolean verifyLogisticPassword(String username){
+    public boolean verifyLogisticPassword(String username, String Pass){
         boolean correct = false;
         try {
-            Statement statement = cn.createStatement();
             String sqlQuery = "select logisticPassword from LogisticService where logisticUsername = ? ";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, username);
@@ -172,14 +171,13 @@ public class MySqlClass{
                 i++;
             }
 
-            if(pass.equals(username)){
+            if(pass.equals(Pass)){
                 correct = true;
             }else{
                 correct = false;
             }
         
             resultset.close();
-            statement.close();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -188,7 +186,7 @@ public class MySqlClass{
         return correct;
     }
 
-    public boolean verifyPassword(String Pass){
+    public boolean verifyPassword(String username, String Pass){
         boolean correct = false;
         try {
             Statement statement = cn.createStatement();
@@ -197,7 +195,7 @@ public class MySqlClass{
             pstmt.setString(1, username);
             ResultSet resultset = pstmt.executeQuery();
             int i=0;
-            String pass = Pass;
+            String pass = "";
             while (resultset.next()) {
                // System.out.println(resultset.getString("username"));  
                 if (i == 0){
@@ -205,11 +203,11 @@ public class MySqlClass{
                 }
                 i++;
             }
-
-            if(pass.equals(username)){
+            System.out.println(pass);
+            if(pass.equals(Pass)){
                 correct = true;
             }else{
-                correct = verifyLogisticPassword(username);
+                correct = verifyLogisticPassword(username, Pass);
             }
         
             resultset.close();
@@ -363,7 +361,7 @@ public class MySqlClass{
             pstmt.setString(3, planner.getPhoneNo());
             pstmt.setString(4, planner.getUsername());
             pstmt.setString(5, planner.getPassword());
-            pstmt.setString(6, "EventPlanner");
+            pstmt.setString(6, "Event Planner");
             pstmt.setInt(7, getLatestSchedularid());
             pstmt.executeUpdate();
 
@@ -773,15 +771,16 @@ public Client LoginClient(String username){
 
 //------------------END OF LOGINS---------------------------------------------------
 
-public void createEvent(Event event){
+public void createEventbyClient(Event event, int id){
      try {
-        String sqlQuery = "Insert into  Event_ (eventName, dateofevent, timeofevent, eventSize) Values (?,?,?,?)";
+        String sqlQuery = "Insert into  Event_ (eventName, dateofevent, timeofevent, eventSize, clientid) Values (?,?,?,?,?)";
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, event.getTitle());
         Date sqlDate = new Date(event.getDate().getTime());
         pstmt.setDate(2, sqlDate);
         pstmt.setString(3, event.getTime());
         pstmt.setInt(4, event.getSize());
+        pstmt.setInt(5, id);
 
         pstmt.executeUpdate();
         event.setEventID(getEventID());

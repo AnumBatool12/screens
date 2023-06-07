@@ -10,7 +10,7 @@ public class HappenHubController {
 	private static HappenHubController hhc;//HappenHu's static Variable
 
 	//variable for database
-	//MySqlClass database = MySqlClass.getInstance();
+	MySqlClass database = MySqlClass.getInstance();
 
 	//Variables of other classes
 	private Client C;
@@ -34,11 +34,25 @@ public class HappenHubController {
 	public void setUserType(String type){userType=type;}
 	public String getUserType(){return userType;}
 
-	public void LoadUser(){//Used when user Logs In
+	public Client getClient(){return C;}
+	public EventPlanner getPlanner(){return EP;}
+	public Logistic getLogistic(){return L;}
+
+	public void LoadUser(String username){//Used when user Logs In
 		/**
 		 * For Whatever Database functions needed here
 		 * To load the User and all relevant classes
 		 */
+		if(userType.equals("Client")){
+			C = database.LoginClient(username);
+		}else if (userType.equals("Event Planner")){
+			Date date = new Date(2020-12-03);
+			EP = new EventPlanner("Planner", "planner@gmail.com", "0313131313", "planner11", "123", "Wedding Planner", "Been planning weddings since 3 years ago ", date);
+		}else if(userType.equals("Logistic")){
+			
+		}else{
+			System.out.println("Invalid usertype");
+		}
 	}
 
 	//Sign Up Functions
@@ -46,7 +60,7 @@ public class HappenHubController {
 	public void createClient(String name, String mail, String phone, String usn, String pw){
 		C=new Client(name, mail, phone, usn, pw);
 		userType="Client";
-		//database.signupClient(C);
+		database.signupClient(C);
 		/*
 		 * Function adds Client to database
 		 * Assign Client an ID from here
@@ -63,7 +77,7 @@ public class HappenHubController {
 			e.printStackTrace();
 		} 
 		userType="Event Planner";
-		//database.signupEventPlanner(EP);
+		database.signupEventPlanner(EP);
 		/*
 		 * Function adds EP to database
 		 * Assign EP an ID from here
@@ -74,7 +88,7 @@ public class HappenHubController {
 	public void createLogistic(String name, String type, String usn, String paswd, String url, String email){
 		L=new Logistic(name, type, usn, paswd, url, email);
 		userType="Logistic";
-		//database.signupLogistic(L);
+		database.signupLogistic(L);
 		/*
 		 * Function adds Logistic to database
 		 * Assign Logistic an ID from here
@@ -149,6 +163,8 @@ public class HappenHubController {
 		} catch (ParseException e) {e.printStackTrace();}
 		int id=C.getEventSize();
 		C.createNewEvent(title, date, time, size, id);
+		Event e = new Event(title, date, time, size, id);
+		database.createEventbyClient(e, C.getUserID());
 		System.out.println(Edate);
 	}
 	

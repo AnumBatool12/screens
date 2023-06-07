@@ -24,7 +24,7 @@ import java.net.URL;
 
 public class MainSceneController1 implements Initializable{
 
-    //MySqlClass database = MySqlClass.getInstance();
+    MySqlClass database = MySqlClass.getInstance();
     // boolean yes = s.userExists("one");
     // if(yes == true){System.out.println("yes");}
 
@@ -113,22 +113,24 @@ public class MainSceneController1 implements Initializable{
 
         usn=usernameLogin.getText();
         pswrd=passwordLogin.getText();
-
         /* 
          * Functions to determine who the User is
          * Use these to Determine User Type
          * From Database
          * Add Alerts here in case of wrong username
          * or wrong password
-        
+        */
         boolean validuser  = database.userExists(usn);
         boolean correctPass=false;
         if(validuser){
+            System.out.println("user exists");
             userType = database.userType(usn);
-            correctPass = database.verifyPassword(pswrd);
+            correctPass = database.verifyPassword(usn, pswrd);
             if(!correctPass){
                 Alert alert=new Alert(AlertType.ERROR, "Incorrect Password!");
                 alert.show();
+            }else{
+                System.out.println("pass correct");
             }
         }else{
             Alert alert=new Alert(AlertType.ERROR, "Incorrect Username!");
@@ -136,7 +138,7 @@ public class MainSceneController1 implements Initializable{
         }
 
         if(correctPass){
-             //userType="";
+            userType=database.userType(usn);
             hhc.setUserType(userType);
 
             //opening the relevant dashboard
@@ -153,7 +155,7 @@ public class MainSceneController1 implements Initializable{
                 Alert alert=new Alert(AlertType.ERROR, "Error in Opening");
                 alert.show();
             }
-        }*/
+        }
        
     }
 
@@ -492,6 +494,36 @@ public class MainSceneController1 implements Initializable{
         if (EventIndex!=null){
             EventIndexNo=Integer.parseInt(EventIndex.getText());
         }
+    }
+
+    // update profile client
+    public void updateClientProfile(ActionEvent event) throws Exception{
+        System.out.println("in update");
+        if(PconfirmPassClient.getText().equals(PconfirmPassClient.getText())){
+            System.out.println("pass matches");
+            if(!PFullName.getText().equals(hhc.getClientName())){
+                hhc.getClient().setFullname(PFullName.getText());
+                database.updateClientname(hhc.getClient());
+            }
+            else if(!Pemail.getText().equals(hhc.getClientEmail())){
+                hhc.getClient().setEmail(Pemail.getText());
+                database.updateClientemail(hhc.getClient());
+            }
+            else if(!PPhoneNo.getText().equals(hhc.getClientPhoneNo())){
+                hhc.getClient().setPhoneNo(PPhoneNo.getText());
+                database.updateClientPhoneNo(hhc.getClient());
+            }
+            else if (!PusernameClient.getText().equals(hhc.getClientUsername())){
+                String oldUser = hhc.getClientUsername();
+                hhc.getClient().setUsername(PusernameClient.getText());
+                database.updateClientUser(hhc.getClient(), oldUser);
+            }
+        }
+        else{
+            Alert alert = new Alert(AlertType.ERROR, "Passwords do not match");
+            alert.show();           
+        }
+        openClientDashboard(event);
     }
 
     //Open Create Event Option

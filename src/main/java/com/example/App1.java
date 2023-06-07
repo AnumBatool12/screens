@@ -32,5 +32,4 @@ public class App1 extends Application {
     public static void main(String[] args) {
         launch();
     }
- 
 }
