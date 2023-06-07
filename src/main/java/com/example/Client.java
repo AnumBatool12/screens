@@ -148,7 +148,7 @@ public class Client implements User{
 	//removers
 	public void removeAttendee(int index, int Uindex) {event.get(Uindex).removeAttendee(index);}
 	public void removeBudgetItem(int index, int Uindex) {event.get(Uindex).removeBudgetItem(index);}
-	public void removeRequirement(int index, int Uindex) {event.get(Uindex).removeReq(Uindex);}
+	public void removeRequirement(int index, int Uindex) {event.get(Uindex).removeReq(index);}
 	public void removeTask(int index) {tdl.removeTask(index);}
 	public void removeEvent(int index){event.remove(index);}
 
@@ -161,4 +161,37 @@ public class Client implements User{
 		}
 		return present;
 	}
+
+	//function to see if index is greater than size of attendee list
+	public Boolean checkAttendeeIndex(int index, int Eventindex){
+		Boolean present=false;
+		int attendeeSize=event.get(Eventindex).getTotalAttendee();
+		int comp=Integer.compare(index, attendeeSize);
+		if (comp<0 && event!=null){
+			present=true;
+		}
+		return present;
+	}
+
+	//function to see if index is greater than size of requirement list
+	public Boolean RequirementIndex(int index, int Eventindex){
+		Boolean present=false;
+		int ReqSize=event.get(Eventindex).getTotalReqs();
+		int comp=Integer.compare(index, ReqSize);
+		if (comp<0 && event!=null){
+			present=true;
+		}
+		return present;
+	}
+
+	//function to see if index is greater than size of udget list
+	public Boolean BudgetIndex(int index, int Eventindex){
+		Boolean present=false;
+		int BudgetSize=event.get(Eventindex).getTotalItemBudget();
+		int comp=Integer.compare(index, BudgetSize);
+		if (comp<0 && event!=null){
+			present=true;
+		}
+		return present;
+	} 
 }

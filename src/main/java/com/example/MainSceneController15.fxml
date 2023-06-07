@@ -22,7 +22,7 @@
             <Font name="Californian FB" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="budgetbutton" layoutX="258.0" layoutY="57.0" mnemonicParsing="false" onAction="#openCreateBudgetForm" prefHeight="29.0" prefWidth="127.0" style="-fx-background-color: #E9C7C6;" text="Create Budget">
+      <Button fx:id="budgetbutton" layoutX="258.0" layoutY="57.0" mnemonicParsing="false" onAction="#openCreateBudgetForm" prefHeight="29.0" prefWidth="127.0" style="-fx-background-color: #E9C7C6;" text="Create Invoice">
          <font>
             <Font name="Californian FB" size="12.0" />
          </font>

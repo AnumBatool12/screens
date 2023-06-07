@@ -1,8 +1,8 @@
 package com.example;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.text.Text;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -19,10 +20,11 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.fxml.Initializable;
 import java.net.URL;
+ 
 
 public class MainSceneController1 implements Initializable{
 
-    MySqlClass database = MySqlClass.getInstance();
+    //MySqlClass database = MySqlClass.getInstance();
     // boolean yes = s.userExists("one");
     // if(yes == true){System.out.println("yes");}
 
@@ -32,6 +34,8 @@ public class MainSceneController1 implements Initializable{
     private Parent root;
     
     private static String userType;//Can e Logistic, Event Planner or Client
+    private static int EventIndexNo;//storage for current event that is open
+
     private HappenHubController hhc;
 
 
@@ -73,9 +77,30 @@ public class MainSceneController1 implements Initializable{
     @FXML private TextField title, Etime, ESize, Edate;
     //Create Event Page
     //Client Main Page
-    @FXML
-    private ListView<String> eventList;
-    
+    @FXML private ListView<String> eventList;
+    @FXML private ListView<String> toDoListDash;
+    @FXML private TextField EventIndex;
+    //Event Dashboard
+    @FXML private TextField eventTitle, eventDate, eventTime, eventSize;
+    //Event Dashboard
+    //Attendee List
+    @FXML private TextField guestfullName, GuestEmail, GuestphoneNum, removeGuest;
+    @FXML private ListView<String> attendeeList;
+    //Attendee List
+    //Requirement List
+    @FXML private TextField addReq, removeReq;
+    @FXML private ListView<String> reqsList;
+    //Requirement List
+    //To Do list page
+    @FXML private TextField task, taskDate, removeTask;
+    @FXML private ListView<String> toDoList;
+    //To do  list
+
+    //Budget List
+    @FXML private TextField BudgetDesc, price, removeBudgetItem;
+    @FXML private ListView<String> BudgetList;
+    //Budget List
+
     //Functions
     //Set User Type
     public void setUserType(String st){userType=st;}
@@ -95,7 +120,7 @@ public class MainSceneController1 implements Initializable{
          * From Database
          * Add Alerts here in case of wrong username
          * or wrong password
-        */
+        
         boolean validuser  = database.userExists(usn);
         boolean correctPass=false;
         if(validuser){
@@ -128,7 +153,7 @@ public class MainSceneController1 implements Initializable{
                 Alert alert=new Alert(AlertType.ERROR, "Error in Opening");
                 alert.show();
             }
-        }
+        }*/
        
     }
 
@@ -227,6 +252,7 @@ public class MainSceneController1 implements Initializable{
         openClientDashboard(event);
     }
 
+    //Functions used to display event in listview
     public Boolean checkIndex(int index){
         Boolean present=hhc.getInstance().checkIndexEvent(index);
         return present;
@@ -244,7 +270,154 @@ public class MainSceneController1 implements Initializable{
     public void addItemToEventListC(String summ){
         eventList.getItems().add(summ);
     }
+    //Functions used to display event in listview
 
+    //Function to save Event/Request we are using
+    public int getEventNo(){
+        
+        return EventIndexNo;
+    }
+
+    //Fill in Information for Event Main Page
+    public void fillEventDashboard(String title, String date, String time, String size){
+        eventTitle.setText(title);
+        eventDate.setText(date);
+        eventTime.setText(time);
+        eventSize.setText(size);
+    }
+
+    //Attendee Related Functions
+    //Adding Attendee in Attendee List
+    public void createAttendee(ActionEvent event) throws IOException{
+        hhc.getInstance().createAttendee(guestfullName.getText(), GuestphoneNum.getText(), GuestEmail.getText(), true, EventIndexNo);
+        openAttendeeList(event);
+    }
+
+    public Boolean checkAttIndex(int index){
+        Boolean present=hhc.getInstance().checkIndexAttList(index, EventIndexNo);
+        return present;
+    }
+
+    public void addAttendeetoList(String sum){
+        attendeeList.getItems().add(sum);
+    }
+
+    public void ClearAttendeeList() {
+        attendeeList.getItems().clear();
+    }
+     //Adding Attendee in Attendee List
+
+    //Return utton in Attendee List
+    public void returnToDashAttendeeToEvent(ActionEvent event) throws IOException{
+        if(getUserType().equals("Client")){
+            openEventDashboard(event);
+        }
+        else if (getUserType().equals("Event Planner")){
+            openEventDashboard_EP(event);
+        }
+        else if (getUserType().equals("Logistic")){
+            openEventDashboard_LS(event);
+        }
+    }
+
+    //removing attendee
+    public void removeAttendee(ActionEvent event) throws IOException{
+        int indexRemove=Integer.parseInt(removeGuest.getText());
+        if(getUserType().equals("Client")){
+            hhc.getInstance().removeAttendee(indexRemove, EventIndexNo);
+        }
+        //add for event planner
+
+        openAttendeeList(event);
+    }
+    //Attendee Related Functions
+
+    //Event Requirement Related Functions
+    public void createRequirement(ActionEvent event) throws IOException{
+        hhc.getInstance().createRequirement(addReq.getText(), EventIndexNo);
+        openEventReqirementsForm(event);
+    }
+
+    public Boolean checkReqIndex(int index){
+        Boolean present=hhc.getInstance().checkIndexReqList(index, EventIndexNo);
+        return present;
+    }
+
+    public void addRequirementtoList(String sum){
+        reqsList.getItems().add(sum);
+    }
+
+    public void ClearRequirementList() {
+        reqsList.getItems().clear();
+    }
+
+    public void removeRequirement(ActionEvent event) throws IOException{
+        int indexRemove=Integer.parseInt(removeReq.getText());
+        if(getUserType().equals("Client")){
+            hhc.getInstance().removeRequirement(indexRemove, EventIndexNo);
+        }
+        //add for event planner
+
+        openEventReqirementsForm(event);
+    }
+    //Event Requirement Related Functions
+    //To DO list related Functions
+    public void clearToDoListDash() {
+        toDoListDash.getItems().clear();//clear the list view
+    }
+
+    public void clearToDoList() {
+        toDoList.getItems().clear();//clear the list view
+    }
+
+    public void addItemToDoListC(String summ){
+        toDoListDash.getItems().add(summ);
+    }
+
+    public void addItemToDoList(String summ){
+        toDoList.getItems().add(summ);
+    }
+
+    public void createTask(ActionEvent event) throws IOException{
+        hhc.getInstance().createTask(task.getText(), taskDate.getText());
+        openToDoList(event);
+    }
+
+    public void removeTask(ActionEvent event) throws IOException{
+        int indexRemove=Integer.parseInt(removeTask.getText());
+        if(getUserType().equals("Client")){
+            hhc.getInstance().removeTask(indexRemove);
+        }
+        //add for event planner
+
+        openToDoList(event);
+    }
+    //To do list functions
+
+    //Budget List
+    public void createBudgetItem(ActionEvent event) throws IOException{
+        hhc.getInstance().createbudgetItem(BudgetDesc.getText(), price.getText(), EventIndexNo);
+        openCreateBudgetForm(event);
+    }
+
+    public Boolean checkBudgetIndex(int index){
+        return hhc.getInstance().checkBudgetIndex(index, EventIndexNo);
+    }
+
+    public void addBudgettoList(String summ){
+        BudgetList.getItems().add(summ);
+    }
+
+    public void removeBudgetItem(ActionEvent event) throws IOException{
+        int indexRemove=Integer.parseInt(removeBudgetItem.getText());
+        hhc.getInstance().removeBudget(indexRemove, EventIndexNo);
+        openCreateBudgetForm(event);
+    }
+
+    public void clearBudgetList(){
+        BudgetList.getItems().clear();
+    }
+    //Budget List
 
     @Override //initializes all the pages
     public void initialize(URL location, ResourceBundle resources) { }
@@ -310,7 +483,15 @@ public class MainSceneController1 implements Initializable{
         for(int i=0;controller1.checkIndex(i); i++){
             controller1.addItemToEventListC(controller1.getEventSumm(i));
         }
-         
+
+        controller1.clearToDoListDash();
+        for (int i=0;i<hhc.getInstance().getTotalTask();i++){
+            controller1.addItemToDoListC(hhc.getInstance().getTaskSummary(i));
+        }
+
+        if (EventIndex!=null){
+            EventIndexNo=Integer.parseInt(EventIndex.getText());
+        }
     }
 
     //Open Create Event Option
@@ -322,8 +503,21 @@ public class MainSceneController1 implements Initializable{
 
     //Open DashBoard For Event
     public void openEventDashboard(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController9.fxml"));
+        int index=EventIndexNo;
+        
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController9.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        String title=hhc.getInstance().getEventTitle(index);
+        String date=hhc.getInstance().getEventDate(index);
+        String time=hhc.getInstance().getEventTime(index);
+        String size=Integer.toString(hhc.getInstance().getEventSize(index));
+
+        controller1.fillEventDashboard(title, date, time, size);
+
     }
 
     //Open Form to Change Client's Personal Profile Information
@@ -348,14 +542,29 @@ public class MainSceneController1 implements Initializable{
 
     //Open Form to Create/Update Attendee List
     public void openAttendeeList(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController11.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController11.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+        
+        MainSceneController1 controller1=loader.getController();
+        controller1.ClearAttendeeList();
+        for(int i=0;controller1.checkAttIndex(i); i++){
+            controller1.addAttendeetoList(hhc.getInstance().getAttendeeSummary(i, EventIndexNo));
+        }  
+        
     }
 
     //Open Form to Create/Update To Do List
     public void openToDoList(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController12.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController12.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+        
+        MainSceneController1 controller1=loader.getController();
+        controller1.clearToDoList();
+        for (int i=0;i<hhc.getInstance().getTotalTask();i++){
+            controller1.addItemToDoList(hhc.getInstance().getTaskSummary(i));
+        }
     }
 
     //Opening Event Planner or Logistic Service Dashboard
@@ -444,8 +653,15 @@ public class MainSceneController1 implements Initializable{
 
     //Open Form to Set Event Requirements
     public void openEventReqirementsForm(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController22.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController22.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        controller1.ClearRequirementList();
+        for(int i=0;controller1.checkReqIndex(i); i++){
+            controller1.addRequirementtoList(hhc.getInstance().getRequirementSummary(i, EventIndexNo));;
+        }
     }
 
     //Open Search for Event Planner and Logistics
@@ -468,8 +684,15 @@ public class MainSceneController1 implements Initializable{
 
     //Page to Create Budget
     public void openCreateBudgetForm(ActionEvent event) throws IOException{
-        root=FXMLLoader.load(getClass().getResource("MainSceneController26.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSceneController26.fxml"));
+        root=loader.load();
         LoadPage(root, event);
+
+        MainSceneController1 controller1=loader.getController();
+        controller1.clearBudgetList();
+        for (int i=0; controller1.checkBudgetIndex(i); i++){
+            controller1.addBudgettoList(hhc.getInstance().getBudgetSummary(i, EventIndexNo));
+        }
     }
 
     //Page to Create Bill

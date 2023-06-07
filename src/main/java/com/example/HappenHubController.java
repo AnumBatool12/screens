@@ -10,7 +10,7 @@ public class HappenHubController {
 	private static HappenHubController hhc;//HappenHu's static Variable
 
 	//variable for database
-	MySqlClass database = MySqlClass.getInstance();
+	//MySqlClass database = MySqlClass.getInstance();
 
 	//Variables of other classes
 	private Client C;
@@ -22,7 +22,7 @@ public class HappenHubController {
 
 
 	//singleton constructor
-	HappenHubController(){}
+	private HappenHubController(){}
 
 	public static HappenHubController getInstance(){//get instance
 		if (hhc==null){
@@ -45,8 +45,8 @@ public class HappenHubController {
 	//Client Sign UP-->Creating new Client
 	public void createClient(String name, String mail, String phone, String usn, String pw){
 		C=new Client(name, mail, phone, usn, pw);
-
-			database.signupClient(C);
+		userType="Client";
+		//database.signupClient(C);
 		/*
 		 * Function adds Client to database
 		 * Assign Client an ID from here
@@ -62,8 +62,8 @@ public class HappenHubController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} 
-
-		database.signupEventPlanner(EP);
+		userType="Event Planner";
+		//database.signupEventPlanner(EP);
 		/*
 		 * Function adds EP to database
 		 * Assign EP an ID from here
@@ -73,8 +73,8 @@ public class HappenHubController {
 	//Logistic Service Sign Up
 	public void createLogistic(String name, String type, String usn, String paswd, String url, String email){
 		L=new Logistic(name, type, usn, paswd, url, email);
-
-		database.signupLogistic(L);
+		userType="Logistic";
+		//database.signupLogistic(L);
 		/*
 		 * Function adds Logistic to database
 		 * Assign Logistic an ID from here
@@ -154,11 +154,17 @@ public class HappenHubController {
 	
 	//getter functions of event from client
 	public String getEventTitle(int index)	{return C.getEventTitle(index);}
-	public Date getEventDate(int index) {return C.getEventDate(index);}
+	public String getEventDate(int index) {
+		String date_string = null;
+   		SimpleDateFormat str = new SimpleDateFormat("dd/MMM/yyyy");
+		date_string = str.format(C.getEventDate(index));
+		return date_string;
+	}
 	public String getEventTime(int index) {return C.getEventTime(index);}
 	public Integer getEventSize(int index) {return C.getEventSize(index);}
 	public String getEventSummary(int index){
 		String summ="";
+		summ+=Integer.toString(index)+". ";
 		summ+=getEventTitle(index);
 		summ+=" (";
 		summ+=getEventSize(index);
@@ -169,4 +175,216 @@ public class HappenHubController {
 	public Boolean checkIndexEvent(int index){
 		return C.checkIndex(index);
 	}
+	//creating Event via the Client
+
+	//Handling Attendee List
+	public void createAttendee(String name, String phone, String mail, Boolean att, int Uindex){
+		if (userType.equals("Client")){
+			C.createAttendee(name, phone, mail, att, Uindex);
+		}
+		else if (userType.equals("Event Planner")){
+			EP.createAttendee(name, phone, mail, att, Uindex);
+		}
+	}
+
+	public String getAttendeeSummary(int index, int EventIndex){
+		String attendee="";
+		if (userType.equals("Client")){
+			attendee+=C.geAttendeetID(index, EventIndex)+". ";
+			attendee+=C.getAttendeeName(index, EventIndex)+": ";
+			attendee+=C.getAttendeeEmail(index, EventIndex)+", ";
+			attendee+=C.getAttendeePhone(index, EventIndex)+ " ";
+			if (C.getAttendingStatus(index, EventIndex)){
+				attendee+="(Attending)";
+			}
+			else{
+				attendee+="(Not Attending)";
+			}
+		}
+		else if (userType.equals("Event Planner")){
+			attendee+=EP.geAttendeetID(index, EventIndex)+". ";
+			attendee+=EP.getAttendeeName(index, EventIndex)+": ";
+			attendee+=EP.getAttendeeEmail(index, EventIndex)+", ";
+			attendee+=EP.getAttendeePhone(index, EventIndex)+" ";	
+			if (EP.getAttendingStatus(index, EventIndex)){
+				attendee+="(Attending)";
+			}
+			else{
+				attendee+="(Not Attending)";
+			}
+		}
+		return attendee;
+	}
+
+	public void removeAttendee(int index, int Eindex){
+		if (userType.equals("Client")){
+			C.removeAttendee(index, Eindex);
+		}
+		else if (userType.equals("Event Planner")){
+			EP.removeAttendee(index, Eindex);
+		}
+	}
+
+	public Boolean checkIndexAttList(int index, int Eindex){
+		if (userType.equals("Client")){
+			return C.checkAttendeeIndex(index, Eindex);
+		}
+		else if (userType.equals("Event Planner")){
+			return EP.checkAttendeeIndex(index, Eindex);//Eindex here isrequest no.
+		}
+		return false;
+	}
+	//Handling Attendee List
+
+	//Handling Event Requirements
+	public void createRequirement(String req, int EventIndex){
+		if (userType.equals("Client")){
+			int id=C.getTotalReqs(EventIndex);
+			C.createRequirement(req, id, EventIndex);
+		}
+		else if (userType.equals("Event Planner")){
+			int id=EP.getTotalReqs(EventIndex);
+			EP.createRequirement(req, id, EventIndex);
+		}
+	}
+
+	public String getRequirementSummary(int index, int EventIndex){
+		String req="";
+		if (userType.equals("Client")){
+			req+=C.getReqID(index, EventIndex)+". ";
+			req+=C.getReq(index, EventIndex);
+		}
+		else if (userType.equals("Event Planner")){
+			req+=EP.getReqID(index, EventIndex)+". ";
+			req+=EP.getReq(index, EventIndex);
+		}
+		return req;
+	}
+
+	public void removeRequirement(int index, int Eindex){
+		if (userType.equals("Client")){
+			C.removeRequirement(index, Eindex);
+		}
+		else if (userType.equals("Event Planner")){
+			EP.removeRequirement(index, Eindex);
+		}
+	}
+
+	public Boolean checkIndexReqList(int index, int Eindex){
+		if (userType.equals("Client")){
+			return C.RequirementIndex(index, Eindex);
+		}
+		else if (userType.equals("Event Planner")){
+			return EP.RequirementIndex(index, Eindex);//Eindex here isrequest no.
+		}
+		return false;
+	}
+	//Handling Event Requirements
+
+	//To-Do list
+	public void createTask(String task, String Tdate){
+		SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
+		Date date=null;
+		try {
+			date=formatter.parse(Tdate);
+		} catch (ParseException e) {e.printStackTrace();}
+		
+		if (userType.equals("Client")){
+			C.allNewTask(task, date);
+		}
+		else if (userType.equals("Event Planner")){
+			EP.allNewTask(task, date);
+		}
+		else if (userType.equals("Logistic")){
+			L.allNewTask(task, date);
+		}
+	}
+
+	public String getTaskSummary(int index){
+		String task="";
+		if (userType.equals("Client")){
+			String date_string = null;
+			SimpleDateFormat str = new SimpleDateFormat("dd/MMM/yyyy");
+			date_string = str.format(C.gettaskDate(index));
+
+			task+=C.getScheduleID(index)+ ". ";
+			task+=C.getTaskdesc(index)+ "(";
+			task+=date_string+")";
+		}
+		else if(userType.equals("Event Planner")){
+			String date_string = null;
+			SimpleDateFormat str = new SimpleDateFormat("dd/MMM/yyyy");
+			date_string = str.format(EP.gettaskDate(index));
+
+			task+=EP.getScheduleID(index)+ ". ";
+			task+=EP.getTaskdesc(index)+ "(";
+			task+=date_string+")";
+		}
+		else if(userType.equals("Logistic")){
+			String date_string = null;
+			SimpleDateFormat str = new SimpleDateFormat("dd/MMM/yyyy");
+			date_string = str.format(L.getTaskDate(index));
+
+			task+=L.getTaskID(index)+ ". ";
+			task+=L.getTaskdesc(index)+ "(";
+			task+=date_string+")";
+		}
+		return task;
+	}
+
+	public int getTotalTask(){
+		int index=0;
+		if(userType.equals("Client")){
+			return C.getTotalTaskNo();
+		}
+		else if(userType.equals("Event Planner")){
+			return EP.getTotalTaskNo();
+		}
+		else if(userType.equals("Logistic")){
+			return L.getTotalTaskNo();
+		}
+
+		return index;
+	}
+
+	public void removeTask(int index){
+		if (userType.equals("Client")){
+			C.removeTask(index);
+		}
+		else if (userType.equals("Event Planner")){
+			EP.removeTask(index);
+		}
+		else if (userType.equals("Logistic")){
+			L.removeTask(index);
+		}
+	}
+	//To-Do list
+
+	//Budget List
+	public void createbudgetItem(String desc, String p, int EventID){
+		double portion=Double.valueOf(p);
+		double spent=0.0;
+		int id=C.getTotalItemBudget(EventID);
+
+		C.createBudgetItem(desc, portion, spent, id, EventID);
+	}
+
+	public String getBudgetSummary(int index, int EventIndex){
+		String Budget="";
+		Budget+=C.getBudegtID(index, EventIndex)+". ";
+		Budget+=C.getDescBudget(index, EventIndex)+" (RS. ";
+		Budget+=C.getPortion(index, EventIndex)+ " )";
+
+		return Budget;
+	}
+
+	public void removeBudget(int index, int Eindex){
+		C.removeBudgetItem(index, Eindex);
+	}
+
+	public Boolean checkBudgetIndex(int index, int Eindex){
+		return C.BudgetIndex(index, Eindex);
+	}
+	//Budget List
+
 }

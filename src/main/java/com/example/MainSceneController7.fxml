@@ -4,11 +4,12 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainSceneController1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f4eb" height="72.0" layoutY="1.0" stroke="#f7f4eb" strokeType="INSIDE" width="600.0" />
       <Label layoutX="23.0" layoutY="23.0" text="HappenHub">
@@ -27,13 +28,19 @@
             <Font name="Californian FB Bold" size="14.0" />
          </font>
       </Label>
-      <ListView fx:id="toDoList" layoutX="23.0" layoutY="107.0" prefHeight="274.0" prefWidth="177.0" />
+      <ListView fx:id="toDoListDash" layoutX="23.0" layoutY="107.0" prefHeight="297.0" prefWidth="177.0" />
       <Label layoutX="231.0" layoutY="96.0" text="Events">
          <font>
             <Font name="Californian FB Bold" size="18.0" />
          </font>
       </Label>
-      <ListView fx:id="eventList" layoutX="231.0" layoutY="144.0" prefHeight="237.0" prefWidth="348.0" />
+      <ListView fx:id="eventList" layoutX="231.0" layoutY="125.0" prefHeight="237.0" prefWidth="348.0" />
       <Hyperlink fx:id="profilePageLink" layoutX="508.0" layoutY="14.0" onAction="#openProfilePage_Client" text="Profile Page" />
+      <Button fx:id="openEvent" layoutX="457.0" layoutY="378.0" mnemonicParsing="false" onAction="#openEventDashboard" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #E9C7C6;" text="Open Event">
+         <font>
+            <Font name="Californian FB" size="13.0" />
+         </font>
+      </Button>
+      <TextField fx:id="EventIndex" layoutX="231.0" layoutY="378.0" prefHeight="25.0" prefWidth="217.0" promptText="*Enter ID of Event" />
    </children>
 </AnchorPane>

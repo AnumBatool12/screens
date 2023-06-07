@@ -5,7 +5,7 @@ public class Attendee {
     private String phoneNo;
     private String email;
     private Boolean attending;
-    private int ID;//id from database
+    private int ID;//id from database or the index no.
 
     Attendee(){ 
         attending=true;

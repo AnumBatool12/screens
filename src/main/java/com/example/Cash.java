@@ -39,7 +39,5 @@ public class Cash implements Invoice {
 		return spent;
 	}
 
-
-	@Override
 	public void removePayment(int index) {paymentItems.remove(index);}
 }

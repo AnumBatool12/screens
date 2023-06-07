@@ -27,6 +27,7 @@ public class Scheduler {
 	}
 	public void allNewTask(String task, Date date){
 		Task newTask=new Task(date, task);
+		newTask.setID(totalTasks);
 		tasks.add(newTask);
 		totalTasks++;
 	} 
