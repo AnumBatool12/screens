@@ -22,7 +22,7 @@ public class HappenHubController {
 
 
 	//singleton constructor
-	HappenHubController(){}
+	private HappenHubController(){}
 
 	public static HappenHubController getInstance(){//get instance
 		if (hhc==null){
