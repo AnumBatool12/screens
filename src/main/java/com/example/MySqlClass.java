@@ -278,7 +278,6 @@ public class MySqlClass{
             Statement statement = cn.createStatement();
             String sqlQuery = "Select Count(schedularid) AS count FROM Schedular";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
-            pstmt.setString(1, username);
             ResultSet resultset = pstmt.executeQuery();
             int i=0;
             while (resultset.next()) {
@@ -301,7 +300,6 @@ public class MySqlClass{
         try {
             String sqlQuery = "Select Count(eventID) AS count FROM Event_";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
-            pstmt.setString(1, username);
             ResultSet resultset = pstmt.executeQuery();
             int i=0;
             while (resultset.next()) {
@@ -326,7 +324,7 @@ public class MySqlClass{
         try {
             Statement statement = cn.createStatement();
             String sqlQuery = "Insert into Schedular() Values()";
-            statement.executeQuery(sqlQuery);
+            statement.executeUpdate(sqlQuery);
 
             sqlQuery = "Insert into  User_ (fullname, email, phoneno, username , password, usertype, schedularid) Values (?,?,?,?,?,?,?)";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
@@ -337,12 +335,12 @@ public class MySqlClass{
             pstmt.setString(5, client.getPassword());
             pstmt.setString(6, "Client");
             pstmt.setInt(7, getLatestSchedularid());
-            pstmt.executeQuery();
-
+            pstmt.executeUpdate();
+            System.out.println(client.getFullname() + client.getEmailmail()+client.getPassword());
             sqlQuery = "Insert into Client (userid) Values (?)";
             pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setInt(0, getUserID(client.getUsername()));
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             statement.close();
             client.setUserID(getUserID(client.getUsername()));
             // cn.close(); auto closes when the the object is closed
@@ -356,7 +354,7 @@ public class MySqlClass{
         try {
             Statement statement = cn.createStatement();
             String sqlQuery = "Insert into Schedular() Values()";
-            statement.executeQuery(sqlQuery);
+            statement.executeUpdate(sqlQuery);
             
             sqlQuery = "Insert into  User_ (fullname, email, phoneno, username , password, usertype, schedularid) Values (?,?,?,?,?,?,?)";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
@@ -367,7 +365,7 @@ public class MySqlClass{
             pstmt.setString(5, planner.getPassword());
             pstmt.setString(6, "EventPlanner");
             pstmt.setInt(7, getLatestSchedularid());
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
 
             sqlQuery = "Insert into EventPlanner (userid, datesince, expertise, experience) Values(?,?,?,?)";
             pstmt = cn.prepareStatement(sqlQuery);
@@ -376,7 +374,7 @@ public class MySqlClass{
             pstmt.setDate(2, sqlDate);
             pstmt.setString(3, planner.getExpertise());
             pstmt.setString(4, planner.getExperience());
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
 
             planner.setUserID(getUserID(planner.getUsername()));
 
@@ -400,7 +398,7 @@ public class MySqlClass{
             pstmt.setString(5, logistic.getWebsiteUrl());
             pstmt.setString(6, logistic.getUserName());
             pstmt.setString(7, logistic.getPassword());
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             statement.close();
             logistic.setLogID(getLogisticID(logistic.getUserName()));
             // cn.close(); auto closes when the the object is closed
@@ -416,13 +414,11 @@ public class MySqlClass{
 
     public void updateClientname(Client client){ // updated data is stored in the object
         try {
-            Statement statement = cn.createStatement();
             String sqlQuery = "UPDATE User_ SET fullname = ? WHERE userid = ?";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, client.getFullname());
             pstmt.setInt(2, getUserID(client.getUsername()));
-            pstmt.executeQuery();
-            statement.close();
+            pstmt.executeUpdate();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -432,13 +428,11 @@ public class MySqlClass{
     
     public void updateClientemail(Client client){
         try {
-            Statement statement = cn.createStatement(); 
             String sqlQuery = "UPDATE User_ SET email = ? WHERE userid = ?";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, client.getEmailmail());
             pstmt.setInt(2, getUserID(client.getUsername()));
-            pstmt.executeQuery();
-            statement.close();
+            pstmt.executeUpdate();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -448,13 +442,11 @@ public class MySqlClass{
 
     public void updateClientPhoneNo(Client client){
         try {
-            Statement statement = cn.createStatement(); 
             String sqlQuery = "UPDATE User_ SET phoneno = ? WHERE userid = ?";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, client.getPhoneNo());
             pstmt.setInt(2, getUserID(client.getUsername()));
-            pstmt.executeQuery();
-            statement.close();
+            pstmt.executeUpdate();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -464,13 +456,11 @@ public class MySqlClass{
 
     public void updateClientUser(Client client, String olduser){
         try {
-            Statement statement = cn.createStatement(); 
             String sqlQuery = "UPDATE User_ SET username = ? WHERE userid = ?";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, client.getUsername());
             pstmt.setInt(2, getUserID(olduser));
-            pstmt.executeQuery();
-            statement.close();
+            pstmt.executeUpdate();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -479,14 +469,12 @@ public class MySqlClass{
     }
 
     public void updateClientPassword(Client client){
-        try {
-            Statement statement = cn.createStatement(); 
+        try { 
             String sqlQuery = "UPDATE User_ SET password = ? WHERE userid = ?";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, client.getPassword());
             pstmt.setInt(2, getUserID(client.getUsername()));
-            pstmt.executeQuery();
-            statement.close();
+            pstmt.executeUpdate();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -499,13 +487,11 @@ public class MySqlClass{
 // ---------------UPDATING LOGISTICS DATA------------------------------------------
     public void updateLogisticCompName(Logistic logistic){
         try {
-            Statement statement = cn.createStatement(); 
             String sqlQuery = "UPDATE LogisticService SET logisticName = ? WHERE logisticID = ?";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, logistic.getCompanyName());
             pstmt.setInt(2, getLogisticID(logistic.getUserName()));
-            pstmt.executeQuery();
-            statement.close();
+            pstmt.executeUpdate();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -515,13 +501,11 @@ public class MySqlClass{
 
     public void updateLogisticCompEmail(Logistic logistic){
         try {
-            Statement statement = cn.createStatement(); 
             String sqlQuery = "UPDATE LogisticService SET logisticEmail = ? WHERE logisticID = ?";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, logistic.getLogisticEmail());
             pstmt.setInt(2, getLogisticID(logistic.getUserName()));
-            pstmt.executeQuery();
-            statement.close();
+            pstmt.executeUpdate();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -531,13 +515,11 @@ public class MySqlClass{
 
     public void updateLogisticURL(Logistic logistic){
         try {
-            Statement statement = cn.createStatement(); 
             String sqlQuery = "UPDATE LogisticService SET logisticWebsite = ? WHERE logisticID = ?";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, logistic.getWebsiteUrl());
             pstmt.setInt(2, getLogisticID(logistic.getUserName()));
-            pstmt.executeQuery();
-            statement.close();
+            pstmt.executeUpdate();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -547,13 +529,11 @@ public class MySqlClass{
 
     public void updateLogisticUser(Logistic logistic, String olduser){
         try {
-            Statement statement = cn.createStatement(); 
             String sqlQuery = "UPDATE LogisticService SET logisticUsername = ? WHERE logisticID = ?";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, logistic.getUserName());
             pstmt.setInt(2, getLogisticID(olduser));
-            pstmt.executeQuery();
-            statement.close();
+            pstmt.executeUpdate();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -562,14 +542,12 @@ public class MySqlClass{
     }
 
     public void updateLogisticPass(Logistic logistic){
-        try {
-            Statement statement = cn.createStatement(); 
+        try { 
             String sqlQuery = "UPDATE LogisticService SET logisticPassword = ? WHERE logisticID = ?";
             PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
             pstmt.setString(1, logistic.getPassword());
             pstmt.setInt(2, getLogisticID(logistic.getUserName()));
-            pstmt.executeQuery();
-            statement.close();
+            pstmt.executeUpdate();
             // cn.close(); auto closes when the the object is closed
         } 
         catch (SQLException e) {
@@ -582,14 +560,12 @@ public class MySqlClass{
 //----------------UPDATING EVENT PLANNER DATA--------------------------------------
 
 public void updatePlannerUser(EventPlanner planner){   
-    try {
-        Statement statement = cn.createStatement(); 
+    try { 
         String sqlQuery = "UPDATE User_ SET username = ? WHERE userid = ?";
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, planner.getUsername());
         pstmt.setInt(2, planner.getUserID());
-        pstmt.executeQuery();
-        statement.close();
+        pstmt.executeUpdate();
         // cn.close(); auto closes when the the object is closed
     } 
     catch (SQLException e) {
@@ -598,13 +574,11 @@ public void updatePlannerUser(EventPlanner planner){
 }
 public void updatePlannerPass(EventPlanner planner){
     try {
-        Statement statement = cn.createStatement(); 
         String sqlQuery = "UPDATE User_ SET password = ? WHERE userid = ?";
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, planner.getPassword());
         pstmt.setInt(2, planner.getUserID());
-        pstmt.executeQuery();
-        statement.close();
+        pstmt.executeUpdate();
         // cn.close(); auto closes when the the object is closed
     } 
     catch (SQLException e) {
@@ -618,7 +592,7 @@ public void updatePlannerName(EventPlanner planner){
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, planner.getUsername());
         pstmt.setInt(2, planner.getUserID());
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         statement.close();
         // cn.close(); auto closes when the the object is closed
     } 
@@ -633,7 +607,7 @@ public void updatePlannerEmail(EventPlanner planner){
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, planner.getEmailmail());
         pstmt.setInt(2, planner.getUserID());
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         statement.close();
         // cn.close(); auto closes when the the object is closed
     } 
@@ -648,7 +622,7 @@ public void updatePlannerPhone(EventPlanner planner){
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, planner.getPhoneNo());
         pstmt.setInt(2, planner.getUserID());
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         statement.close();
         // cn.close(); auto closes when the the object is closed
     } 
@@ -664,7 +638,7 @@ public void updatePlannerDate(EventPlanner planner){
         Date sqlDate = new Date(planner.getStartDate().getTime());
         pstmt.setDate(1, sqlDate);
         pstmt.setInt(2, planner.getUserID());
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         statement.close();
         // cn.close(); auto closes when the the object is closed
     } 
@@ -679,7 +653,7 @@ public void updatePlannerExpertise(EventPlanner planner){
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, planner.getExpertise());
         pstmt.setInt(2, planner.getUserID());
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         statement.close();
         // cn.close(); auto closes when the the object is closed
     } 
@@ -694,7 +668,7 @@ public void updatePlannerExperience(EventPlanner planner){
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, planner.getExperience());
         pstmt.setInt(2, planner.getUserID());
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         statement.close();
         // cn.close(); auto closes when the the object is closed
     } 
@@ -809,7 +783,7 @@ public void createEvent(Event event){
         pstmt.setString(3, event.getTime());
         pstmt.setInt(4, event.getSize());
 
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         event.setEventID(getEventID());
         // cn.close(); auto closes when the the object is closed
     } 
@@ -825,7 +799,7 @@ public void updateEventTitle(Event event){
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, event.getTitle());
         pstmt.setInt(2, event.getEventID());
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         // cn.close(); auto closes when the the object is closed
     } 
     catch (SQLException e) {
@@ -840,7 +814,7 @@ public void updateEventdate(Event event){
         Date sqlDate = new Date(event.getDate().getTime());
         pstmt.setDate(1, sqlDate);
         pstmt.setInt(2, event.getEventID());
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         // cn.close(); auto closes when the the object is closed
     } 
     catch (SQLException e) {
@@ -854,7 +828,7 @@ public void updateEventSize(Event event){
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setInt(1, event.getSize());
         pstmt.setInt(2, event.getEventID());
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         // cn.close(); auto closes when the the object is closed
     } 
     catch (SQLException e) {
@@ -868,7 +842,7 @@ public void updateEventTime(Event event){
         PreparedStatement pstmt = cn.prepareStatement(sqlQuery);
         pstmt.setString(1, event.getTime());
         pstmt.setInt(2, event.getEventID());
-        pstmt.executeQuery();
+        pstmt.executeUpdate();
         // cn.close(); auto closes when the the object is closed
     } 
     catch (SQLException e) {

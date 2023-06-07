@@ -140,7 +140,7 @@ public class MainSceneController1 implements Initializable{
             alert.setContentText("Password and Confirm Password are not the same");
             alert.show();
         }
-        else{
+        else{ 
             hhc.getInstance().createClient(FullName.getText(), email.getText(), PhoneNo.getText(), usernameClient.getText(), passwordClient.getText());
             
             openClientDashboard(event);

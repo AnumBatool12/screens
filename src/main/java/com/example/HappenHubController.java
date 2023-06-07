@@ -46,7 +46,7 @@ public class HappenHubController {
 	public void createClient(String name, String mail, String phone, String usn, String pw){
 		C=new Client(name, mail, phone, usn, pw);
 
-		database.signupClient(C);
+			database.signupClient(C);
 		/*
 		 * Function adds Client to database
 		 * Assign Client an ID from here
